@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html ng-app="qalamAdmin">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title> index </title>
+
+        <!-- Bootstrap CSS -->
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/bootstrap-grid.min.css">
+        <link rel="stylesheet" href="../css/bootstrap-reboot.min.css">
+
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+
+        <!-- wow.css -->
+        <link rel="stylesheet" href="../css/animate.css">
+
+        <!-- Main CSS -->
+        <link rel="stylesheet" href="../css/style.css">
+        <style>
+            @import url('https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&display=swap');
+            body {
+                font-family: 'Dosis', 'sans-serif' !important;
+            }
+            h1, h2, h3, h4, h5, h6, p, a, span {
+                font-weight: 800;
+                font-family: 'Dosis' !important;
+                /* font-family: '../fonts/ArbFONTS-22016-adobearabic.ttf'; */
+            }
+        </style>
+
+
+        <script src="../js/angular.min.js"></script>
+        <script src="../js/dirPagination.js"></script>
+        <script src="../js/angular-cookies.min.js"></script>
+        <script src="../js/angular-route.min.js"></script>
+
+
+        <script src="../js/qalamAdmin.js"></script>
+        <script src="../js/login.js"></script>
+    </head>
+    <body  ng-controller="ForasCtrl">
+        <!-- NavBar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <img src="../image/Logo.png" alt="Logo">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#"> <h4> Home </h4> <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#page-About-Us"> <h4 style="font-weight: 400;"> About Us </h4> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#page-Foras-Individuals"> <h4 style="font-weight: 400;"> For Individuals </h4> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#page-Foras-Companies"> <h4 style="font-weight: 400;"> For Companies </h4> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Recruitment.html"> <h4 style="font-size: 22px; font-weight: 900;"> Recruitment </h4> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Our-Clients"> <h4 style="font-weight: 400;"> Our Clients </h4> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#page-Contact-Us"> <h4 style="font-weight: 400;"> Contact Us </h4> </a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    <div class="ling">
+                        <a href="indexAR.html"> AR </a>
+                    </div>
+                </span>
+            </div>
+        </nav>
+        <!-- /NavBar -->
+
+        <!-- Home -->
+        <div class="container-fluid Human">
+            <div class="row">
+                <div class="container">
+                    <div class="row" style="max-width: 100%; margin: auto;">
+                        <div class="col-12 text-Human">
+                            <h1> {{settings[0].value}}  </h1>
+                            <p> Providing the highest standards of human resources <br> services in all business categories </p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="button-Human">
+                                        <div class="row" style="max-width: 100%; margin: auto;">
+                                            <div class="col-md-3 Business-button">
+                                                <button onClick="location.href='#page-Foras-Companies'" type="button" class="btn btn-primary"> Business > </button>
+                                            </div>
+                                            <div class="col-md-3 Individual-button">
+                                                <button onClick="location.href='#page-Foras-Individuals'" type="button" class="btn btn-primary"> Individual > </button>
+                                            </div>    
+                                        </div>
+                                    </div>        
+                                </div>
+                            </div>
+                        </div>        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Home -->
+
+        <!-- Welcome To Foras -->
+        <div class="container text-center" id="page-About-Us">
+            <div class="row">
+                <div class="col-12 text-head wow fadeInDown" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="200">
+                    <h1> {{settings[3].value}} </h1>
+                    <hr style="margin-top: 0; margin-bottom: 0; border: 0; border-top: 4px solid #223a75; max-width: 10%; border-radius: 5px;">
+                    <p> {{settings[4].value}} </p>
+                </div>
+                <div class="col-md-4 wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="300">
+                    <div class="icon">
+                        <img src="../image/eye.png" alt="eye">
+                    </div>
+                    <div class="head">
+                        <h5> OUR VISION </h5>
+                    </div>
+                    <div class="paragraph">
+                        <p> {{settings[5].value}} </p>
+                    </div>
+                </div>
+                <div class="col-md-4 wow zoomIn" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="300">
+                    <div class="icon">
+                        <img src="../image/surface.png" alt="surface">
+                    </div>
+                    <div class="head">
+                        <h5> ABOUT US </h5>
+                    </div>
+                    <div class="paragraph">
+                        <p>
+                            {{settings[6].value}}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="300">
+                    <div class="icon">
+                        <img src="../image/target.png" alt="target">
+                    </div>
+                    <div class="head">
+                        <h5> OUR MISSION </h5>
+                    </div>
+                    <div class="paragraph">
+                        <p>{{settings[7].value}} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Welcome To Foras -->
+
+        <!-- Take The Right Step -->
+        <div class="container-fluid Take-Right">
+            <div class="row" style="max-width: 100%; margin: auto;">
+                <div class="container wow swing" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="200">
+                    <div class="row" id="counters">
+                        <div class="col-12 head-Take">
+                            <h1> {{settings[8].value}} </h1>
+                            <hr style="margin-top: 0; margin-bottom: 0; border: 0; border-top: 4px solid #56BCF0; max-width: 10%; border-radius: 5px;">
+                            <p> {{settings[9].value}} </p>
+                        </div>
+                        <div class="col-md-4 head-Right">
+                            <h1 class="wow ace-counter-number js-counter" data-from="0" data-to="{{totalCvs}}" data-speed="2000" data-refresh-interval="100"> {{totalCvs}} </h1>
+                            <h2> Applicants </h2>
+                        </div>
+                        <div class="col-md-4 head-Right">
+                            <h1 class="wow ace-counter-number js-counter" data-from="0"  data-to="{{totalCompanies}}"  data-speed="2000" data-refresh-interval="100"> {{totalCompanies}} </h1>
+                            <h2> Companies </h2>
+                        </div>
+                        <div class="col-md-4 head-Right">
+                            <h1 class="wow ace-counter-number js-counter" data-from="0" data-to="{{settings[10].value}}" data-speed="2000" data-refresh-interval="100"> 2.14k </h1>
+                            <h2> Oppourtunity </h2>
+                        </div>        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Take The Right Step -->
+        
+        <!-- Foras Advantages -->
+        <div class="container Foras">
+            <div class="row">
+                <div class="col-12 head-Foras wow fadeInRight" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200">
+                    <h1> <img src="../image/checkmark.png" alt="checkmark"> Foras Advantages </h1>
+                </div>
+                <div class="col-md-4 Varieties wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200">
+                    <h5> <img src="../image/eye.png" alt="eye" style="margin-right: 10px;">  {{settings[11].value}} </h5>
+                    <p> {{settings[14].value}} </p>
+                </div>
+                <div class="col-md-4 Varieties wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200">
+                    <h5> <img src="../image/eye.png" alt="eye" style="margin-right: 10px;"> {{settings[12].value}} </h5>
+                    <p> {{settings[15].value}}</p>
+                </div>
+                <div class="col-md-4 Varieties wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200">
+                    <h5> <img src="../image/eye.png" alt="eye" style="margin-right: 10px;"> {{settings[13].value}} </h5>
+                    <p> {{settings[16].value}} </p>
+                </div>
+            </div>
+        </div>
+        <!-- /Foras Advantages -->
+
+        <!-- For Companies -->
+        <div class="container" id="page-Foras-Companies">
+            <div class="row">
+                <div class="col-12 Companies wow rubberBand" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200">
+                    <h1> For Companies </h1>
+                    <hr style="margin-top: 0; margin-bottom: 0; border: 0; border-top: 4px solid #223a75; max-width: 10%; border-radius: 5px;">
+                </div>
+                <div class="col-12 Business-Services wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200">
+                    <div class="row">
+                        <div class="col-md-4 Companies-img wow fadeInRightBig" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200">
+                            <img src="{{settings[19].value || '../image/Business-Services.png'}}" alt="">
+                        </div>
+                        <div class="col-md-8 Business wow fadeInLeftBig" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200">
+                            <h6>    {{settings[17].value}}  </h6>
+                            <p>     {{settings[18].value}}  </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+                <div onClick="location.href='#page-Contact-Us'" class="col-md-3 wow zoomIn" style="margin: auto;" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200" style="margin: auto;">
+                    <div class="Recruitment" style="padding: 80px 0px;">
+                        <img src=" {{settings[23].value||'../image/recruitment.png'}}"   alt="recruitment">
+                        <h5> {{settings[20].value}} <br>  </h5>
+                    </div>
+                </div>
+                <div onClick="location.href='#page-Contact-Us'" class="col-md-3 wow zoomIn" style="margin: auto;" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200" style="margin: auto;">
+                    <div class="Recruitment" style="padding: 80px 0px;">
+                        <img src=" {{settings[24].value||'../image/recruitment.png'}}" alt="Curriculum">
+                        <h5> {{settings[21].value}} <br>  </h5>
+                    </div>
+                </div>
+                <div onClick="location.href='#page-Contact-Us'" class="col-md-3 wow zoomIn" style="margin: auto;" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200" style="margin: auto;">
+                    <div class="Recruitment" style="padding: 80px 0px;">
+                        <img src=" {{settings[25].value||'../image/recruitment.png'}}"  alt="Writing">
+                        <h5> {{settings[22].value}} <br> </h5>
+                    </div>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+        <!-- /For Companies -->
+
+        <!-- redesigned -->
+        <div class="container-fluid redesigned">
+            <div class="row"style="max-width: 100%; margin: auto;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 head-redesigned wow flipInY" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200">
+                            <h1> {{settings[26].value}} <br> </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /redesigned -->
+
+        <!-- For Individuals -->
+        <div class="container" id="page-Foras-Individuals">
+            <div class="row">
+                <div class="col-12 Companies">
+                    <h1> For Individuals </h1>
+                    <hr style="margin-top: 0; margin-bottom: 0; border: 0; border-top: 4px solid #223a75; max-width: 10%; border-radius: 5px;">
+                </div>
+                <div class="col-12 Business-Services wow flipInX" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200">
+                    <div class="row">
+                        <div class="col-md-4 Companies-img">
+                            <img src="{{settings[32].value || '../image/unemployed-man-desperately-looking-job-holding-need-job-sign_1150-3021.png'}} " alt="">
+                        </div>
+                        <div class="col-md-8 Business">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h6>  {{settings[28].value}} </h6>
+                                    <p> {{settings[29].value}} </p>        
+                                </div>
+                                <div class="col-12">
+                                    <h6> {{settings[30].value}} </h6>
+                                    <p> {{settings[31].value}} </p>        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-11" style="margin: auto;">
+                    <div class="row">
+                        <div class="col-md-3 wow zoomIn" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200">
+                            <div style="box-shadow: none !important;" class="Recruitment">
+                                <img src="../image/recruitment.png" alt="recruitment">
+                                <h5> Recruitment </h5>
+                                <button onClick="location.href='ContactUs.html'" type="button" class="btn btn-primary btn-lg">Apply</button>
+                            </div>
+                        </div>
+                        <div class="col-md-3 wow zoomIn" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200">
+                            <div style="box-shadow: none !important;" class="Recruitment">
+                                <img src="../image/Edit.png" alt="Edit">
+                                <h5> Edit your CV </h5>
+                                <button onClick="location.href='ContactUs.html'" type="button" class="btn btn-primary btn-lg">Edit</button>
+                            </div>
+                        </div>
+                        <div class="col-md-3 wow zoomIn" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200">
+                            <div style="box-shadow: none !important;" class="Recruitment">
+                                <img src="../image/Create.png" alt="Create">
+                                <h5> Create a CV </h5>
+                                <button onClick="location.href='ContactUs.html'" type="button" class="btn btn-primary btn-lg">Create</button>
+                            </div>
+                        </div>
+                        <div class="col-md-3 wow zoomIn" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200">
+                            <div style="box-shadow: none !important;" class="Recruitment">
+                                <img src="../image/Design.png" alt="Design">
+                                <h5> Design CV </h5>
+                                <button onClick="location.href='ContactUs.html'" type="button" class="btn btn-primary btn-lg">Design</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /For Individuals -->
+        
+        <!-- Our Clients -->
+        <div class="container-fluid" id="Our-Clients">
+            <div class="row" style="max-width: 100%; margin: auto;">
+                <div class="col-12 Our-Clients">
+                    <h1> Our Clients </h1>
+                    <hr style="margin-top: 0; margin-bottom: 0; border: 0; border-top: 4px solid #223a75; max-width: 10%; border-radius: 5px;">
+                </div>
+                <div id="carouselExampleControls" class="carousel slide slider-home d-none d-sm-none d-md-block" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div ng-class="{'active': k == 0 }"  ng-repeat="(k , c) in categories" class="carousel-item">
+                            <div class="col-9" style="margin: auto;">
+                                <div class="row">
+                                    <div ng-repeat="i in c" class="slider col-2">
+                                        <img style="max-width: 100% !important;" src="{{i.img}}" class="d-block w-100" alt="العميل ">
+                                        <h6> {{i.nameAR}} </h6>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <div id="carouselExampleIndicators" class="carousel slide slider-home d-none d-sm-block d-md-none" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div ng-class="{'active': k == 0 }"  ng-repeat="(k , c) in categories2"  class="carousel-item">
+                            <div class="col-9" style="margin: auto;">
+                                <div class="row">
+                                    <div  ng-repeat="i in c"  class="slider col-4">
+                                        <img style="max-width: 100% !important;" src="{{i.img}}"  class="d-block w-100" alt="...">
+                                        <h6> {{i.nameAR}} </h6>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+                <div id="carouselExampleCaptions" class="carousel slide slider-home d-block d-sm-none" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div ng-class="{'active': k == 0 }"  ng-repeat="(k , c) in categories3" class="carousel-item">
+                            <div class="col-9" style="margin: auto;">
+                                <div class="row">
+                                    <div class="slider col-12">
+                                        <img style="max-width: 100% !important;" src="{{c.img}}" class="d-block w-100" alt="صورة العميل ">
+                                        <h6> {{c.nameAR}}  </h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- /Our Clients -->
+
+        <!-- Contact Us -->
+        <div class="container-fluid Contact-Us" id="page-Contact-Us">
+            <div class="row" style="max-width: 100%; margin: auto;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 Contact">
+                            <h1> Contact Us </h1>
+                            <hr style="margin-top: 0; margin-bottom: 0; border: 0; border-top: 4px solid #fff; max-width: 10%; border-radius: 5px;">
+                        </div>
+                        <div class="col-md-6">
+                            <form ng-submit = "addContactUs()">
+                                <div class="form-group row">
+                                    <div class="col-12 forms">
+                                        <div class="row">
+                                            <label for="inputEmail3" class="col-sm-5 col-form-label"><h6>Full Name</h6></label>
+                                            <div class="col-sm-7">
+                                                <input type="text" id="fullname" class="form-control" placeholder="Full Name" required>
+                                            </div>    
+                                        </div>
+                                    </div>
+                                    <div class="col-12 forms">
+                                        <div class="row">
+                                            <label for="inputEmail3" class="col-sm-5 col-form-label"><h6>Mobile Number</h6></label>
+                                            <div class="col-sm-7">
+                                                <input type="text"  id="mobile" class="form-control" placeholder="Mobile Number" required>
+                                            </div>        
+                                        </div>
+                                    </div>
+                                    <div class="col-12 forms">
+                                        <div class="row">
+                                            <label for="inputEmail3" class="col-sm-5 col-form-label"><h6>E-Mail</h6></label>
+                                            <div class="col-sm-7">
+                                                <input type="email" id="email" class="form-control" placeholder="E-Mail">
+                                            </div>        
+                                        </div>
+                                    </div>
+                                    <div class="col-12 forms">
+                                        <div class="row">
+                                            <label class="col-sm-5 col-form-label"><h6>Notes</h6></label>
+                                            <div class="col-sm-7">
+                                                <textarea class="form-control" id="notes"  placeholder="Notes" rows="3"></textarea>
+                                            </div>        
+                                        </div>
+                                    </div>
+                                    <div class="col-12 forms">
+                                        <div class="row">
+                                            <label class="col-sm-5 col-form-label"></label>
+                                            <div class="col-sm-7 Submit">
+                                                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                                            </div>        
+                                        </div>
+                                    </div>
+                                </div>                                
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mapouter">
+                                <div class="gmap_canvas">
+                                    <iframe width="100%" height="330" id="gmap_canvas" src="https://maps.google.com/maps?q=13%20%D8%B9%D8%A8%D8%AF%20%D8%A7%D9%84%D8%B9%D8%B2%D9%8A%D8%B2%20%D8%B7%D9%84%D8%B9%D8%AA%D8%8C%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D9%82%D8%A9%20%D8%A7%D9%84%D8%B3%D8%A7%D8%AF%D8%B3%D8%A9%D8%8C%20%D9%85%D8%AF%D9%8A%D9%86%D8%A9%20%D9%86%D8%B5%D8%B1%D8%8C%20%D9%85%D8%AD%D8%A7%D9%81%D8%B8%D8%A9%20%D8%A7%D9%84%D9%82%D8%A7%D9%87%D8%B1%D8%A9%E2%80%AC&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                                    <!-- <a href="https://www.embedgooglemap.org">embedgooglemap.org</a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Contact Us -->
+
+        <!-- Follow Us On Our Social media channels -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center" style="color: #223A76;margin-top: 40px; margin-bottom: 20px;">
+                    <span> Follow Us On Our Social media channels </span>
+                </div>
+                <div class="col-12 text-center">
+                    <div class="social-media">
+                        <a target="_blank" href="{{settings[35].value}}">
+                            <img src="../image/socialMedia/facebookIcon.png" alt="Facebook Icon">
+                        </a>
+                    </div>
+                    <div class="social-media">
+                        <a target="_blank"  href="{{settings[36].value}}">
+                            <img src="../image/socialMedia/instagramIcon.png" alt="Instagram Icon">
+                        </a>
+                    </div>
+                    <div class="social-media">
+                        <a target="_blank"  href="{{settings[37].value}}">
+                            <img src="../image/socialMedia/pinterestIcon.png" alt="Pinterest Icon">
+                        </a>
+                    </div>
+                    <div class="social-media">
+                        <a target="_blank"  href="{{settings[38].value}}">
+                            <img src="../image/socialMedia/googlePlusIcon.png" alt="GooglePlus Icon">
+                        </a>
+                    </div>
+                    <div class="social-media">
+                        <a target="_blank"  href="{{settings[39].value}}">
+                            <img src="../image/socialMedia/linkedinIcon.png" alt="Linkedin Icon">
+                        </a>
+                    </div>
+                    <div class="social-media">
+                        <a target="_blank" href="{{settings[40].value}}">
+                            <img src="../image/socialMedia/whatsappIcon.png" alt="whatsapp Icon">
+                        </a>
+                    </div>
+                    <div   class="social-media">
+                        <a target="_blank"  href="{{settings[41].value}}">
+                            <img src="../image/socialMedia/twitterIcon.png" alt="Twitter Icon">
+                        </a>
+                    </div>
+                    <div   class="social-media">
+                        <a target="_blank"  href="{{settings[42].value}}">
+                            <img src="../image/socialMedia/youtubeIcon.png" alt="Youtube Icon">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Follow Us On Our Social media channels -->
+
+
+        
+        <!-- Bootstrap Core JS -->
+        <!-- <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/bootstrap.bundle.min.js"></script> -->
+       
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+        <!-- wow.js -->
+        <script src="../js/tests.js"></script>
+        <script src="../js/wow.min.js"></script>
+        <script src="../js/jquery.countTo.js"></script>
+
+        <script>
+            new WOW().init();
+        </script>
+        <script type="text/javascript">
+            $('.counter-number').countTo();
+        </script>
+        <script>
+            function isScrolledIntoView(el) {
+                var elemTop = el.getBoundingClientRect().top;
+                var elemBottom = el.getBoundingClientRect().bottom;
+                var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+                return isVisible;
+            }
+            function isScrolledIntoView(el) {
+                var elemTop = el.getBoundingClientRect().top;
+                var elemBottom = el.getBoundingClientRect().bottom;
+                var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+                return isVisible;
+            }
+            $(window).on('scroll', function() {
+                if (isScrolledIntoView(document.getElementById('counters'))) {
+                    $('.ace-counter-number').countTo();
+                    $(window).off('scroll');
+                }
+            });
+        </script>
+
+    </body>
+</html>

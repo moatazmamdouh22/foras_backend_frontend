@@ -1,0 +1,153 @@
+
+
+    
+    
+    <!-- Page Wrapper -->
+    <div ng-if="!qalamLang || qalamLang == 'ar'" class="page-wrapper">
+            <div class="content container-fluid">
+                            
+                    <!-- Page Header -->
+                    <div class="page-header">
+                            <div class="row">
+                                    <div class="col">
+                                            <h3 class="page-title text-right">نموذج التعديل</h3>
+                                            <ul class="breadcrumb">
+                                                    <li class="breadcrumb-item"><a href="/employees">الموظفيين </a></li>
+                                                    <li class="breadcrumb-item active">تعديل موظف </li>
+                                            </ul>
+                                    </div>
+                            </div>
+                    </div>
+                    <!-- /Page Header -->
+                    
+                    <div class="row">
+                            <div class="col-xl-6 d-flex">
+                                    <div class="card flex-fill">
+                                            <div class="card-header text-right">
+                                                    <h4 class="card-title mb-0">بيانات الموظف </h4>
+                                            </div>
+                                            <div class="card-body">
+                                                    <form ng-submit="editData()" >
+                                                            <div class="form-group row text-right">
+                                                                    <label class="col-lg-3 col-form-label">الأسم </label>
+                                                                    <div class="col-lg-9">
+                                                                            <input id="fullname"  value="{{user.fullname}}" type="text" class="form-control">
+                                                                    </div>
+                                                            </div>
+                                                            <div class="form-group row text-right">
+                                                                    <label class="col-lg-3 col-form-label">الايميل</label>
+                                                                    <div class="col-lg-9">
+                                                                            <input id="email" type="email"  value="{{user.email}}" class="form-control">
+                                                                    </div>
+                                                            </div>
+                                                            <div class="form-group row text-right">
+                                                                    <label class="col-lg-3 col-form-label">الهاتف </label>
+                                                                    <div class="col-lg-9">
+                                                                            <input id="mobile" type="text"  value="{{user.mobile}}" class="form-control">
+                                                                    </div>
+                                                            </div>
+                                                            
+                                                            <div class="form-group row text-right">
+                                                                    <label class="col-lg-3 col-form-label">كلمة السر</label>
+                                                                    <div class="col-lg-9">
+                                                                            <input id="password" type="password"  value="{{user.password}}" class="form-control">
+                                                                    </div>
+                                                            </div>
+                                                            
+                                                            <div class="text-left">
+                                                                    <button type="submit" class="btn btn-primary">حـفظ  </button>
+                                                                    <button back-button type="button" class="btn btn-danger">العودة </button>
+    
+    
+                                                            </div>
+                                                    </form>
+                                            </div>
+                                    </div>
+                            </div>
+                            
+                    </div>
+    
+                            
+            </div>			
+    </div>
+    <!-- /Main Wrapper -->
+    
+    
+    
+    
+    
+    <!-- Page Wrapper -->
+    <div ng-if="qalamLang == 'en'"  class="page-wrapper">
+            <div class="content container-fluid">
+                            
+                    <!-- Page Header -->
+                    <div class="page-header">
+                            <div class="row">
+                                    <div class="col">
+                                            <h3 class="page-title text-left">Edit Form</h3>
+                                            <ul class="breadcrumb">
+                                                    <li class="breadcrumb-item"><a href="/employees">Employees </a></li>
+                                                    <li class="breadcrumb-item active">Edit Employee </li>
+                                            </ul>
+                                    </div>
+                            </div>
+                    </div>
+                    <!-- /Page Header -->
+                    
+                    <div class="row">
+                            <div class="col-xl-6 d-flex">
+                                    <div class="card flex-fill">
+                                            <div class="card-header">
+                                                    <h4 class="card-title mb-0">Employee Info </h4>
+                                            </div>
+                                            <div class="card-body">
+                                                    <form ng-submit="editData()" >
+                                                            <div class="form-group row">
+                                                                    <label class="col-lg-3 col-form-label">Name </label>
+                                                                    <div class="col-lg-9">
+                                                                            <input id="fullname" type="text" value="{{user.fullname}}" class="form-control">
+                                                                    </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                    <label class="col-lg-3 col-form-label">Email</label>
+                                                                    <div class="col-lg-9">
+                                                                            <input id="email" type="email" value="{{user.email}}" class="form-control">
+                                                                    </div>
+                                                            </div>
+                                                            <div class="form-group row">
+                                                                    <label class="col-lg-3 col-form-label">Mobile </label>
+                                                                    <div class="col-lg-9">
+                                                                            <input id="mobile" type="text" value="{{user.mobile}}" class="form-control">
+                                                                    </div>
+                                                            </div>
+                                                            
+                                                            <div class="form-group row">
+                                                                    <label class="col-lg-3 col-form-label">Password</label>
+                                                                    <div class="col-lg-9">
+                                                                            <input id="password" type="password" value="{{user.password}}" class="form-control">
+                                                                    </div>
+                                                            </div>
+                                                            
+                                                            <div class="text-right">
+                                                                    <button type="submit" class="btn btn-primary">Save </button>
+                                                                    <button back-button type="button" class="btn btn-danger">Back</button>
+    
+    
+                                                            </div>
+                                                    </form>
+                                            </div>
+                                    </div>
+                            </div>
+                            
+                    </div>
+    
+                            
+            </div>			
+    </div>
+    <!-- /Main Wrapper -->
+    
+    
+    
+    
+    
+    

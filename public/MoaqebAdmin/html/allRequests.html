@@ -1,0 +1,145 @@
+<div class="col-lg-12 col-md-12 col-xs-12" style="padding:20px;">
+    <a href="AddNewRequest" style="text-decoration:none;">
+        <p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000">
+                اضافة طلب جديد&nbsp;</p></a>
+        <div class="table-responsive pcTblorderPending"
+            style="width:100%;min-height:50%;margin-left:auto;margin-right:auto;overflow:visible;direction:rtl;text-align:right">
+            <table class="table table table-bordered" style="direction:rtl;">
+                <thead style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+                    <tr>
+                        <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">الثمن</th>
+                        <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">تاريخ البداية</th>
+                        <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">تاريخ النهاية</th>
+                        <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">السيارة</th>
+                        <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">المستخدم</th>
+                        <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">مالك السيارة</th>
+                        <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">الحاله</th>
+                        <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">التفاصيل</th>
+                        <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">التعديل</th>
+                    </tr>
+                </thead>
+                <tbody style="font-family: 'Cairo', sans-serif;background:#f3f3f3;color:#666363;">
+                    <tr dir-paginate="c in requests |filter:searchText |itemsPerPage:10">
+                        <td style="direction:rtl;text-align:center;">{{c.price}}</td>
+                        <td style="direction:rtl;text-align:center;">{{c.startDate | cmdate:'yyyy-MM-dd'}}</td>
+                        <td style="direction:rtl;text-align:center;">{{c.endDate | cmdate:'yyyy-MM-dd'}}</td>
+                        <td style="direction:rtl;text-align:center;">
+                            <span ng-if="c.carID != null">
+                                <a href="CarDetails/{{c.carID._id}}" >
+    
+                                    <img src="{{c.carID.logo}}" style="width:80px ;height:80px;border-radius: 40px;" />
+                                </a>
+    
+                            </span>
+                            <span ng-if="c.carID == null">
+                                <a href="../logo.png">
+                                    <img src="../logo.png" style="width:80px ;height:80px;border-radius: 40px;" />
+                                </a>
+                            </span>
+                        </td>
+                            <td style="direction:rtl;text-align:center;">{{c.userID.fullname}}</td>
+                            <td style="direction:rtl;text-align:center;">{{c.ownerID.fullname}}</td>
+                            <td style="direction:rtl;text-align:center;">
+                                <span ng-if="c.status == 1">
+                                    قيد التنفيذ
+                                </span>
+                                <span ng-if="c.status == 2">
+                                    مرفوض
+                                </span>
+                                 <span ng-if="c.status == 3">
+                                    قبول
+                                </span>
+                                <span ng-if="c.status == 4">
+                                    بدء الإيجار
+                                </span>
+                                <span ng-if="c.status == 5">
+                                    انتهاء
+                                </span>
+                            </td>        
+                        <td style="direction:rtl;text-align:center;"><a href="RequestDetails/{{c._id}}"><span class="fa fa-info-circle" style="color:#666363"></span></a></td>
+                        <td style="direction:rtl;text-align:center;"><a href="RequestDetailsEdit/{{c._id}}"><span class="fa fa-pencil-square" style="color:#666363"></span></a></td>
+                    </tr>
+                </tbody>
+            </table>
+            <dir-pagination-controls max-size="8" direction-links="true" boundary-links="true">
+            </dir-pagination-controls>
+    
+        </div>
+    
+    
+        <div class="table-responsive mobTblorderPending"
+            style="width:100%;min-height:50%;margin-left:auto;margin-right:auto;overflow:visible;direction:rtl;text-align:right">
+            <h1 style="font-size: 2.5vh;">
+                <dir-pagination-controls max-size="8" direction-links="true" boundary-links="true">
+    
+                </dir-pagination-controls>
+            </h1>
+            <table class="table table table-bordered" style="direction:rtl;">
+    
+                <tbody dir-paginate="c in requests |filter:searchText |itemsPerPage:10"
+                    style="font-family: 'Cairo', sans-serif;background:#f3f3f3;color:#666363;font-size: 2vh">
+                    <tr>
+                        <td style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;"> الثمن
+                        </td>
+                        <td style="direction:rtl;text-align:center;">{{c.price}}</td>
+                    </tr>
+    
+                    <tr>
+                        <td style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;"> تاريخ البداية
+                        </td>
+                        <td style="direction:rtl;text-align:center;">{{c.startDate | cmdate:'yyyy-MM-dd'}}</td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;"> تاريخ النهاية
+                        </td>
+                        <td style="direction:rtl;text-align:center;">{{c.endDate | cmdate:'yyyy-MM-dd'}}</td>
+                    </tr>
+                    <tr>
+                            <td style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;"> السيارة
+                                </td>
+                                <td style="direction:rtl;text-align:center;">
+                                    <span ng-if="c.carID != null">
+                                        <a href="CarDetails/{{c.carID._id}}">
+            
+                                            <img src="{{c.carID.logo}}" style="width:80px ;height:80px;border-radius: 40px;" />
+                                        </a>
+            
+                                    </span>
+                                    <span ng-if="c.carID == null">
+                                        <a href="../logo.png" target="_blank">
+                                            <img src="../logo.png" style="width:80px ;height:80px;border-radius: 40px;" />
+                                        </a>
+                                    </span>
+                                </td>
+                                        </tr>
+                    <tr>
+                            <td style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;"> المستخدم
+                                </td>
+                                <td style="direction:rtl;text-align:center;">{{c.userID.fullname}}</td>
+                                </tr>
+                        <tr>
+                                <td style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;"> التفاصيل
+                                </td>
+                                <td style="direction:rtl;text-align:center;"><a href="RequestDetails/{{c._id}}"><span
+                                            class="fa fa-info-circle" style="color:#666363"></span></a></td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;"> التعديل
+                                </td>
+                                <td style="direction:rtl;text-align:center;"><a href="RequestDetailsEdit/{{c._id}}"><span
+                                            class="fa fa-pencil-square" style="color:#666363"></span></a></td>
+                            </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <div style="height: .5vh;background-color:#000 "></div>
+                        </td>
+                    </tr>
+    
+    
+                </tbody>
+            </table>
+    
+    
+        </div>
+    </div>

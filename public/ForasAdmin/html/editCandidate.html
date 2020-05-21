@@ -1,0 +1,741 @@
+
+
+
+
+
+<!-- Page Wrapper -->
+<div ng-if="!qalamLang || qalamLang == 'ar'" class="page-wrapper">
+    <div class="content container-fluid">
+                    
+            <!-- Page Header -->
+            <div class="page-header">
+                    <div class="row">
+                            <div class="col">
+                                    <h3 class="page-title text-right">نموذج التعديل </h3>
+                                    <ul class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="/recruitments">المرشحين    </a></li>
+                                            <li class="breadcrumb-item active">تعديل  مرشح   </li>
+                                    </ul>
+                            </div>
+                    </div>
+            </div>
+            <!-- /Page Header -->
+            
+            <div class="row">
+                    <div class="col-xl-6 d-flex">
+                            <div class="card flex-fill">
+                                    <div class="card-header text-right">
+                                            <h4 class="card-title mb-0">بيانات المرشح </h4>
+                                    </div>
+                                    <div class="card-body">
+                                            <form>
+                                                    <div class="form-group row text-right">
+                                                            <label class="col-lg-3 col-form-label">الأسم الأول  </label>
+                                                            <div class="col-lg-9">
+                                                                    <input id="firstName" value="{{data.firstName}}" type="text" class="form-control">
+                                                            </div>
+                                                    </div>
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">الأسم الأخير   </label>
+                                                        <div class="col-lg-9">
+                                                                <input id="lastName" type="text" value="{{data.lastName}}" class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">تاريخ الميلاد    </label>
+                                                        <div class="col-lg-9">
+                                                            <input type="date" class="form-control" value="{{data.birthday | cmdate:'yyyy-MM-dd'}}"   id="birthday">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">الحالة الاجتماعية    </label>
+                                                        <div class="col-lg-9">
+                                                            <select required id="socialStatus" class="form-control">
+                                                                <option ng-selected="data.socialStatus == 1"  value="1"> متزوج    </option>
+                                                                <option ng-selected="data.socialStatus == 2"  value="2"> أعزب     </option>
+                                                                <option ng-selected="data.socialStatus == 3"  value="3"> مطلق     </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">رقم الجوال   </label>
+                                                        <div class="col-lg-9">
+                                                                <input  value="{{data.phoneNumber}}" id="phoneNumber" type="number" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">البريد الالكترونى    </label>
+                                                        <div class="col-lg-9">
+                                                                <input id="email" type="email"  value="{{data.email}}"  class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">الجنسية    </label>
+                                                        <div class="col-lg-9">
+                                                            <select id="nationalityID" class="form-control">
+                                                                <option ng-selected="data.nationalityID == c._id" ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in nationality">
+                                                                    {{c.titleAr}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">رقم الهوية    </label>
+                                                        <div class="col-lg-9">
+                                                                <input id="IDNumber" value="{{data.IDNumber}}"  type="number" class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">مدينة السكن    </label>
+                                                        <div class="col-lg-9">
+                                                            <select id="cityID" class="form-control">
+                                                                <option  ng-selected="c._id == data.cityID"  ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in cities">
+                                                                    {{c.titleAr}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">الحي السكني    </label>
+                                                        <div class="col-lg-9">
+                                                                <input id="neighborhood" value="{{data.neighborhood}}" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">الجنس    </label>
+                                                        <div class="col-lg-9">
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input"   type="radio" name="gender" id="gender1" value="1">
+                                                                <label class="form-check-label"  for="inlineRadio1" style="margin-right: 5px;">ذكر </label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input"   type="radio" name="gender" id="gender2" value="2">
+                                                                <label class="form-check-label" for="inlineRadio2" style="margin-right: 5px;">أنثى</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">احتياجات خاصة    </label>
+                                                        <div class="col-lg-9">
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input"  type="radio" name="specialNeeds" id="specialNeeds1" value="1">
+                                                                <label class="form-check-label" for="specialNeeds1" style="margin-right: 5px;">نعم</label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input"  type="radio" name="specialNeeds" id="specialNeeds2" value="2">
+                                                                <label class="form-check-label" for="specialNeeds2" style="margin-right: 5px;">لا</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">الدرجة العلمية     </label>
+                                                        <div class="col-lg-9">
+                                                            <select   required id="scientificDegree"  class="form-control">
+                                                                <option ng-selected="data.scientificDegree == 1" value="1"> دبلوم    </option>
+                                                                <option ng-selected="data.scientificDegree == 2" value="2"> ثانوي     </option>
+                                                                <option ng-selected="data.scientificDegree == 3" value="3"> ابتدائي     </option>
+                                                                <option ng-selected="data.scientificDegree == 4" value="4"> متوسط     </option>
+                                                                <option ng-selected="data.scientificDegree == 5" value="5"> جامعي     </option>
+                                                                <option ng-selected="data.scientificDegree == 6" value="6"> ماجستير     </option>
+                                                                <option ng-selected="data.scientificDegree == 7" value="7"> دكتوراه     </option>
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">التخصص العلمي    </label>
+                                                        <div class="col-lg-9">
+                                                            <select  id="scientificSpecializationID" class="form-control">
+                                                                <option ng-selected="c._id == data.scientificSpecializationID" ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in scientificSps">
+                                                                    {{c.titleAr}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">الجامعة    </label>
+                                                        <div class="col-lg-9">
+                                                            <select id="graduationUniversityID" class="form-control">
+                                                                <option ng-selected="c._id == data.graduationUniversityID" ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in graduationUniversity">
+                                                                    {{c.titleAr}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label"> معدل التخرج     </label>
+                                                        <div class="col-lg-9">
+                                                            <select id="degree" class="form-control">
+                                                                <option ng-selected="data.degree == 1" value="1">مقبول</option>
+                                                                <option ng-selected="data.degree == 2" value="2">جيد</option>
+                                                                <option ng-selected="data.degree == 3" value="3">جيد جدا</option>
+                                                                <option ng-selected="data.degree == 4" value="4">ممتاز</option>
+                                                            </select>
+                                                        </div>
+                                                        
+                                                    </div>
+
+
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label"> شهادات متخصصة     </label>
+                                                        <div class="col-lg-9">
+                                                            <select id="specializedCertificatesID" class="form-control">
+                                                                <!-- <option value="1" > نعم</option>
+                                                                <option value="2"> لا </option> -->
+                                                                <option ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in specializedCertificates">
+                                                                    {{c.titleAr}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">قطاع الخبرة    </label>
+                                                        <div class="col-lg-9">
+                                                            <select id="experienceID" class="form-control">
+                                                                
+                                                                <option ng-selected="data.experienceID == c._id" ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in experience">
+                                                                    {{c.titleAr}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">تخصص اغلب سنوات الخبرة    </label>
+                                                        <div class="col-lg-9">
+                                                            <select id="mostExperienceID" class="form-control">
+                                                                <option  ng-selected="data.mostExperienceID == c._id" ng-if="c.exist == true" value="{{c._id}}"  ng-repeat="c in experience">
+                                                                    {{c.titleAr}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">عدد سنوات الخبرة    </label>
+                                                        <div class="col-lg-9">
+                                                            <select id="yearsExperienceID" class="form-control">
+                                                                <option  ng-selected="data.yearsExperienceID == c._id" ng-if="c.exist == true" value="{{c._id}}"  ng-repeat="c in yearsExperience">
+                                                                    {{c.titleAr}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+
+
+                                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                                                    <div  class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">اللفة     </label>
+                                                        <div class="col-lg-9">
+                                                            <div ng-if="c.show == true" ng-repeat="c in userLangs" class="row">
+                                                                <div class="text-right col-md-3">
+                                                                    <p style="line-height: 2.5;">{{c.titleAr}}</p>
+                                                                </div>
+                                                                <div class="col-md-9">
+                                                                    <div class="row">
+                                                                        <div class="col-12">
+                                                                            <div class="row">
+                                                                                <div class="col-md-3 col-sm-4 col-xs-12 bot">
+                                                                                    <button ng-click="changeLangDegree(c , 4)"  type="button" class="btn btn-primary">
+                                                                                        <!-- <i class="fas fa-star"></i>
+                                                                                        <i class="fas fa-star"></i>
+                                                                                        <i class="fas fa-star"></i>
+                                                                                        <br> -->
+                                                                                        ممتاز
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="col-md-3 col-sm-4 col-xs-12 bot">
+                                                                                    <button ng-click="changeLangDegree(c , 3)" type="button" class="btn btn-primary">
+                                                                                        <!-- <i class="fas fa-star"></i>
+                                                                                        <i class="fas fa-star"></i>
+                                                                                        <br> -->
+                                                                                        جيد جدا
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="col-md-3 col-sm-4 col-xs-12 bot">
+                                                                                    <button ng-click="changeLangDegree(c , 2)" type="button" class="btn btn-primary">
+                                                                                        <!-- <i class="fas fa-star"></i>
+                                                                                        <br> -->
+                                                                                        اساسيات
+                                                                                    </button>
+                                                                                </div>
+                                                                                <div class="col-md-3 col-sm-4 col-xs-12 bot">
+                                                                                    <button ng-click="changeLangDegree(c , 1)" type="button" class="btn btn-primary">
+                                                                                        <!-- <br> -->
+                                                                                        بدون لغة 
+                                                                                    </button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>        
+                                                                    </div>
+                                                                </div>        
+                                                            </div>    
+                                                        </div>
+                                                        <p class="text-right"><a href="" class="lin-ar"><i class="fas fa-plus-circle"></i></a>إضافة لغة</p>
+
+
+
+
+                                                    </div>
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">اللغة    </label>
+                                                        <div class="col-lg-9">
+                                                            <select ng-change="addLangDegree(langID)" ng-model="langID"  id="langID" class="form-control">
+                                                                
+                                                                <option ng-if="c.exist == true && c.show == false" value="{{c}}" ng-repeat="c in userLangs">
+                                                                    {{c.titleAr}}
+                                                                </option>
+                                                            </select>
+                                                        </div>
+
+
+                                                    </div>
+
+                                                    
+
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">السيرة الذاتية   </label>
+                                                        <div class="col-lg-9">
+                                                            <!-- <input id="cv" type="file" class="inp"> -->
+                                                            <input  type="file"  class="inp" id="personalImage"  />
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label"> معلومات أخرى     </label>
+                                                        <div class="col-lg-9">
+                                                            <select id="otherInformation" class="form-control">
+                                                                <option ng-selected="data.otherInformation == 1" value="1"> نعم</option>
+                                                                <option ng-selected="data.otherInformation == 2" value="2"> لا </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">الوصـف   </label>
+                                                        <div class="col-lg-9">
+                                                            <textarea class="form-control" id="description" rows="3" placeholder="اكتب هنا ">
+                                                                {{data.description}}
+                                                            </textarea>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label"> يعمل الان       </label>
+                                                        <div class="col-lg-9">
+                                                            <select id="isWorked" class="form-control">
+                                                                <option ng-selected="data.isWorked == 1"   value="1"> نعم </option>
+                                                                <option ng-selected="data.isWorked == 2"   value="2"> لا  </option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">أخر مسمى وظيفى  </label>
+                                                        <div class="col-lg-9">
+                                                                <input value="{{data.lastJob}}" id="lastJob" type="text" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row text-right">
+                                                    <label class="col-lg-3 col-form-label">سنة التخرج  </label>
+                                                    <div class="col-lg-9">
+                                                            <input value="{{data.graduationYear}}" id="graduationYear" type="text" class="form-control">
+                                                    </div>
+                                                    </div>
+                                                    <div class="form-group row text-right">
+                                                    <label class="col-lg-3 col-form-label">جهة التخرج  </label>
+                                                    <div class="col-lg-9">
+                                                        <input value="{{data.graduationPoint}}" id="graduationPoint" type="text" class="form-control">
+                                                    </div>
+                                                    </div>
+
+                                                    
+
+
+                                                    <div class="form-group row text-right">
+                                                        <p ng-if="current_error_ar && current_error_ar.length > 0"><i class="fas fa-exclamation-triangle"></i>{{current_error_ar}} </p>
+
+                                                    </div>
+
+                                                  
+                                                    
+                                                    <div class="text-left">
+                                                            <button type="button" ng-click="editCV()" class="btn btn-primary">حـفظ </button>
+                                                            <button back-button type="button" class="btn btn-danger">العودة </button>
+
+
+                                                    </div>
+                                            </form>
+                                    </div>
+                            </div>
+                    </div>
+                    
+            </div>
+
+                    
+    </div>			
+</div>
+<!-- /Main Wrapper -->
+
+
+
+
+
+
+<!-- Page Wrapper -->
+<div ng-if="qalamLang == 'en'" class="page-wrapper">
+    <div class="content container-fluid">
+                    
+            <!-- Page Header -->
+            <div class="page-header">
+                    <div class="row">
+                            <div class="col">
+                                    <h3 class="page-title text-left">add Form</h3>
+                                    <ul class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="/recruitments">candidates    </a></li>
+                                            <li class="breadcrumb-item active">add candidate   </li>
+                                    </ul>
+                            </div>
+                    </div>
+            </div>
+            <!-- /Page Header -->
+            
+            <div class="row">
+                <div class="col-xl-6 d-flex">
+                        <div class="card flex-fill">
+                                <div class="card-header text-left">
+                                        <h4 class="card-title mb-0">candidate info </h4>
+                                </div>
+                                <div class="card-body">
+                                        <form>
+                                                <div class="form-group row text-left">
+                                                        <label class="col-lg-3 col-form-label">First Name  </label>
+                                                        <div class="col-lg-9">
+                                                                <input id="firstName" value="{{data.firstName}}" type="text" class="form-control">
+                                                        </div>
+                                                </div>
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label">Last Name   </label>
+                                                    <div class="col-lg-9">
+                                                            <input id="lastName" type="text" value="{{data.lastName}}" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label">Birthday    </label>
+                                                    <div class="col-lg-9">
+                                                        <input type="date" class="form-control" value="{{data.birthday | cmdate:'yyyy-MM-dd'}}"   id="birthday">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label">social Status    </label>
+                                                    <div class="col-lg-9">
+                                                        <select  required id="socialStatus" class="form-control">
+                                                            <option ng-selected="data.socialStatus == 1" value="1"> Married    </option>
+                                                            <option  ng-selected="data.socialStatus == 2"  value="2"> Single     </option>
+                                                            <option  ng-selected="data.socialStatus == 3"  value="3"> Widower     </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label">Mobile   </label>
+                                                    <div class="col-lg-9">
+                                                            <input  value="{{data.phoneNumber}}" id="phoneNumber" type="number" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label">email    </label>
+                                                    <div class="col-lg-9">
+                                                            <input id="email" type="email"  value="{{data.email}}"  class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label">nationality    </label>
+                                                    <div class="col-lg-9">
+                                                        <select id="nationalityID" class="form-control">
+                                                            <option ng-selected="data.nationalityID == c._id" ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in nationality">
+                                                                {{c.titleEN}}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label">ID Number    </label>
+                                                    <div class="col-lg-9">
+                                                            <input id="IDNumber" value="{{data.IDNumber}}"  type="number" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label">City    </label>
+                                                    <div class="col-lg-9">
+                                                        <select id="cityID" class="form-control">
+                                                            <option  ng-selected="c._id == data.cityID"  ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in cities">
+                                                                {{c.titleEN}}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label"> Neighborhood    </label>
+                                                    <div class="col-lg-9">
+                                                            <input id="neighborhood" value="{{data.neighborhood}}" type="text" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label">Gender    </label>
+                                                    <div class="col-lg-9">
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input"   type="radio" name="gender" id="gender1" value="1">
+                                                            <label class="form-check-label"  for="inlineRadio1" style="margin-right: 5px;">Male  </label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input"   type="radio" name="gender" id="gender2" value="2">
+                                                            <label class="form-check-label" for="inlineRadio2" style="margin-right: 5px;">Female</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label">special Needs    </label>
+                                                    <div class="col-lg-9">
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input"  type="radio" name="specialNeeds" id="specialNeeds1" value="1">
+                                                            <label class="form-check-label" for="specialNeeds1" style="margin-right: 5px;">yes</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input"  type="radio" name="specialNeeds" id="specialNeeds2" value="2">
+                                                            <label class="form-check-label" for="specialNeeds2" style="margin-right: 5px;">no</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label">scientific Degree     </label>
+                                                    <div class="col-lg-9">
+                                                        <select   required id="scientificDegree"  class="form-control">
+                                                                <option ng-selected="data.scientificDegree == 1"  value="1"> diploma    </option>
+                                                                <option ng-selected="data.scientificDegree == 2"  value="2"> secondary     </option>
+                                                                <option ng-selected="data.scientificDegree == 3"  value="3"> Primary     </option>
+                                                                <option ng-selected="data.scientificDegree == 4"  value="4"> middle     </option>
+                                                                <option ng-selected="data.scientificDegree == 5"  value="5"> University     </option>
+                                                                <option ng-selected="data.scientificDegree == 6" value="6"> M.A.     </option>
+                                                                <option ng-selected="data.scientificDegree == 7"  value="7"> Ph.D     </option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label">scientific Specialization    </label>
+                                                    <div class="col-lg-9">
+                                                        <select  id="scientificSpecializationID" class="form-control">
+                                                            <option ng-selected="c._id == data.scientificSpecializationID" ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in scientificSps">
+                                                                {{c.titleEN}}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label">University    </label>
+                                                    <div class="col-lg-9">
+                                                        <select id="graduationUniversityID" class="form-control">
+                                                            <option ng-selected="c._id == data.graduationUniversityID" ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in graduationUniversity">
+                                                                {{c.titleEN}}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label"> degree     </label>
+                                                    <div class="col-lg-9">
+                                                        <select id="degree" class="form-control">
+                                                            <option ng-selected="data.degree == 1"  value="1">pass</option>
+                                                            <option ng-selected="data.degree == 2" value="2">good</option>
+                                                            <option ng-selected="data.degree == 3" value="3">very good</option>
+                                                            <option ng-selected="data.degree == 4" value="4">Excellent</option>
+                                                        </select>
+                                                    </div>
+                                                    
+                                                </div>
+
+
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label"> Specialized certificates     </label>
+                                                    <div class="col-lg-9">
+                                                        <select id="specializedCertificatesID" class="form-control">
+                                                            <option ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in specializedCertificates">
+                                                                {{c.titleEN}}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label">experience    </label>
+                                                    <div class="col-lg-9">
+                                                        <select id="experienceID" class="form-control">
+                                                            
+                                                            <option ng-selected="data.experienceID == c._id" ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in experience">
+                                                                {{c.titleEN}}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label">most Experience    </label>
+                                                    <div class="col-lg-9">
+                                                        <select id="mostExperienceID" class="form-control">
+                                                            <option  ng-selected="data.mostExperienceID == c._id" ng-if="c.exist == true" value="{{c._id}}"  ng-repeat="c in experience">
+                                                                {{c.titleEN}}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label">years Experience    </label>
+                                                    <div class="col-lg-9">
+                                                        <select id="yearsExperienceID" class="form-control">
+                                                            <option  ng-selected="data.yearsExperienceID == c._id" ng-if="c.exist == true" value="{{c._id}}"  ng-repeat="c in yearsExperience">
+                                                                {{c.titleEN}}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+
+
+                                                </div>
+
+
+
+                                                
+
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label">CV   </label>
+                                                    <div class="col-lg-9">
+                                                        <!-- <input id="cv" type="file" class="inp"> -->
+                                                        <input  type="file"  class="inp" id="personalImage"  />
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label"> otherInformation     </label>
+                                                    <div class="col-lg-9">
+                                                        <select id="otherInformation" class="form-control">
+                                                            <option ng-selected="data.otherInformation == 1" value="1"> Yes</option>
+                                                            <option ng-selected="data.otherInformation == 2" value="2"> No </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label">description   </label>
+                                                    <div class="col-lg-9">
+                                                        <textarea class="form-control" id="description" rows="3" placeholder="Write here  ">
+                                                            {{data.description}}
+                                                        </textarea>
+                                                    </div>
+                                                </div>
+
+
+
+
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label"> Working Now      </label>
+                                                    <div class="col-lg-9">
+                                                        <select id="isWorked" class="form-control">
+                                                            <option ng-selected="data.isWorked == 1"  value="1"> Yes</option>
+                                                            <option ng-selected="data.isWorked == 2"  value="2"> No </option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row text-left">
+                                                    <label class="col-lg-3 col-form-label">Last Job Title  </label>
+                                                    <div class="col-lg-9">
+                                                            <input value="{{data.lastJob}}" id="lastJob" type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row text-left">
+                                                <label class="col-lg-3 col-form-label">Graduation Year  </label>
+                                                <div class="col-lg-9">
+                                                        <input value="{{data.graduationYear}}" id="graduationYear" type="text" class="form-control">
+                                                </div>
+                                                </div>
+                                                <div class="form-group row text-left">
+                                                <label class="col-lg-3 col-form-label">Graduation Point  </label>
+                                                <div class="col-lg-9">
+                                                    <input value="{{data.graduationPoint}}" id="graduationPoint" type="text" class="form-control">
+                                                </div>
+                                                </div>
+
+                                                
+
+
+                                                <div class="form-group row text-left">
+                                                    <p ng-if="current_error_ar && current_error_ar.length > 0"><i class="fas fa-exclamation-triangle"></i>{{current_error_ar}} </p>
+
+                                                </div>
+
+                                              
+                                                
+                                                <div class="text-right">
+                                                        <button type="button" ng-click="editCV()" class="btn btn-primary">Save </button>
+                                                        <button back-button type="button" class="btn btn-danger">Back </button>
+
+
+                                                </div>
+                                        </form>
+                                </div>
+                        </div>
+                </div>
+                
+            </div>
+
+                    
+    </div>			
+</div>
+<!-- /Main Wrapper -->
+
+
+
+
+

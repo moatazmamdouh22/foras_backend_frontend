@@ -1,0 +1,41 @@
+<div id="col-lg-12 col-md-12 col-xs-12" id="loading" hidden>
+        <div class="loading-panel-wrap">
+                <div class="loading-panel">
+                    <span><h3>Loading</h3></span> 
+                </div>
+                <div class="shadow"></div>
+            </div>
+        </div>
+<div class="col-lg-12 col-md-12 col-xs-12" style="padding:20px;">
+    <!-- <a href="addPermission" style="text-decoration:none;"><p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#0171bc"> أضافة صلاحية   &nbsp;<span class="glyphicon glyphicon-plus-sign" style="margin-left: 10px;vertical-align: text-top;"></span></p></a> -->
+    <p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000"> الصلاحيات   &nbsp;</p>
+
+     <div class="table-responsive" style="width:60%;min-height:50%;margin-left:auto;margin-right:auto;overflow:visible;direction:rtl;text-align:right">
+        <table class="table table table-bordered" style="direction:rtl;">
+                <thead style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+                        <tr>
+                    <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">الصلاحية  </th>
+                    <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">التفعيل </th>
+                </tr>
+            </thead>
+            <tbody style="font-family: 'Cairo', sans-serif;background:#f3f3f3;color:#666363;" >
+                    <tr dir-paginate="c in permissions |filter:searchText |itemsPerPage:10">
+                    <td style="direction:rtl;text-align:center;">{{c.title}}</td>
+                    <td style="direction:rtl;text-align:center;"> 
+                        <input ng-model="c.selected" type="checkbox" name="vehicle1" value="Bike"> <br>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+        <button ng-click="updateEmpTypePermissions()" class="btn-success" style="background:#000;width: 10%; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;display:inline-block;float:left;margin-right: 5px;">حفظ</button>
+
+        <a href back-button class="btn-danger" style="width: 10%; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;font-weight:bold;display:inline-block;float:left;">رجـــوع</a>
+
+        <dir-pagination-controls max-size="8"
+                                 direction-links="true"
+                                 boundary-links="true">
+        </dir-pagination-controls>
+
+    </div>
+</div>

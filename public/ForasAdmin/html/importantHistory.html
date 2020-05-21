@@ -1,0 +1,180 @@
+   
+<div ng-if="!qalamLang || qalamLang == 'ar'" class="col-lg-12 col-md-12 col-xs-12" >
+
+
+<p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000">تاريخ  عن بالقلم 
+    </p>
+
+    
+<div style="width: 100%; overflow-x: scroll;">
+        <table style="border: 1px solid #000; direction: rtl; " class="table table-bordered table-hover  text-center">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <!-- <th scope="col">الصورة  </th> -->
+
+                    <th scope="col">الاسم </th>
+                    <th scope="col">الحالة  </th>
+                <th scope="col">نوع الحركة        </th>
+                    <th scope="col">تاريخ الحركة      </th>
+                    <th scope="col"> تمت بواسطة       </th>
+
+                    
+                </tr>
+                </thead>
+                <tbody>
+                <tr   dir-paginate="c in important |filter:searchText |itemsPerPage:20">
+                    <th scope="row">{{$index+1}}</th>
+                    <!-- <td>
+                        <img style="width: 70px; height: 70px; border-radius: 50%;" src="{{c.personalImg}}" alt="">
+                    </td> -->
+                    <td>{{c.titleAr}}</td>
+                    <td>
+                        <span ng-if="c.status == 1">
+                            نشط 
+                        </span>
+                        <span ng-if="c.status == 2">
+                            غير نشظ  
+                        </span>
+                    </td>
+                    
+                    <td>
+                    <span ng-if="c.historyType == 1">
+                        إضـافة
+                    </span>
+                    <span ng-if="c.historyType == 2">
+                        تعديل
+                    </span>
+                    <span ng-if="c.historyType == 3">
+                            حـذف 
+                    </span>
+                    </td>
+                    <td>{{c.updatedAt  | cmdate:'yyyy-MM-dd'}}</td>
+
+                <td>
+                    <span ng-if="c.historyType == 1">
+                        {{c.createBy.fullname}}
+                    </span>
+                    <span ng-if="c.historyType != 1">
+                        {{c.updateBy.fullname}}
+
+                        </span>
+                </td>  
+
+
+
+
+                </tr>
+                
+                </tbody>
+            </table>
+            
+
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    
+    <div style="width: 100%;" class="row">
+        <dir-pagination-controls max-size="8"
+        direction-links="true"
+        boundary-links="true">
+        </dir-pagination-controls>
+    </div>
+    
+</div>
+
+
+<div ng-if="qalamLang == 'en'" class="col-lg-12 col-md-12 col-xs-12" >
+
+
+<p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000">about history 
+    </p>
+
+    
+<div style="width: 100%; overflow-x: scroll;">
+        <table style="border: 1px solid #000; direction: ltr; " class="table table-bordered table-hover  text-center">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <!-- <th scope="col">الصورة  </th> -->
+
+                    <th scope="col">name </th>
+                    <th scope="col">status  </th>
+                    <th scope="col">action type        </th>
+                    <th scope="col">action date      </th>
+                    <th scope="col"> done by       </th>
+
+
+                    
+                </tr>
+                </thead>
+                <tbody>
+                <tr   dir-paginate="c in important |filter:searchText |itemsPerPage:20">
+                    <th scope="row">{{$index+1}}</th>
+                    <!-- <td>
+                        <img style="width: 70px; height: 70px; border-radius: 50%;" src="{{c.personalImg}}" alt="">
+                    </td> -->
+                    <td>{{c.titleEN}}</td>
+                    <td>
+                        <span ng-if="c.status == 1">
+                            active 
+                        </span>
+                        <span ng-if="c.status == 2">
+                            not active  
+                        </span>
+                    </td>
+                    
+                    
+                    <td>
+                        <span ng-if="c.historyType == 1">
+                            Add
+                        </span>
+                        <span ng-if="c.historyType == 2">
+                            Edit
+                        </span>
+                        <span ng-if="c.historyType == 3">
+                            Delete 
+                        </span>
+                        </td>
+                        <td>{{c.updatedAt  | cmdate:'yyyy-MM-dd'}}</td>
+
+                    <td>
+                        <span ng-if="c.historyType == 1">
+                            {{c.createBy.fullname}}
+                        </span>
+                        <span ng-if="c.historyType != 1">
+                            {{c.updateBy.fullname}}
+
+                            </span>
+                    </td>  
+
+
+
+
+                </tr>
+                
+                </tbody>
+            </table>
+            
+
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    
+    <div style="width: 100%;" class="row">
+        <dir-pagination-controls max-size="8"
+        direction-links="true"
+        boundary-links="true">
+        </dir-pagination-controls>
+    </div>
+    
+</div>
+      
+     
+   
+  
+  

@@ -1,0 +1,170 @@
+
+   <div ng-if="!qalamLang || qalamLang == 'ar'" class="col-lg-12 col-md-12 col-xs-12" >
+   
+
+      <p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000">التمارين        
+            </p>
+  
+  <!-- </a>   -->
+  
+    <div style="width: 100%; overflow-x: scroll;">
+            <table style="border: 1px solid #000; direction: rtl; " class="table table-bordered table-hover  text-center">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">المادة   </th>
+
+                        <th scope="col"> المستوى التعليمى    </th>
+
+                        <th scope="col">الوصف   </th>
+
+                        <th scope="col">الهدف       </th>
+                        <th scope="col"> الرابط       </th>
+
+                        <th scope="col">الحالة        </th>
+
+                      
+                        <!-- <th scope="col"> المواد       </th> -->
+                        <!-- <th scope="col"> التعديل        </th> -->
+
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-class="{'table-danger': c.status == 2 }" dir-paginate="c in exercises |filter:searchText |itemsPerPage:20">
+                        <th scope="row">{{$index+1}}</th>
+                        <td>{{c.materialsID.titleAr}}</td>
+
+                        <td>{{c.educationalLevelID.titleAr}}</td>
+                        <td>{{c.descriptionAR}}</td>
+                        <td>{{c.targetAR}}</td>
+
+                       
+                        <td><a target="_blank" href="{{c.pdfFile}}">
+                           
+                            <i class="far fa-file-pdf" style="color:#666363"></i>
+                           </a>
+                        </td>
+
+                        <td>
+
+                          <span ng-if="c.status == 1">
+                            نشط  
+                          </span>
+                          <span ng-if="c.status == 2">
+                            غير نشط  
+                          </span>
+                        </td>
+
+                        <!-- <td>{{c.rate}}</td> -->
+
+                        <!-- <td><a href="/editExercises/{{c._id}}"><i class="fas fa-edit" style="color:#666363"></i></a></td> -->
+
+
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                 
+    
+    
+        </div>
+        <div class="clearfix">
+
+        </div>
+       
+       <div style="width: 100%;" class="row">
+            <dir-pagination-controls max-size="8"
+            direction-links="true"
+            boundary-links="true">
+            </dir-pagination-controls>
+       </div>
+        
+    </div>
+
+
+
+    <div ng-if="qalamLang == 'en'" class="col-lg-12 col-md-12 col-xs-12" >
+   
+    
+  
+        <p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000">Exercises    </p>
+    
+
+    
+      <div style="width: 100%; overflow-x: scroll;">
+              <table style="border: 1px solid #000; direction: ltr; " class="table table-bordered table-hover  text-center">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">materials   </th>
+  
+                          <th scope="col"> Educational Level    </th>
+  
+                          <th scope="col">Description    </th>
+  
+                          <th scope="col">Target       </th>
+                          <th scope="col"> Link        </th>
+  
+                          <th scope="col">Status        </th>
+  
+                        
+                      
+  
+  
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-class="{'table-danger': c.status == 2 }" dir-paginate="c in exercises |filter:searchText |itemsPerPage:20">
+                          <th scope="row">{{$index+1}}</th>
+                          <td>{{c.materialsID.titleEN}}</td>
+  
+                          <td>{{c.educationalLevelID.titleEN}}</td>
+                          <td>{{c.descriptionEN}}</td>
+                         
+                          <td>{{c.targetEN}}</td>
+  
+                         
+                          <td><a target="_blank" href="{{c.pdfFile}}">
+                             
+                              <i class="far fa-file-pdf" style="color:#666363"></i>
+                             </a>
+                          </td>
+  
+                          <td>
+  
+                            <span ng-if="c.status == 1">
+                              Active  
+                            </span>
+                            <span ng-if="c.status == 2">
+                              Not Active  
+                            </span>
+                          </td>
+  
+  
+  
+                        </tr>
+                       
+                      </tbody>
+                    </table>
+                   
+      
+      
+          </div>
+          <div class="clearfix">
+  
+          </div>
+         
+         <div style="width: 100%;" class="row">
+              <dir-pagination-controls max-size="8"
+              direction-links="true"
+              boundary-links="true">
+              </dir-pagination-controls>
+         </div>
+          
+      </div>
+      
+    
+   
+ 
+

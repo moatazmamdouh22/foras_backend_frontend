@@ -1,0 +1,172 @@
+
+<div ng-if="!qalamLang || qalamLang == 'ar'" class="page-wrapper">
+    <div class="content container-fluid">
+  
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col">
+                    <h3 class="page-title text-right">جدول لغات المرشح       </h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/recruitments">المرشحيين </a></li>
+                        <li class="breadcrumb-item active">اللغات    </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card mb-0">
+                    <div class="card-header text-right">
+                        <h4 class="card-title mb-0"></h4>
+                        <p class="card-text">
+                          <!-- <a href="/addLanguageLevel" class="btn btn-primary">اضافة جديد  </a>                      -->
+                        </p>
+                    </div>
+                    <div class="card-body">
+  
+                        <div class="table-responsive">
+                            <table class="datatable table table-stripped mb-0">
+                                <thead>
+                                    <tr >
+                                        <th>المسلسل</th>
+                                        <th>اللغة   </th>
+                                        <th>الدرجة    </th>
+                                        <th>التعديل     </th>
+
+  
+                                    </tr>
+                                </thead>
+                                <tbody class="text-right">
+                                    <tr ng-class="{'table-danger': c.status == 2 }" dir-paginate="c in allData |filter:searchText |itemsPerPage:20">
+                                        <td>{{c.order ||  c.index}}</td>
+                                        <td>{{c.languageID.titleAr}}</td>
+                                        <td>
+                                            <span ng-if="c.level == 1">
+                                                بدون لغة
+                                            </span>
+                                            <span ng-if="c.level == 2">
+                                                اساسيات
+                                            </span>
+                                            <span ng-if="c.level == 3">
+                                                جيد جدا
+                                            </span>
+                                            <span ng-if="c.level == 4">
+                                                ممتاز
+                                            </span>
+
+                                            
+                                        </td>
+                                        <td>
+                                            <select ng-change="changeLangDegree(c)"  ng-model="c.level" class="form-control">
+                                                <option ng-selected="c.level == 1" value="1">بدون لغة</option>
+                                                <option ng-selected="c.level == 2" value="2">اساسيات</option>
+                                                <option ng-selected="c.level == 3" value="3">جيد جدا</option>
+                                                <option ng-selected="c.level == 4" value="4">ممتاز</option>
+                                            </select>
+    
+                                          </td>
+    
+                                        
+                                        
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>			
+  </div>
+  
+  
+  
+  
+  
+  <div ng-if="qalamLang == 'en'" class="page-wrapper">
+    <div class="content container-fluid">
+  
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col">
+                    <h3 class="page-title text-left">recruitments Langues Table</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/recruitments">recruitments</a></li>
+                        <li class="breadcrumb-item active"> recruitments Langues  </li>
+                    </ul> 
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card mb-0">
+                    <div class="card-header text-left">
+                        <h4 class="card-title mb-0"></h4>
+                        <p class="card-text">
+                          <!-- <a href="/addLanguageLevel" class="btn btn-primary">Add new </a> -->
+                        </p>
+                    </div>
+                    <div class="card-body">
+  
+                        <div class="table-responsive">
+                            <table class="datatable table table-stripped mb-0">
+                                <thead>
+                                    <tr >
+                                        <th>Order </th>
+                                        <th>Language </th>
+                                        <th> Level </th>
+                                        <th> Edit </th>
+
+  
+                                    </tr>
+                                </thead>
+                                <tbody class="text-left">
+                                    <tr ng-class="{'table-danger': c.status == 2 }" dir-paginate="c in allData |filter:searchText |itemsPerPage:20">
+                                      <td>{{c.order ||  c.index}}</td>
+                                      <td>{{c.languageID.titleEN}}</td>
+                                      <td>
+
+                                        <span ng-if="c.level == 1">
+                                            Without Lang
+                                        </span>
+                                        <span ng-if="c.level == 2">
+                                            Fundamentals
+                                        </span>
+                                        <span ng-if="c.level == 3">
+                                            very good
+                                        </span>
+                                        <span ng-if="c.level == 4">
+                                            Excellent
+                                        </span>
+                                      </td>
+                                      <td>
+                                        <select ng-change="changeLangDegree(c)" ng-model="c.level" class="form-control">
+                                            <option ng-selected="c.level == 1" value="1">Without Lang</option>
+                                            <option ng-selected="c.level == 2" value="2">Fundamentals</option>
+                                            <option ng-selected="c.level == 3" value="3">very good</option>
+                                            <option ng-selected="c.level == 4" value="4">Excellent</option>
+                                        </select>
+
+                                      </td>
+
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>			
+  </div>
+  

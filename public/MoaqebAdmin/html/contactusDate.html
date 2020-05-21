@@ -1,0 +1,31 @@
+<div class="col-lg-4 col-md-3 col-xs-12" style="float: right">
+        <div class="col-lg-12" style="margin-top: 100">
+                <p class="arabic" style="font-family: 'Baloo Bhaijaan';margin: 0;background: #c2a410;font-weight: bold;padding: 15;text-align: center;color: white;font-size: 2.5vh">تاريخ
+                        الدردشة</p>
+        </div>
+        <div class="col-lg-12" style="height: 50%;overflow: auto;">
+                <h4 ng-repeat="c in contactUsByUsers" style="margin: 0;padding: 15;text-align: center;border-style: solid;border-width: 1;font-weight: bold;border-color: grey;">
+                        <a href="customerservice/{{c._id}}">{{c.createdAt  | cmdate:'yyyy-MM-dd'}}</a></h4>
+        </div>
+
+</div>
+<div class="col-lg-2 col-md-9 col-xs-12">
+        <img src="Website/img/logo-psd.png" style="width: 24vh;position: relative;top: 13vh;right: -15vh;background: white;padding: 10pxx;">
+</div>
+<div class="col-lg-6 col-md-9 col-xs-12" style="position: inherit;direction:rtl;border-style: solid;padding: 10;border-width: 1;background: white;border-color: gray;padding-left: 0;padding-right: 0;padding-top: 0;margin-top: 140">
+        <div class="col-lg-12" style="position: unset;border-radius:15px;border-style: solid;border-width: 1.5;border-color: #055b5c ">
+                <p class="arabic" style="font-weight: bold;color: #c2a410;font-size: 3vh;font-family: 'Baloo Bhaijaan';">دردشة خدمة العملاء</p>
+        </div>
+
+        <div class="col-lg-12" style="border-style: solid;border-width: 1;border-color: #cdcdcd;position: inherit;">
+                <img class='chat-image chat-image-default' src="Website/img/logo-psd.png" style="width: 80px;border-style: solid;border-width: 1;margin: 15;border-color: gray;" />
+                <h4 class="arabic" style="color:#cdcdcd;display: inline-block;font-weight: bold">مندوب خدمات
+                        العملاء</h4>
+        </div>
+        <div class="col-lg-12" style="border-style: solid;border-color: #cdcdcd;border-width: 1;border-bottom: 0;">
+            <form ng-submit="sendMsg()">
+                <input type="text"  id="MsgID" placeholder="اكتب هنا" style="direction:rtl;border: 0;height: 60;font-size: 22;"  required/>
+                <button type="submit" class="btn btn-defualt" style="margin-top: 20px;background: #c2a410;color: #fff;font-weight: bold;border-radius: 50px;float: left;font-family: 'Baloo Bhaijaan';">ارسال</button>
+            </form>
+            </div>
+</div>

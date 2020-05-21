@@ -1,0 +1,70 @@
+<div class="col-lg-12 col-md-12 col-xs-12" style="padding:20px;">
+        <a href="AddempType" style="text-decoration:none;"><p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000">إضافة نوع موظف جديد&nbsp;<span class="glyphicon glyphicon-plus-sign" style="margin-left: 10px;vertical-align: text-top;"></span></p></a>
+        <div class="table-responsive pcTblorderPending" style="min-height:50%;width:50%;;margin-left:auto;margin-right:auto;overflow:visible;direction:rtl;text-align:right">
+           <table class="table table table-bordered" style="direction:rtl;">
+                   <thead style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+                           <tr>
+                       <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">العنوان بالعربيه</th>
+                       <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">العنوان بالانجليزيه</th>
+                       <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">الصلاحيات</th>
+                       <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">التعديــل</th>
+                   </tr>
+               </thead>
+               <tbody style="font-family: 'Cairo', sans-serif;background:#f3f3f3;color:#666363;" >
+                       <tr dir-paginate="c in employeeType |filter:searchText |itemsPerPage:20">
+                       <td style="direction:rtl;text-align:center;">{{c.titleAr}}</td>
+                       <td style="direction:rtl;text-align:center;">{{c.titleEN}}</td>
+                       <td style="direction:rtl;text-align:center;"><a href="editEmployeePermission/{{c._id}}"><span class="fa fa-tasks" style="color:#666363"></span></a></td>
+                       <td style="direction:rtl;text-align:center;"><a href="editempType/{{c._id}}"><span class="fa fa-pencil-square" style="color:#666363"></span></a></td>
+                   </tr>
+               </tbody>
+           </table>
+           <dir-pagination-controls max-size="8"
+                                    direction-links="true"
+                                    boundary-links="true">
+           </dir-pagination-controls>
+    
+       </div>
+    </div>
+    
+    <div class="table-responsive mobTblorderPending" style="width:100%; min-height:50%;margin-left:auto;margin-right:auto;overflow:visible;direction:rtl;text-align:right">
+        <h1 style="font-size: 1.5vh;">
+            <dir-pagination-controls max-size="8" direction-links="true" boundary-links="true">
+    
+            </dir-pagination-controls>
+        </h1>
+        <table class="table table table-bordered" style="direction:rtl;width:100%;">
+            <thead style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+    
+            </thead>
+            <tbody dir-paginate="c in employeeType |filter:searchText |itemsPerPage:10" style="font-family: 'Cairo', sans-serif;background:#f3f3f3;color:#666363;font-size: 2vh">
+                <tr>
+                    <td style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+                            العنوان بالعربيه                  
+                          </td>
+    
+                          <td style="direction:rtl;text-align:center;">{{c.titleAr}}</td>
+                        </tr>
+                <tr>
+                    <td style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+                            العنوان بالانجليزيه            
+                                 </td>
+                                 <td style="direction:rtl;text-align:center;">{{c.titleEN}}</td>
+                                </tr>
+                                <tr>
+                                        <td style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+                                          الصلاحيات    
+                                        </td>
+                                        <td style="direction:rtl;text-align:center;"><a href="editEmployeePermission/{{c._id}}"><span class="fa fa-tasks" style="color:#666363"></span></a></td>
+                                    </tr>
+                    
+                <tr>
+                    <td style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+                      التعديــل    
+                    </td>
+                    <td style="direction:rtl;text-align:center;"><a href="editempType/{{c._id}}"><span class="fa fa-pencil-square" style="color:#666363"></span></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>

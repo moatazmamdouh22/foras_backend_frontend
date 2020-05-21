@@ -1,0 +1,335 @@
+<div class="col-lg-12 col-md-12 col-xs-12" style="width:100%;">
+        <div class="col-lg-12" style="padding:30px;float:right;">
+            <p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000">تعديل
+                السياره &nbsp;</p>
+            <hr>
+            <form ng-submit="updateCar()">
+                <table style="border:1px;float: right;direction: rtl;font-family:'Changa';" id="UserDetailsTable">
+                    <tr>
+                        <th>
+                            <label for="input" style="font-size:2vh;">رقم السيارة :</label>
+                        </th>
+                        <td>
+                            <span><input type="text" value="{{carDetalis.carNum}}" style="width:25vw;font-size:2vh" id="carNum" required /></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="input" style="font-size:2vh;">فئة السيارة:</label>
+                        </th>
+                        <td>
+                            <span>
+                                <select style="width:25vw;font-size:2vh" id="categoryID" ng-model="carDetalis.categoryID._id"
+                                    ng-change="subCategoriesFunFrom()" ng-options="c._id as c.titleAr for c in categoryData" required>
+                                </select>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="input" style="font-size:2vh;">الفئة الفرعية:</label>
+                        </th>
+                        <td>
+                            <span>
+                                <select id="subCategoryID" style="width:25vw;font-size:2vh" ng-model="carDetalis.subCategoryID._id"
+                                ng-change="getoperatoin()"  required>
+                                    <option ng-repeat="A in subcategories" value="{{A._id}}" ng-selected="carDetalis.subCategoryID._id == A._id">
+                                        {{A.titleAr}}
+                                    </option>
+                                </select>
+                            </span>    
+                        </td>
+                    </tr>
+                    <tr>
+                            <th>
+                                <label for="input" style="font-size:2vh;">سعر العضوية:</label>
+                            </th>
+                            <td>
+                                <span><input type="text" value="{{carDetalis.membershipPrice}}" style="width:25vw;font-size:2vh" id="membershipPriceID" required disabled/></span>
+                            </td>
+                    </tr>
+        
+                    <tr>
+                        <th>
+                            <label for="input" style="font-size:2vh;">موديل السيارة:</label>
+                        </th>
+                        <td>
+                            <span>
+                                <select id="carModelID" style="width:25vw;font-size:2vh" required>
+                                    <option ng-repeat="A in carModel" value="{{A._id}}">
+                                        {{A.titleAr}}
+                                    </option>
+                                </select>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="input" style="font-size:2vh;">نوع السيارة:</label>
+                        </th>
+                        <td>
+                            <span>
+                                <select id="carTypeID" style="width:25vw;font-size:2vh" required>
+                                    <option ng-repeat="A in carType" value="{{A._id}}">
+                                        {{A.titleAr}}
+                                    </option>
+                                </select>
+                            </span>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <th>
+                            <label for="input" style="font-size:2vh;">سنه السيارة:</label>
+                        </th>
+                        <td>
+                            <span>
+                                <select id="carYearID" style="width:25vw;font-size:2vh" required>
+                                    <option ng-repeat="A in carYear" value="{{A._id}}">
+                                        {{A.titleAr}}
+                                    </option>
+                                </select>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="input" style="font-size:2vh;">نوع الايجار:</label>
+                        </th>
+                        <td>
+                            <span>
+                                <select id="rentType"  required style="width:25vw;font-size:2vh">
+                                    <option ng-selected="carDetalis.rentType == 1" value="1"> ساعة</option>
+                                    <option ng-selected="carDetalis.rentType == 2" value="2"> يوم</option>
+                                    <option ng-selected="carDetalis.rentType == 3" value="3"> شهر</option>
+                                </select>
+                            </span>
+                        </td>
+                    </tr>
+    
+                    <tr>
+                        <th>
+                            <label for="input" style="font-size:2vh;">ثمن الايجار:</label>
+                        </th>
+                        <td>
+                            <span><input type="text" value="{{carDetalis.rentPrice}}" style="width:25vw;font-size:2vh" id="rentPrice" required /></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="input" style="font-size:2vh;">يوجد سائق:</label>
+                        </th>
+                        <td>
+                            <span>
+                                <select id="allowDriver" required style="width:25vw;font-size:2vh">
+                                    <option ng-selected="carDetalis.allowDriver == 1" value="1"> يوجد</option>
+                                    <option ng-selected="carDetalis.allowDriver == 2" value="0"> لا يوجد</option>
+                                </select>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="input" style="font-size:2vh;">نوع المحرك:</label>
+                        </th>
+                        <td>
+                            <span>
+                                <select id="automatic" required style="width:25vw;font-size:2vh">
+                                    <option ng-selected="carDetalis.automatic == 1" value="1"> أوتوماتيك</option>
+                                    <option ng-selected="carDetalis.automatic == 0" value="0"> يدوى</option>
+                                </select>
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="input" style="font-size:2vh;">الوصف:</label>
+                        </th>
+                        <td>
+                            <textarea id="description"   style="width: 25vw;font-size:2vh; height: 15vh;padding:1vh;border-radius: 25px;" required>{{carDetalis.description}}</textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="input" style="font-size:2vh;">تاريخ البداية:</label>
+                        </th>
+                        <td>
+                            <span><input type="date" value="{{carDetalis.startDate | cmdate:'yyyy-MM-dd'}}" style="width:25vw;font-size:2vh" id="startDate" required /></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="date" style="font-size:2vh;">تاريخ النهاية:</label>
+                        </th>
+                        <td>
+                            <span><input type="date" value="{{carDetalis.endDate | cmdate:'yyyy-MM-dd'}}" style="width:25vw;font-size:2vh" id="endDate" required /></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="date" style="font-size:2vh;">اقل فتره الايجار :</label>
+                        </th>
+                        <td>
+                            <span><input type="number" min="1" value="{{carDetalis.rentLenght}}" style="width:25vw;font-size:2vh" id="rentLenght" required /></span>
+                        </td>
+                    </tr>
+                        <tr>
+                    <th>
+                        <label for="input" style="font-size:3vh;">الحالة:</label>
+                    </th>
+                    <td>
+                        <span>
+                            <select id="status" required style="font-size:2vh">
+                                <option ng-selected="carDetalis.status == 1" value="1"> قيد التنفيذ</option>
+                                <option ng-selected="carDetalis.status == 2" value="2"> نشط</option>
+                               <option ng-selected="carDetalis.status == 3" value="3"> مشغول</option>
+                                <option ng-selected="carDetalis.status == 4" value="4"> غير نشط</option>
+                                <option ng-selected="carDetalis.status == 5" value="5"> حظر</option>
+
+                            </select>
+                        </span>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <th>
+                            <label for="input" style="font-size:2vh;">اللوجو :</label>
+                        </th>
+                        <td>
+                                <div class="">
+                                    <a href="{{carDetalis.logo}}" target="_blank"><img src="{{carDetalis.logo}}" style="width:150px;height: 150px;border-radius: 50%;" /></a>
+                                </div>
+                                <br>
+                                <label class="file" title="">
+                                    <input type="file" style="width:25vw;height:4vh;;font-size:3vh"
+                                           onchange="this.parentNode.setAttribute('title', this.value.replace(/^.*[\\/]/, ''))" id="logo"  />
+                                    </label>
+                                    <br>
+                                    <button type="button" style="padding: 0px 10px 0px 10px;color: white;font-size:2vh; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';z-index: 3;opacity:0.6;border-radius:5px;" class="success" ng-click="updatelogo()"> save </button>
+                                    <br>
+
+                                </td>
+                </tr>
+                    <tr>
+                        <th>
+                            <label for="input" style="font-size:2vh;">صورة 1:</label>
+                        </th>
+                        <td>
+                                <div class="">
+                                    <a href="{{carDetalis.img1}}" target="_blank"><img src="{{carDetalis.img1}}" style="width:150px;height: 150px;border-radius: 50%;" /></a>
+                                </div>
+                                <br>
+                                <label class="file" title="">
+                                    <input type="file" style="width:25vw;height:4vh;;font-size:3vh"
+                                           onchange="this.parentNode.setAttribute('title', this.value.replace(/^.*[\\/]/, ''))" id="img1"  />
+                                    </label>
+                                    <br>
+                                    <button type="button" style="padding: 0px 10px 0px 10px;color: white;font-size:2vh; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';z-index: 3;opacity:0.6;border-radius:5px;" class="success" ng-click="updateimg1()"> save </button>
+                                    <br>
+
+                                </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="input" style="font-size:2vh;">صورة 2 :</label>
+                        </th>
+                        <td>
+                                <div class="">
+                                    <a href="{{carDetalis.img2}}" target="_blank"><img src="{{carDetalis.img2}}" style="width:150px;height: 150px;border-radius: 50%;" /></a>
+                                </div>
+                                <br>
+                                <label class="file" title="">
+                                    <input type="file" style="width:25vw;height:4vh;;font-size:3vh"
+                                           onchange="this.parentNode.setAttribute('title', this.value.replace(/^.*[\\/]/, ''))" id="img2"  />
+                                    </label>
+                                    <br>
+                                    <button type="button" style="padding: 0px 10px 0px 10px;color: white;font-size:2vh; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';z-index: 3;opacity:0.6;border-radius:5px;" class="success" ng-click="updateimg2()"> save </button>
+                                    <br>
+
+                                </td>
+                    </tr>
+                    <tr>
+                            <th>
+                                <label for="input" style="font-size:2vh;">صورة 3 :</label>
+                            </th>
+                            <td>
+                                    <div class="">
+                                        <a href="{{carDetalis.img3}}" target="_blank"><img src="{{carDetalis.img3}}" style="width:150px;height: 150px;border-radius: 50%;" /></a>
+                                    </div>
+                                    <br>
+                                    <label class="file" title="">
+                                        <input type="file" style="width:25vw;height:4vh;;font-size:3vh"
+                                               onchange="this.parentNode.setAttribute('title', this.value.replace(/^.*[\\/]/, ''))" id="img3"  />
+                                        </label>
+                                        <br>
+                                        <button type="button" style="padding: 0px 10px 0px 10px;color: white;font-size:2vh; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';z-index: 3;opacity:0.6;border-radius:5px;" class="success" ng-click="updateimg3()"> save </button>
+                                        <br>
+    
+                                    </td>
+                            </tr>
+                        <tr>
+                                <th>
+                                    <label for="input" style="font-size:2vh;">صورة 4 :</label>
+                                </th>
+                                <td>
+                                        <div class="">
+                                            <a href="{{carDetalis.img4}}" target="_blank"><img src="{{carDetalis.img4}}" style="width:150px;height: 150px;border-radius: 50%;" /></a>
+                                        </div>
+                                        <br>
+                                        <label class="file" title="">
+                                            <input type="file" style="width:25vw;height:4vh;;font-size:3vh"
+                                                   onchange="this.parentNode.setAttribute('title', this.value.replace(/^.*[\\/]/, ''))" id="img4"  />
+                                            </label>
+                                            <br>
+                                            <button type="button" style="padding: 0px 10px 0px 10px;color: white;font-size:2vh; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';z-index: 3;opacity:0.6;border-radius:5px;" class="success" ng-click="updateimg4()"> save </button>
+                                            <br>
+        
+                                        </td>
+                                    </tr>
+                            <tr>
+                                    <th>
+                                        <label for="input" style="font-size:2vh;">صورة 5 :</label>
+                                    </th>
+                                    <td>
+                                            <div class="">
+                                                <a href="{{carDetalis.img5}}" target="_blank"><img src="{{carDetalis.img5}}" style="width:150px;height: 150px;border-radius: 50%;" /></a>
+                                            </div>
+                                            <br>
+                                            <label class="file" title="">
+                                                <input type="file" style="width:25vw;height:4vh;;font-size:3vh"
+                                                       onchange="this.parentNode.setAttribute('title', this.value.replace(/^.*[\\/]/, ''))" id="img5"  />
+                                                </label>
+                                                <br>
+                                                <button type="button" style="padding: 0px 10px 0px 10px;color: white;font-size:2vh; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';z-index: 3;opacity:0.6;border-radius:5px;" class="success" ng-click="updateimg5()"> save </button>
+                                                <br>
+            
+                                            </td>
+                                            </tr>
+                                <tr>
+                                        <th>
+                                            <label for="input" style="font-size:2vh;">صورة 6 :</label>
+                                        </th>
+                                        <td>
+                                                <div class="">
+                                                    <a href="{{carDetalis.img6}}" target="_blank"><img src="{{carDetalis.img6}}" style="width:150px;height: 150px;border-radius: 50%;" /></a>
+                                                </div>
+                                                <br>
+                                                <label class="file" title="">
+                                                    <input type="file" style="width:25vw;height:4vh;;font-size:3vh"
+                                                           onchange="this.parentNode.setAttribute('title', this.value.replace(/^.*[\\/]/, ''))" id="img6"  />
+                                                    </label>
+                                                    <br>
+                                                    <button type="button" style="padding: 0px 10px 0px 10px;color: white;font-size:2vh; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';z-index: 3;opacity:0.6;border-radius:5px;" class="success" ng-click="updateimg6()"> save </button>
+                                                    <br>
+                
+                                                </td>
+                                                    </tr>
+                                            
+                </table>
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <button type="submit" class="btn-success"
+                        style="font-size:2vh; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;display:inline-block;float:left;margin-right: 5px;">حفظ</button>
+                    <a href back-button class="btn-danger"
+                        style="font-size:2vh; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;font-weight:bold;display:inline-block;float:left;">رجـــوع</a>
+                </div>
+            </form>

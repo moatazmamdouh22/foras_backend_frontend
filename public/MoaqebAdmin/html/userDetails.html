@@ -1,0 +1,182 @@
+<div class="col-lg-12 col-md-12 col-xs-12" style="width:100%;"> 
+    <p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000000">بيانات المستخدم    &nbsp;<span class="glyphicon glyphicon-plus-sign" style="margin-left: 10px;vertical-align: text-top;"></span></p>        <hr>
+    <form style="direction: rtl;">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group text-right">
+                    <h4 >الأسـم   </h4>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="form-group">
+                    <input disabled type="text" class="form-control"  value="{{user.fullname}}" placeholder="">
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-right">
+                        <h4 >الهاتف    </h4>
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                        <input disabled type="text" class="form-control"  value="{{user.mobile}}" placeholder="">
+                    </div>
+            </div>
+                
+        </div>
+        <div class="row">
+                <div class="col-md-3 col-sm-6">
+                        <div class="form-group text-right">
+                            <h4 >الجوال     </h4>
+                        </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <input disabled type="text" class="form-control"  value="{{user.phone}}" placeholder="">
+                        </div>
+                </div>
+                    
+            </div>
+        <div class="row">
+                <div class="col-md-3 col-sm-6">
+                        <div class="form-group text-right">
+                            <h4 >الايميل     </h4>
+                        </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <input disabled type="email" class="form-control"  value="{{user.email}}" placeholder="">
+                        </div>
+                </div>
+                    
+        </div>
+
+      
+
+        <div class="row">
+                <div class="col-md-3 col-sm-6">
+                        <div class="form-group text-right">
+                            <h4 >تاريخ الميلاد      </h4>
+                        </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <input disabled type="date" class="form-control"  value="{{user.birthday | cmdate:'yyyy-MM-dd' }}" placeholder="">
+                        </div>
+                </div>
+                    
+        </div>
+
+        <div class="row">
+        <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-right">
+                        <h4 >المدينة       </h4>
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                        <input disabled type="text" class="form-control"  value="{{user.cityID.titleAr || user.cityID.titleEN }}" placeholder="">
+                    </div>
+            </div>
+                
+        </div>
+        <div class="row">
+                <div class="col-md-3 col-sm-6">
+                        <div class="form-group text-right">
+                            <h4 >الحى         </h4>
+                        </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <input disabled type="text" class="form-control"  value="{{user.zoneID.titleAr || user.zoneID.titleEN }}" placeholder="">
+                        </div>
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-md-3 col-sm-6">
+                        <div class="form-group text-right">
+                            <h4 >نوع المستخدم          </h4>
+                        </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+
+                                <select disabled class="form-control">
+                                        <option ng-selected="c.type == 1" value="1">مستخدم عادى</option>
+                                        <option ng-selected="c.type == 2" value="2" >مستخدم عادى</option>
+
+                                    </select>
+                            
+                        </div>
+                        
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-md-3 col-sm-6">
+                        <div class="form-group text-right">
+                            <h4 >عدد المعجبيين          </h4>
+                        </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <input disabled type="text" class="form-control"  value="{{user.totalFav}}" placeholder="">
+                        </div>
+                </div>
+        </div>
+                
+                
+        <div   class="row">
+                <div class="col-md-3 col-sm-6">
+                        <div class="form-group text-right">
+                            <h4 >عدد المتابعين           </h4>
+                        </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <input disabled type="text" class="form-control"  value="{{user.totalFollowers}}" placeholder="">
+                        </div>
+                </div>
+        </div>   
+        <div   class="row">
+                <div class="col-md-3 col-sm-6">
+                        <div class="form-group text-right">
+                            <h4 >عدد المشاهدات            </h4>
+                        </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <input disabled type="text" class="form-control"  value="{{user.totalWatch}}" placeholder="">
+                        </div>
+                </div>
+        </div>   
+        <div  class="row">
+                <div class="col-md-3 col-sm-6">
+                        <div class="form-group text-right">
+                            <h4 >الموقع            </h4>
+                        </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <input disabled type="text" class="form-control"  value="{{user.website}}" placeholder="">
+                        </div>
+                </div>
+        </div>  
+            
+        <div  class="row">
+                <div class="col-md-3 col-sm-6">
+                        <div class="form-group text-right">
+                            <h4 >الصورة الشخصية             </h4>
+                        </div>
+                </div>
+                <div class="col-md-4 col-sm-6 text-right">
+                        <div class="form-group text-right">
+                            <img style="height: 100px; width: 100px;border-radius: 50%;" src="{{user.personalImg}}" alt="">
+                        </div>
+                </div>
+        </div> 
+            
+    </form>
+</div>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html ng-app="qalamAdmin">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title> index AR </title>
+
+        <!-- Bootstrap CSS -->
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/bootstrap-grid.min.css">
+        <link rel="stylesheet" href="../css/bootstrap-reboot.min.css">
+
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+
+        <!-- wow.css -->
+        <link rel="stylesheet" href="../css/animate.css">
+
+        <!-- Main CSS -->
+        <link rel="stylesheet" href="../css/style.css">
+
+
+        <script src="../js/angular.min.js"></script>
+        <script src="../js/dirPagination.js"></script>
+        <script src="../js/angular-cookies.min.js"></script>
+        <script src="../js/angular-route.min.js"></script>
+      
+      
+        <script src="../js/qalamAdmin.js"></script>
+        <script src="../js/login.js"></script>
+
+    </head>
+    <body ng-controller="ForasCtrl" style="direction: rtl;">
+        <!-- NavBar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="direction: ltr;">
+            <img src="../image/Logo.png" alt="Logo">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#page-Contact-Us"> <h4> تواصل معنا </h4> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#Our-Clients"> <h4> عملائنا </h4> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="RecruitmentAR.html"> <h4 style="font-size: 22px; font-weight: 600;"> التوظيف </h4> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#page-Foras-Companies"> <h4> خدماتنا للشركات </h4> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#page-Foras-Individuals"> <h4> خدماتنا للأفراد </h4> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#page-About-Us"> <h4> من نحن </h4> </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#"> <h4> الرئيسية </h4> <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    <div class="ling">
+                        <a href="index.html"> EN </a>
+                    </div>
+                </span>
+            </div>
+        </nav>
+        <!-- /NavBar -->
+
+        <!-- For Individuals -->
+        <div class="container" id="page-Foras-Individuals">
+            <div class="row">
+                <div class="col-12 Companies">
+                    <h1>  </h1>
+                </div>
+                <div class="col-12 Business-Services wow flipInX" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200">
+                    <div class="row">
+                        <div class="col-md-12 Companies-img" style="height: 250px; overflow: hidden;">
+                            <img src="{{settings[32].valueAr || '../image/unemployed-man-desperately-looking-job-holding-need-job-sign_1150-3021.png'}} " alt="">
+                        </div>
+                        <div class="col-md-12 text-right Business">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h6> {{settings[28].valueAr}} </h6>
+                                    <p style="width: 90%;">  {{settings[29].valueAr}} </p>        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-11" style="margin: auto;">
+                    <div class="row">
+                        <div class="col-md-3 wow zoomIn" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200">
+                            <div class="Recruitment">
+                                <img src="../image/recruitment.png" alt="recruitment">
+                                <h5> التوظيف </h5>
+                            </div>
+                        </div>
+                        <div class="col-md-3 wow zoomIn" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200">
+                            <div class="Recruitment">
+                                <img src="../image/Edit.png" alt="Edit">
+                                <h5> تعديل السيرة الذاتية. </h5>
+                            </div>
+                        </div>
+                        <div class="col-md-3 wow zoomIn" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200">
+                            <div class="Recruitment">
+                                <img src="../image/Create.png" alt="Create">
+                                <h5> إنشاء سيرة ذاتية </h5>
+                            </div>
+                        </div>
+                        <div class="col-md-3 wow zoomIn" data-wow-duration="2s" data-wow-delay="0.2s" data-wow-offset="200">
+                            <div class="Recruitment">
+                                <img src="../image/Design.png" alt="Design">
+                                <h5> تصميم سيره ذاتية </h5>
+                            </div>
+                        </div>        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /For Individuals -->
+
+        <!-- Contact Us -->
+        <div class="container-fluid Contact-Us" id="page-Contact-Us">
+            <div class="row" style="max-width: 100%; margin: auto;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form ng-submit="addContactUs()">
+                                <div class="form-group row">
+                                    <div class="col-12 Contact" style="text-align: right !important; margin-bottom: 60px;">
+                                        <h3 style="color: #269cd9 !important"> لخدمات السيرة الذاتية </h3>
+                                    </div>            
+                                    <div class="col-12 Contact" style="text-align: right !important; margin-bottom: 20px;">
+                                        <h4 style="font-size: 26px; font-weight: 600;"> تواصل معنا </h4>
+                                        <hr style="margin-top: 0; margin-bottom: 0; margin-right: 0; border: 0; border-top: 3px solid #fff; max-width: 20%; border-radius: 5px;">
+                                    </div>            
+                                    <div class="col-12 forms-ar">
+                                        <div class="row">
+                                            <label for="inputEmail3" class="col-sm-4 col-form-label"><h6>البريد الألكترونى</h6></label>
+                                            <div class="col-sm-8">
+                                                <p style="color: #f0f0f0; padding-top: calc(.375rem + 1px); padding-bottom: calc(.375rem + 1px);"> info@foras.com </p>
+                                            </div>        
+                                        </div>
+                                    </div>
+                                    <div class="col-12 forms-ar">
+                                        <div class="row">
+                                            <label for="inputEmail3" class="col-sm-4 col-form-label"><h6>الجوال</h6></label>
+                                            <div class="col-sm-8">
+                                                <p style="color: #f0f0f0; padding-top: calc(.375rem + 1px); padding-bottom: calc(.375rem + 1px);"> +966 27465678 </p>
+                                            </div>        
+                                        </div>
+                                    </div>
+                                    <div class="col-12 forms-ar">
+                                        <div class="row">
+                                            <label class="col-sm-4 col-form-label"><h6>العنوان</h6></label>
+                                            <div class="col-sm-8">
+                                                <p style="color: #f0f0f0; padding-top: calc(.375rem + 1px); padding-bottom: calc(.375rem + 1px);"> شارع 45 الحى الثامن - المنطقة الرابعة 215 </p>
+                                            </div>        
+                                        </div>
+                                    </div>
+                                </div>                                
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mapouter">
+                                <div class="gmap_canvas">
+                                    <iframe width="100%" height="330" id="gmap_canvas" src="https://maps.google.com/maps?q=13%20%D8%B9%D8%A8%D8%AF%20%D8%A7%D9%84%D8%B9%D8%B2%D9%8A%D8%B2%20%D8%B7%D9%84%D8%B9%D8%AA%D8%8C%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D9%82%D8%A9%20%D8%A7%D9%84%D8%B3%D8%A7%D8%AF%D8%B3%D8%A9%D8%8C%20%D9%85%D8%AF%D9%8A%D9%86%D8%A9%20%D9%86%D8%B5%D8%B1%D8%8C%20%D9%85%D8%AD%D8%A7%D9%81%D8%B8%D8%A9%20%D8%A7%D9%84%D9%82%D8%A7%D9%87%D8%B1%D8%A9%E2%80%AC&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+                                    <!-- <a href="https://www.embedgooglemap.org">embedgooglemap.org</a> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Contact Us -->
+
+        <!-- Follow Us On Our Social media channels -->
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center" style="color: #223A76;margin-top: 40px; margin-bottom: 20px;">
+                    <span style="letter-spacing: 0px;"> تابعنا على قنوات التواصل الاجتماعي الخاصة بنا </span>
+                </div>
+                <div class="col-12 text-center">
+                    <div class="social-media">
+                        <a target="_blank" href="{{settings[35].value}}">
+                            <img src="../image/socialMedia/facebookIcon.png" alt="Facebook Icon">
+                        </a>
+                    </div>
+                    <div class="social-media">
+                        <a target="_blank"  href="{{settings[36].value}}">
+                            <img src="../image/socialMedia/instagramIcon.png" alt="Instagram Icon">
+                        </a>
+                    </div>
+                    <div class="social-media">
+                        <a target="_blank"  href="{{settings[37].value}}">
+                            <img src="../image/socialMedia/pinterestIcon.png" alt="Pinterest Icon">
+                        </a>
+                    </div>
+                    <div class="social-media">
+                        <a target="_blank"  href="{{settings[38].value}}">
+                            <img src="../image/socialMedia/googlePlusIcon.png" alt="GooglePlus Icon">
+                        </a>
+                    </div>
+                    <div class="social-media">
+                        <a target="_blank"  href="{{settings[39].value}}">
+                            <img src="../image/socialMedia/linkedinIcon.png" alt="Linkedin Icon">
+                        </a>
+                    </div>
+                    <div class="social-media">
+                        <a target="_blank" href="{{settings[40].value}}">
+                            <img src="../image/socialMedia/whatsappIcon.png" alt="whatsapp Icon">
+                        </a>
+                    </div>
+                    <div   class="social-media">
+                        <a target="_blank"  href="{{settings[41].value}}">
+                            <img src="../image/socialMedia/twitterIcon.png" alt="Twitter Icon">
+                        </a>
+                    </div>
+                    <div   class="social-media">
+                        <a target="_blank"  href="{{settings[42].value}}">
+                            <img src="../image/socialMedia/youtubeIcon.png" alt="Youtube Icon">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Follow Us On Our Social media channels -->
+        
+
+        <!-- Bootstrap Core JS -->
+        <!-- <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/bootstrap.bundle.min.js"></script> -->
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+
+        <!-- wow.js -->
+        <script src="../js/tests.js"></script>
+        <script src="../js/wow.min.js"></script>
+        <script src="../js/jquery.countTo.js"></script>
+
+        <script>
+            new WOW().init();
+        </script>
+        <script type="text/javascript">
+            $('.counter-number').countTo();
+        </script>
+        <script>
+            function isScrolledIntoView(el) {
+                var elemTop = el.getBoundingClientRect().top;
+                var elemBottom = el.getBoundingClientRect().bottom;
+                var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+                return isVisible;
+            }
+            function isScrolledIntoView(el) {
+                var elemTop = el.getBoundingClientRect().top;
+                var elemBottom = el.getBoundingClientRect().bottom;
+                var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+                return isVisible;
+            }
+            $(window).on('scroll', function() {
+                if (isScrolledIntoView(document.getElementById('counters'))) {
+                    $('.ace-counter-number').countTo();
+                    $(window).off('scroll');
+                }
+            });
+        </script>
+    </body>
+</html>

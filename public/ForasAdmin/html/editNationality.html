@@ -1,0 +1,125 @@
+
+
+<!-- Page Wrapper -->
+<div ng-if="!qalamLang || qalamLang == 'ar'" class="page-wrapper">
+    <div class="content container-fluid">
+                    
+            <!-- Page Header -->
+            <div class="page-header">
+                    <div class="row">
+                            <div class="col">
+                                    <h3 class="page-title text-right">نموذج التعديل </h3>
+                                    <ul class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="/nationality">الجنسيات  </a></li>
+                                            <li class="breadcrumb-item active">تعديل  الجنسية  </li>
+                                    </ul>
+                            </div>
+                    </div>
+            </div>
+            <!-- /Page Header -->
+            
+            <div class="row">
+                    <div class="col-xl-6 d-flex">
+                            <div class="card flex-fill">
+                                    <div class="card-header text-right">
+                                            <h4 class="card-title mb-0">بيانات الجنسية </h4>
+                                    </div>
+                                    <div class="card-body">
+                                            <form ng-submit="editData()" >
+                                                    <div class="form-group row text-right">
+                                                            <label class="col-lg-3 col-form-label">الأسم بالعربية  </label>
+                                                            <div class="col-lg-9">
+                                                                    <input id="titleAr" value="{{dataObj.titleAr}}" type="text" class="form-control">
+                                                            </div>
+                                                    </div>
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">الأسم بالانجليزية   </label>
+                                                        <div class="col-lg-9">
+                                                                <input id="titleEN" value="{{dataObj.titleEN}}" type="text" class="form-control">
+                                                        </div>
+                                                </div>
+                                                    
+                                                    <div class="text-left">
+                                                            <button type="submit" class="btn btn-primary">حـفظ </button>
+                                                            <button back-button type="button" class="btn btn-danger">العودة </button>
+
+
+                                                    </div>
+                                            </form>
+                                    </div>
+                            </div>
+                    </div>
+                    
+            </div>
+
+                    
+    </div>			
+</div>
+<!-- /Main Wrapper -->
+
+
+
+
+
+<!-- Page Wrapper -->
+<div ng-if="qalamLang == 'en'"  class="page-wrapper">
+    <div class="content container-fluid">
+                    
+            <!-- Page Header -->
+            <div class="page-header">
+                    <div class="row">
+                            <div class="col">
+                                    <h3 class="page-title text-left">Edit Form</h3>
+                                    <ul class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="/nationality">nationality  </a></li>
+                                            <li class="breadcrumb-item active">Edit nationality  </li>
+                                    </ul>
+                            </div>
+                    </div>
+            </div>
+            <!-- /Page Header -->
+            
+            <div class="row">
+                    <div class="col-xl-6 d-flex">
+                            <div class="card flex-fill">
+                                    <div class="card-header">
+                                            <h4 class="card-title mb-0">nationality Info </h4>
+                                    </div>
+                                    <div class="card-body">
+                                            <form ng-submit="addData()" >
+                                                    <div class="form-group row">
+                                                            <label class="col-lg-3 col-form-label">Arabic title </label>
+                                                            <div class="col-lg-9">
+                                                                    <input id="titleAr" value="{{dataObj.titleAr}}"  type="text" class="form-control">
+                                                            </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="col-lg-3 col-form-label">English title </label>
+                                                        <div class="col-lg-9">
+                                                                <input id="titleEN" type="text" value="{{dataObj.titleEN}}" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                   
+                                                    
+                                                    <div class="text-right">
+                                                            <button type="submit" class="btn btn-primary">Save</button>
+                                                            <button back-button type="button" class="btn btn-danger">Back</button>
+
+
+                                                    </div>
+                                            </form>
+                                    </div>
+                            </div>
+                    </div>
+                    
+            </div>
+
+                    
+    </div>			
+</div>
+<!-- /Main Wrapper -->
+
+
+
+
+

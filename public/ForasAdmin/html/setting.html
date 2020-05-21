@@ -1,0 +1,136 @@
+       
+<div ng-if="!qalamLang || qalamLang == 'ar'" class="col-lg-12 col-md-12 col-xs-12" >
+
+<!-- <a style="text-decoration: none !important;" href="/addMaterials"> -->
+
+<p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000">أعدادت الموقع      
+        
+      </p>
+
+<!-- </a>                 -->
+<div style="width: 100%; overflow-x: scroll;">
+        <table style="border: 1px solid #000; direction: rtl; " class="table table-bordered table-hover  text-center">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+
+                    <th scope="col">الاسم      </th>
+                    <th scope="col"> القيمة بالعربية   </th>
+                    <th scope="col"> القيمة بالانجليزية   </th>
+              
+
+
+
+                    <th ng-if="currentEmployeePermissions.editSetting.value == true" scope="col">التعديل   </th>
+                    
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-class="{'table-danger': c.status == 2 }" dir-paginate="c in settings |filter:searchText |itemsPerPage:20">
+                    <th scope="row">{{$index+1}}</th>
+                   
+                    <td>{{c.key}}</td>
+
+                    <td>{{c.valueAR}}</td>
+                    <td>{{c.valueEN}}</td>
+
+
+                  
+                    <td ng-if="currentEmployeePermissions.editSetting.value == true"><a href="editSetting/{{c._id}}"><i class="fas fa-edit" style="color:#666363"></i></a></td>
+
+
+
+                  </tr>
+                  
+                </tbody>
+              </table>
+              
+
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    
+    <div style="width: 100%;" class="row">
+        <dir-pagination-controls max-size="8"
+        direction-links="true"
+        boundary-links="true">
+        </dir-pagination-controls>
+    </div>
+    
+</div>
+
+
+
+
+
+
+       
+<div ng-if="qalamLang == 'en'" class="col-lg-12 col-md-12 col-xs-12" >
+
+
+<p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000">wedsite settings      
+        
+      </p>
+
+
+<div style="width: 100%; overflow-x: scroll;">
+        <table style="border: 1px solid #000; direction: ltr; " class="table table-bordered table-hover  text-center">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+
+                    <th scope="col"> name      </th>
+                    <th scope="col"> Arabic value   </th>
+                    <th scope="col"> English value   </th>
+              
+
+
+
+                    <th ng-if="currentEmployeePermissions.editSetting.value == true" scope="col">  Edit  </th>
+                    
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-class="{'table-danger': c.status == 2 }" dir-paginate="c in settings |filter:searchText |itemsPerPage:20">
+                    <th scope="row">{{$index+1}}</th>
+
+                    <td>{{c.key}}</td>
+
+                    <td>{{c.valueAR}}</td>
+                    <td>{{c.valueEN}}</td>
+
+
+                  
+                    <td ng-if="currentEmployeePermissions.editSetting.value == true"><a href="editSetting/{{c._id}}"><i class="fas fa-edit" style="color:#666363"></i></a></td>
+
+
+
+                  </tr>
+                  
+                </tbody>
+              </table>
+              
+
+
+    </div>
+    <div class="clearfix">
+
+    </div>
+    
+    <div style="width: 100%;" class="row">
+        <dir-pagination-controls max-size="8"
+        direction-links="true"
+        boundary-links="true">
+        </dir-pagination-controls>
+    </div>
+    
+</div>
+      
+     
+   
+  
+  

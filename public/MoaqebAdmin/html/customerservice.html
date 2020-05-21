@@ -1,0 +1,53 @@
+<div class="col-lg-3">
+</div>
+<div class="col-lg-6 col-md-9 col-xs-12" style="border-style: solid;padding: 10;border-width: 1;background: white;border-color: gray;padding-left: 0;padding-right: 0;padding-top: 0;">
+  <div class="col-lg-12" style="background: #c2a410;text-align: center;border-radius:15px ;padding:20 ">
+    <p class="arabic" style="font-weight: bold;color: #ffffff;display: inline-block;font-size: 2.5vh;font-family: 'Baloo Bhaijaan';">المحادثة</p>
+  </div>
+  <div class="col-lg-12" style="direction:rtl;border-style: solid;border-width: 1;border-color: #cdcdcd;margin-bottom: 10;text-align: right;">
+    <img class='chat-image chat-image-default' src='./images/chat123.png' style="width: 80px;border-style: solid;border-width: 1;margin: 15;border-color: gray;" />
+    <h3 class="arabic" style="color:#c2a410;display: inline-block;font-weight: bold;font-family: 'Cairo'">خدمة العملاء<br><span style="color: #cdcdcd">مندوب خدمة الخملاء</span></h3>
+  </div>
+  <div class='chat-wrapper' style="padding: 30;height: 400;overflow-y: scroll;overflow-x: hidden;">
+    <div class='chat-message padding' ng-repeat="c in chat">
+      <div class='chat-message chat-message-recipient' ng-if="c.from == 1">
+        <img class='chat-image chat-image-default' src='./images/chat123.png' style="width: 30px;height: 30px;border-width: 0;"/>
+        <div class='chat-message-wrapper'>
+          <div class='chat-message-content'>
+              <div  style="width: 250;background: #e2e2e2;border-top-color: #cdcdcd;color:#8d8d8f ;direction: rtl;padding: 15" >
+                  <span style="color: #8d8d8f;display: block;font-weight: bold;font-size: 15;">{{username}}</span>
+                <h4 style="word-wrap: break-word;">
+                {{c.msg}}
+                </h4>
+              </div>
+
+          </div>
+        </div>
+      </div>
+      <div class='chat-message chat-message-sender' ng-if="c.from == 2">
+        <img class='chat-image chat-image-default' src='./images/chat123.png' style="width: 30px;height: 30px;border-width: 0;"/>
+        <div class='chat-message-wrapper'>
+          <div class='chat-message-content' style="width:250;">
+              <div  style="width: 250;background: #e2e2e2;border-top-color: #cdcdcd;color:#8d8d8f ;direction: rtl;padding: 15" >
+                  <span style="color: #8d8d8f;display: block;font-weight: bold;font-size: 15;">{{c.userID.fullname}}</span>
+                <h4 style="word-wrap: break-word;">
+                {{c.msg}}
+                </h4>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12" style="border-style: solid;border-color: #cdcdcd;border-width: 1;border-bottom: 0;">
+    <form ng-submit="sendFun()">
+      <input type="text" placeholder="اكتب هنا" id="sendTxt" style="float: right;direction:rtl;border: 0;height: 40;font-size: 22;width: 80%;" required />
+      <button class="arabic" type="submit" class="btn btn-defualt" style="float: left;background: #c2a40e;color: #ffffff;font-weight: bold;border-radius: 50px;width: 7vh;font-family: Cairo;">ارسال</button>
+</form>
+  </div>
+</div>
+<div class="col-lg-12" style="height: 10%;">
+  <a href back-button class="btn-danger" style="width: 7vh;font-size: 2vh; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;font-weight:bold;display:inline-block;float:left;">رجـــوع</a>
+
+  </div>
+

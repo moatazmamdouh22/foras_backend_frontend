@@ -1,0 +1,437 @@
+
+   <div ng-if="!qalamLang || qalamLang == 'ar'" class="col-lg-12 col-md-12 col-xs-12" >
+   
+      <a  ng-if="currentEmployeePermissions.addUser.value == true" style="text-decoration: none !important;" href="/addUser">
+
+        <p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000">اضف مستخدم  جديد
+                &nbsp;<i class="fa fa-plus" aria-hidden="true"></i><span class="glyphicon glyphicon-plus-sign" style="margin-left: 10px;vertical-align: text-top;"></span>
+              </p>
+    
+    </a>   
+
+
+    
+    <div class="text-right">
+      <button type="button" class="btn btn-info " data-toggle="modal" data-target=".bd-example-modal-lg" data-whatever="@fat"> بحـث </button>
+      <button ng-click="getAllData()" type="button" class="btn btn-info">كل البيانات </button>
+
+    </div>
+    <div style="width: 100%; overflow-x: scroll;">
+            <table style="border: 1px solid #000; direction: rtl; " class="table table-bordered table-hover  text-center">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <!-- <th scope="col">الصورة  </th> -->
+
+                        <th scope="col">الاسم </th>
+                        <th scope="col">رقم الجوال  </th>
+                        <th scope="col">البريد الالكترونى  </th>
+
+                        <th scope="col">الاشتراك     </th>
+                        <th ng-if="currentEmployeePermissions.childByParent.value == true" scope="col">الأطـفال     </th>
+
+                        <th ng-if="currentEmployeePermissions.userDetails.value == true" scope="col">التفاصيل  </th>
+                        <!-- <th scope="col">الاشعار   </th> -->
+
+                        <th  ng-if="currentEmployeePermissions.editUser.value == true" scope="col">التعديل   </th>
+                        <th  ng-if="currentEmployeePermissions.deleteUser.value == true" scope="col">الحذف    </th>
+
+
+
+
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-if="c.status != 3" ng-class="{'table-danger': c.status == 2 }" dir-paginate="c in users |filter:searchText |itemsPerPage:20">
+                        <th scope="row">{{c.index}}</th>
+                        <!-- <td>
+                            <img style="width: 70px; height: 70px; border-radius: 50%;" src="{{c.personalImg}}" alt="">
+                        </td> -->
+                        <td>{{c.fullname}}</td>
+                        <td>{{c.mobile}}</td>
+                        <td>{{c.email}}</td>
+                        
+                        <td>
+                          <span ng-if="c.subscripeType == 1">
+                             سنوى
+                          </span>
+                          <span ng-if="c.subscripeType == 2">
+                                نصف سنوى 
+                          </span>
+                        </td>
+                     
+                        <td ng-if="currentEmployeePermissions.childByParent.value == true"><a href="childByParent/{{c._id}}"><span class="fas fa-child" style="color:#666363"></span></a></td>
+
+                        <td  ng-if="currentEmployeePermissions.userDetails.value == true"><a href="userDetails/{{c._id}}"><span class="fa fa-info-circle" style="color:#666363"></span></a></td>
+                        <!-- <td><a href="sendNotificationToUser/{{c._id}}"><i class="far fa-bell" style="color:#666363"></i></a></td> -->
+                        
+                        <td  ng-if="currentEmployeePermissions.editUser.value == true" ><a href="editUser/{{c._id}}"><i class="fas fa-edit" style="color:#666363"></i></a></td>
+                        <td  ng-if="currentEmployeePermissions.deleteUser.value == true" >
+                          <i style="cursor: pointer;" ng-click="deletData(c._id  , c)" class="fas fa-trash-alt"></i>
+                        </td>
+
+
+
+                      </tr>
+                     
+                    </tbody>
+                  </table>
+                 
+    
+    
+        </div>
+        <div class="clearfix">
+
+        </div>
+       
+       <div style="width: 100%;" class="row">
+            <dir-pagination-controls max-size="8"
+            direction-links="true"
+            boundary-links="true">
+            </dir-pagination-controls>
+       </div>
+        
+
+
+  <!-- Large modal -->
+<!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button> -->
+
+</div>
+
+
+    
+   <div ng-if="qalamLang == 'en'" class="col-lg-12 col-md-12 col-xs-12" >
+   
+    <a  ng-if="currentEmployeePermissions.addUser.value == true" style="text-decoration: none !important;" href="/addUser">
+
+      <p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000">Add new user
+              &nbsp;<i class="fa fa-plus" aria-hidden="true"></i><span class="glyphicon glyphicon-plus-sign" style="margin-left: 10px;vertical-align: text-top;"></span>
+            </p>
+  
+  </a>       
+  <div class="text-left">
+    <button type="button" class="btn btn-info " data-toggle="modal" data-target=".bd-example-modal-lg" data-whatever="@fat"> search </button>
+    <button ng-click="getAllData()" type="button" class="btn btn-info">all data </button>
+
+  </div>
+  <div style="width: 100%; overflow-x: scroll;">
+          <table style="border: 1px solid #000; direction: ltr; " class="table table-bordered table-hover  text-center">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">#</th>
+                      <!-- <th scope="col">الصورة  </th> -->
+
+                      <th scope="col">name </th>
+                      <th scope="col">Mobile </th>
+                      <th scope="col">Email </th>
+
+                      <th scope="col">Subscribtion     </th>
+                      <th ng-if="currentEmployeePermissions.childByParent.value == true" scope="col">Childreen     </th>
+
+                      <th ng-if="currentEmployeePermissions.userDetails.value == true" scope="col">Details  </th>
+                      <!-- <th scope="col">الاشعار   </th> -->
+
+                      <th  ng-if="currentEmployeePermissions.editUser.value == true" scope="col">Edit   </th>
+                      <th  ng-if="currentEmployeePermissions.deleteUser.value == true" scope="col">Delete    </th>
+
+
+
+
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr ng-if="c.status != 3" ng-class="{'table-danger': c.status == 2 }" dir-paginate="c in users |filter:searchText |itemsPerPage:20">
+                      <th scope="row">{{$index+1}}</th>
+                      <!-- <td>
+                          <img style="width: 70px; height: 70px; border-radius: 50%;" src="{{c.personalImg}}" alt="">
+                      </td> -->
+                      <td>{{c.fullname}}</td>
+                      <td>{{c.mobile}}</td>
+                      <td>{{c.email}}</td>
+                      
+                      <td>
+                        <span ng-if="c.subscripeType == 1">
+                          annual
+                        </span>
+                        <span ng-if="c.subscripeType == 2">
+                          biannual 
+                        </span>
+                      </td>
+                   
+                      <td ng-if="currentEmployeePermissions.childByParent.value == true"><a href="childByParent/{{c._id}}"><span class="fas fa-child" style="color:#666363"></span></a></td>
+
+                      <td  ng-if="currentEmployeePermissions.userDetails.value == true"><a href="userDetails/{{c._id}}"><span class="fa fa-info-circle" style="color:#666363"></span></a></td>
+                      <!-- <td><a href="sendNotificationToUser/{{c._id}}"><i class="far fa-bell" style="color:#666363"></i></a></td> -->
+                      
+                      <td  ng-if="currentEmployeePermissions.editUser.value == true" ><a href="editUser/{{c._id}}"><i class="fas fa-edit" style="color:#666363"></i></a></td>
+                      <td  ng-if="currentEmployeePermissions.deleteUser.value == true" >
+                        <i style="cursor: pointer;" ng-click="deletData(c._id  , c)" class="fas fa-trash-alt"></i>
+                      </td>
+
+
+
+                    </tr>
+                   
+                  </tbody>
+                </table>
+               
+  
+  
+      </div>
+      <div class="clearfix">
+
+      </div>
+     
+     <div style="width: 100%;" class="row">
+          <dir-pagination-controls max-size="8"
+          direction-links="true"
+          boundary-links="true">
+          </dir-pagination-controls>
+     </div>
+      
+  </div>
+    
+   
+
+  
+<div ng-if="!qalamLang || qalamLang == 'ar'" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content p-4">
+      <form  ng-submit="findData()" style="direction: rtl;">
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+              <div class="form-group text-right">
+                  <h4 >التاريخ من    </h4>
+              </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+              <div class="form-group">
+                  <input ng-model="searchObj.dateFrom" id="dateFrom" type="date" class="form-control"   >
+              </div>
+          </div>
+          
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <div class="form-group text-right">
+                <h4 >التاريخ الى    </h4>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="form-group">
+                <input ng-model="searchObj.dateTo" id="dateTo" type="date" class="form-control"   >
+            </div>
+        </div>
+        
+      </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group text-right">
+                    <h4 >الأسـم   </h4>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="form-group">
+                    <input ng-model="searchObj.fullname" id="fullname" type="text" class="form-control"   >
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-right">
+                        <h4 >رقم الجوال    </h4>
+                       
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                        <input ng-model="searchObj.mobile" id="mobile"  class="form-control"   >
+                    </div>
+            </div>
+                
+        </div>
+      
+        <div class="row">
+                <div class="col-md-3 col-sm-6">
+                        <div class="form-group text-right">
+                            <h4 >البريد الالكترونى     </h4>
+                        </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <input ng-model="searchObj.email"  id="email" type="email" class="form-control"   >
+                        </div>
+                </div>
+                    
+        </div>
+      
+        <div class="row">
+                <div class="col-md-3 col-sm-6">
+                        <div class="form-group text-right">
+                            <h4 >الجنس      </h4>
+                        </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                                <select ng-model="searchObj.gender"  id="gender" class="form-control" >
+                                        <option  value="1">ذكر </option>
+                                        <option value="2" >أنثى  </option>
+      
+                                </select>
+                        </div>
+                </div>
+                    
+        </div>
+      
+        <div class="row">
+                <div class="col-md-3 col-sm-6">
+                        <div class="form-group text-right">
+                            <h4 >نوع الاشتراك       </h4>
+                        </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                                <select  ng-model="searchObj.subscripeType" id="subscripeType" class="form-control" >
+                                        <option  value="1">سنوى  </option>
+                                        <option value="2" >نصف سنوى   </option>
+      
+                                </select>
+                        </div>
+                </div>
+                    
+        </div>
+      
+      
+      
+        <div class="col-lg-12 col-md-12 col-xs-12">
+                <button type="submit" class="btn-success px-4" style="font-size:2vh; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;display:inline-block;margin-right: 5px; margin-left: 5px; ">بحـث   </button>
+               
+                <a  data-dismiss="modal"  class="btn-danger px-4" style="font-size:2vh; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;font-weight:bold;display:inline-block;margin-right: 5px; margin-left: 5px">أغلاق </a>
+            </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div ng-if="qalamLang == 'en'" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content p-4">
+      <form  ng-submit="findData()" style="direction: ltr;">
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+              <div class="form-group text-left">
+                  <h4 >date from     </h4>
+              </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+              <div class="form-group">
+                  <input ng-model="searchObj.dateFrom" id="dateFrom" type="date" class="form-control"   >
+              </div>
+          </div>
+          
+      </div>
+      <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <div class="form-group text-left">
+                <h4 >date to    </h4>
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <div class="form-group">
+                <input ng-model="searchObj.dateTo" id="dateTo" type="date" class="form-control"   >
+            </div>
+        </div>
+        
+      </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group text-left">
+                    <h4 >name   </h4>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="form-group">
+                    <input ng-model="searchObj.fullname" id="fullname" type="text" class="form-control"   >
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-left">
+                        <h4 >mobile    </h4>
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                        <input ng-model="searchObj.mobile" id="mobile"  class="form-control"   >
+                    </div>
+            </div>
+                
+        </div>
+      
+        <div class="row">
+                <div class="col-md-3 col-sm-6">
+                        <div class="form-group text-left">
+                            <h4 >email     </h4>
+                        </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <input ng-model="searchObj.email"  id="email" type="email" class="form-control"   >
+                        </div>
+                </div>
+                    
+        </div>
+      
+        <div class="row">
+                <div class="col-md-3 col-sm-6">
+                        <div class="form-group text-left">
+                            <h4 >gender      </h4>
+                        </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                                <select ng-model="searchObj.gender"  id="gender" class="form-control" >
+                                        <option  value="1">male </option>
+                                        <option value="2" >female  </option>
+      
+                                </select>
+                        </div>
+                </div>
+                    
+        </div>
+      
+        <div class="row">
+                <div class="col-md-3 col-sm-6">
+                        <div class="form-group text-left">
+                            <h4 >subscription type       </h4>
+                        </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                                <select  ng-model="searchObj.subscripeType" id="subscripeType" class="form-control" >
+                                        <option  value="1">annual  </option>
+                                        <option value="2" > biannual   </option>
+      
+                                </select>
+                        </div>
+                </div>
+                    
+        </div>
+      
+      
+      
+        <div class="col-lg-12 col-md-12 col-xs-12 text-right">
+                <button type="submit" class="btn-success px-4" style="font-size:2vh; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;display:inline-block;margin-right: 5px; margin-left: 5px; "> search  </button>
+               
+                <a  data-dismiss="modal"  class="btn-danger px-4" style="font-size:2vh; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;font-weight:bold;display:inline-block;margin-right: 5px; margin-left: 5px; color: #fff !important;">close </a>
+            </div>
+      </form>
+    </div>
+  </div>
+</div>
+ 
+

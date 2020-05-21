@@ -1,0 +1,103 @@
+<div class="col-lg-12 col-md-12 col-xs-12" style="width:100%;">
+    <div class="col-lg-12" style="padding:30px;float:right;">
+        <p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000000">إضافة طلب جديد&nbsp;<span class="glyphicon glyphicon-plus-sign" style="margin-left: 10px;vertical-align: text-top;"></span></p>        <hr>
+        <form ng-submit="addRequest()">
+                <table style="border:1px;float: right;direction: rtl;font-family:'Changa';" id="UserDetailsTable">
+					<tr>
+                        <th>
+                        <label for="date" style="font-size:2vh;">البحث عن المستخدم:</label>
+                        </th>
+                        <td>
+                                <span class="fa fa-search" style="float: left;width: 10%;padding: 5px;background: #2196F3;color: white;font-size: 17px;border: 1px solid grey;border-right: none;cursor: pointer;text-align: center;">
+                                </span>
+                                <span>
+                                    <input type="text" style="margin-bottom: 10px;width: 90%;  padding: 4px;font-size: 17px;border: 1px solid grey;float: left;background: #f1f1f1;border-radius: unset;border-left: none" placeholder="بحث عن المستخدم" ng-model="searchUser"data-role="none" />
+                                </span>
+                        </td>
+                    </tr>
+
+                    <tr>
+                            <th>
+                                <label for="input" style="font-size:2vh;">المستخدم:</label>
+                            </th>
+                            <td>
+                                <span style="display: block;">
+                                    <select id="userID" style="width:25vw;font-size:2vh" required>
+                                        <option ng-repeat="A in allusers |filter:searchUser" value="{{A._id}}">
+                                            {{A.fullname}}
+                                        </option>
+                                    </select>
+                                </span>
+                            </td>
+						</tr>
+	
+						<tr>
+								<th>
+									<label for="input" style="font-size:2vh;">مالك السياره:</label>
+								</th>
+								<td>
+									<span style="display: block;">
+										<select id="ownerID"  style="width:25vw;font-size:2vh" ng-model="counid" ng-change="citiesFunFrom()" required>
+											<option ng-repeat="A in allusers" value="{{A._id}}">
+												{{A.fullname}}
+											</option>
+										</select>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									<label for="input" style="font-size:2vh;">السيارات:</label>
+								</th>
+								<td>
+									<span>
+										<select id="carID" style="width:25vw;font-size:2vh" required>
+											<option ng-repeat="A in cars" value="{{A._id}}">
+												{{A.carModelID.titleAr}}
+											</option>
+										</select>
+									</span>
+										</td>
+							</tr>
+	
+
+					<tr>
+						<th>
+							<label for="input" style="font-size:2vh;">تاريخ البداية:</label>
+						</th>
+						<td>
+							<span><input type="date" style="width:25vw;font-size:2vh" id="startDate" required /></span>
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<label for="date" style="font-size:2vh;">تاريخ النهاية:</label>
+						</th>
+						<td>
+							<span><input type="date" style="width:25vw;font-size:2vh" id="endDate" required /></span>
+						</td>
+					</tr>
+					<tr>
+                        <th>
+                            <label for="input" style="font-size:2vh;">السعر :</label>
+                        </th>
+                        <td>
+                            <span><input type="number" min="0" style="width:25vw;font-size:2vh" id="price" required /></span>
+                        </td>
+                    </tr>
+					<tr>
+						<th>
+							<label for="input" style="font-size:2vh;">ملاحظات:</label>
+						</th>
+						<td>
+							<span><textarea style="width:25vw;font-size:2vh" id="notes" required></textarea>
+							</span>
+						</td>
+					</tr>
+	
+                </table>
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <button type="submit" class="btn-success" style="font-size:2vh; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;display:inline-block;float:left;margin-right: 5px;">حفظ</button>
+                    <a href back-button class="btn-danger" style="font-size:2vh; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;font-weight:bold;display:inline-block;float:left;">رجـــوع</a>
+                </div>
+            </form>

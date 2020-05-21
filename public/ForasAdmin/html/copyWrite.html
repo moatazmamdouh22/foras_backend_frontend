@@ -1,0 +1,149 @@
+   
+   <div ng-if="!qalamLang || qalamLang == 'ar'" class="col-lg-12 col-md-12 col-xs-12" >
+   
+      <a ng-if="currentEmployeePermissions.addCopyWrites.value == true"  style="text-decoration: none !important;" href="/addCopyWrites">
+
+        <p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000">اضف حقوق الملكية   
+                &nbsp;<i class="fa fa-plus" aria-hidden="true"></i><span class="glyphicon glyphicon-plus-sign" style="margin-left: 10px;vertical-align: text-top;"></span>
+              </p>
+    
+    </a>             
+        <div style="width: 100%; overflow-x: scroll;">
+                <table style="border: 1px solid #000; direction: rtl; " class="table table-bordered table-hover  text-center">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">#</th>
+                            <!-- <th scope="col">الصورة  </th> -->
+    
+                            <th scope="col">الاسم </th>
+                            <th scope="col">الحالة  </th>
+    
+                            <th ng-if="currentEmployeePermissions.editCopyWrites.value == true" scope="col">التعديل   </th>
+                           
+                            <th  ng-if="currentEmployeePermissions.deleteCopyWrites.value == true" scope="col">الحذف    </th>
+
+    
+    
+    
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr   ng-if="c.status  != 3" ng-class="{'table-danger': c.status == 2 }" dir-paginate="c in copyWrites |filter:searchText |itemsPerPage:20">
+                            <th scope="row">{{$index+1}}</th>
+                            <!-- <td>
+                                <img style="width: 70px; height: 70px; border-radius: 50%;" src="{{c.personalImg}}" alt="">
+                            </td> -->
+                            <td>{{c.titleAr}}</td>
+                            <td>
+                                <span ng-if="c.status == 1">
+                                    نشط 
+                                </span>
+                                <span ng-if="c.status == 2">
+                                    غير نشظ  
+                                </span>
+                            </td>
+                            
+                         
+                            <td ng-if="currentEmployeePermissions.editCopyWrites.value == true"><a href="editCopyWrites/{{c._id}}"><i class="fas fa-edit" style="color:#666363"></i></a></td>
+    
+                            <td  ng-if="currentEmployeePermissions.deleteCopyWrites.value == true" >
+                              <i style="cursor: pointer;" ng-click="deletData(c._id, c)" class="fas fa-trash-alt"></i>
+                            </td>
+    
+                          </tr>
+                         
+                        </tbody>
+                      </table>
+                     
+        
+        
+            </div>
+            <div class="clearfix">
+    
+            </div>
+           
+           <div style="width: 100%;" class="row">
+                <dir-pagination-controls max-size="8"
+                direction-links="true"
+                boundary-links="true">
+                </dir-pagination-controls>
+           </div>
+            
+    </div>
+
+
+
+    <div ng-if="qalamLang == 'en'" class="col-lg-12 col-md-12 col-xs-12" >
+   
+      <a ng-if="currentEmployeePermissions.addCopyWrites.value == true"  style="text-decoration: none !important;" href="/addCopyWrites">
+
+        <p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000">add addCopyWrites   
+                &nbsp;<i class="fa fa-plus" aria-hidden="true"></i><span class="glyphicon glyphicon-plus-sign" style="margin-left: 10px;vertical-align: text-top;"></span>
+        </p>
+    
+    </a>             
+        <div style="width: 100%; overflow-x: scroll;">
+                <table style="border: 1px solid #000; direction: ltr; " class="table table-bordered table-hover  text-center">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">#</th>
+    
+                            <th scope="col">name </th>
+                            <th scope="col">status  </th>
+    
+                            <th ng-if="currentEmployeePermissions.editCopyWrites.value == true" scope="col">edit   </th>
+                           
+                            <th  ng-if="currentEmployeePermissions.deleteCopyWrites.value == true" scope="col">delete    </th>
+
+    
+    
+    
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr   ng-if="c.status  != 3" ng-class="{'table-danger': c.status == 2 }" dir-paginate="c in copyWrites |filter:searchText |itemsPerPage:20">
+                            <th scope="row">{{$index+1}}</th>
+                            
+                            <td>{{c.titleEN}}</td>
+                            <td>
+                                <span ng-if="c.status == 1">
+                                    active 
+                                </span>
+                                <span ng-if="c.status == 2">
+                                    not active  
+                                </span>
+                            </td>
+                            
+                         
+                            <td ng-if="currentEmployeePermissions.editCopyWrites.value == true"><a href="editCopyWrites/{{c._id}}"><i class="fas fa-edit" style="color:#666363"></i></a></td>
+    
+                            <td  ng-if="currentEmployeePermissions.deleteCopyWrites.value == true" >
+                              <i style="cursor: pointer;" ng-click="deletData(c._id, c)" class="fas fa-trash-alt"></i>
+                            </td>
+    
+                          </tr>
+                         
+                        </tbody>
+                      </table>
+                     
+        
+        
+            </div>
+            <div class="clearfix">
+    
+            </div>
+           
+           <div style="width: 100%;" class="row">
+                <dir-pagination-controls max-size="8"
+                direction-links="true"
+                boundary-links="true">
+                </dir-pagination-controls>
+           </div>
+            
+    </div>
+        
+        
+       
+     
+    
+    

@@ -1,0 +1,65 @@
+<div class="col-lg-12 col-md-12 col-xs-12" style="width:100%;">
+        <div class="col-lg-12" style="padding:30px;float:right;">
+            <a href="" style="text-decoration:none;">
+                <p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000">تفاصيل الفاتورة&nbsp;</p>
+            </a>
+            <hr>
+            <form>
+                <table style="border:1px;float: right;direction: rtl;font-family:'Changa';" id="UserDetailsTable">
+                    <tr class="info">
+                        <th>
+                            <label for="input" style="font-size:2vh">الثمن:</label>
+                        </th>
+                        <td>
+                            <span
+                                style="font-size:2vh;font-weight:bold;color:#fff;padding:5px;font-family:'Cairo';">{{getReceiptByID.price}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="input" style="font-size:2vh">تاريخ البداية:</label>
+                        </th>
+                        <td>
+                            <span
+                                style="font-size:2vh;font-weight:bold;color:#fff;padding:5px;font-family:'Cairo';">{{getReceiptByID.startDate | cmdate:'yyyy-MM-dd'}}</span>
+                        </td>
+                    <tr>
+                        <th>
+                            <label for="input" style="font-size:2vh">تاريخ النهاية :</label>
+                        </th>
+                        <td>
+                            <span
+                                style="font-size:2vh;font-weight:bold;color:#fff;padding:5px;font-family:'Cairo';">{{getReceiptByID.endDate | cmdate:'yyyy-MM-dd'}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="input" style="font-size:2vh">السيارة:</label>
+                        </th>
+                        <td>
+                            <span
+                                style="font-size:2vh;font-weight:bold;color:#fff;padding:5px;font-family:'Cairo';">
+                                <a href="CarDetails/{{getReceiptByID.carID._id}}">
+                                    <img src="{{getReceiptByID.carID.logo}}" style="width:80px ;height:80px;border-radius: 40px;" />
+                                </a>
+                            </span>
+    
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <label for="input" style="font-size:2vh">المستخدم:</label>
+                        </th>
+                        <td>
+                            <span style="font-size:2vh;font-weight:bold;color:#fff;padding:5px;font-family:'Cairo';">
+                                {{getReceiptByID.userID.fullname}}
+                            </span>
+                        </td>
+                    </tr>
+    
+                </table>
+                <div class="col-lg-12 col-md-12 col-xs-12">
+                    <a href back-button class="btn-danger"
+                        style="font-size:2vh; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;font-weight:bold;display:inline-block;float:left;">رجـــوع</a>
+                </div>
+            </form>

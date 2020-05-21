@@ -1,0 +1,1769 @@
+
+<div ng-if="!qalamLang || qalamLang == 'ar'" class="page-wrapper">
+    <div class="content container-fluid">
+  
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col">
+                    <h3 class="page-title text-right">جدول المرشحيين     </h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">الرئيسية </a></li>
+                        <li class="breadcrumb-item active">المرشحيين   </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card mb-0">
+                    <div class="card-header text-right">
+                        <h4 class="card-title mb-0"></h4>
+                        <p class="card-text">
+                          <a href="/addCandidate" class="btn btn-primary">اضافة جديد  </a>     
+                          <a href="" data-toggle="modal" data-target=".bd-example-modal-lg"  class="btn btn-primary">بحث  </a>  
+                          <!-- <button  class="btn-success" style="width: 30%;  border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;" ng-click="exportExcel()">تحميل أكسل</button> -->
+                          <a ng-click="exportExcel()" href="" class="btn btn-primary">تحميل أكسل  </a>     
+
+
+                        </p>
+                    </div>
+                    <div class="card-body">
+  
+                        <div class="table-responsive">
+                            <table class=" table2excel datatable table table-bordered table-hover  text-center mb-0 table2excel_with_colors">
+                                <thead>
+                                   
+
+                                    <tr>
+                                        <th class="col"> <input disabled type="text" ng-model="filterIDfirstName.order" placeholder="التسلسل " class="input-text"></th>
+                                        <th class="col"> <input type="text" ng-keydown="findData()" ng-model="searchObj.firstName" placeholder="الاسم الاول " class="input-text"></th>
+                                        
+                                            
+                                        <th class="col"> <input type="text" ng-keydown="findData()" ng-model="searchObj.lastName" placeholder="الاسم الاخير " class="input-text"></th>                                        
+                                        <th class="col"> <input type="text" ng-keydown="findData()"  ng-model="searchObj.phoneNumber" placeholder="رقم الجوال " class="input-text"></th>                                        
+                                        <th class="col"> <input type="text" ng-keydown="findData()"  ng-model="searchObj.email" placeholder="البريد " class="input-text"></th>                                        
+                                        <th class="col"> <input type="text" ng-keydown="findData()"  ng-model="searchObj.IDNumber" placeholder="رقم الهوية " class="input-text"></th>                                        
+                                        
+                                        
+                                        <th class="col"> 
+                                            
+                                            <select ng-change="findData()" ng-model="searchObj.nationalityID" id="nationalityID" class="input-text" >
+                                                <option  selected value="">أختر الجنسية </option>
+
+                                                <option  ng-repeat="c in nationality"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+                                            </select>
+                                            
+                                            <!-- <input type="text" ng-model="searchObj.nationalityID.titleAr" placeholder="الجنسية " class="input-text"> -->
+                                        </th>                                        
+                                        
+                                        
+                                        <th class="col"> 
+                                            
+                                            <select ng-change="findData()"  ng-model="searchObj.cityID" id="cityID" class="input-text" >
+                                                    <option  selected value="">أختر المدينة </option>
+                                                    <option  ng-repeat="c in cities"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+                                            </select>
+                                        </th>                                        
+                                        <th class="col">
+                                            <select ng-change="findData()"  ng-model="searchObj.scientificSpecializationID" id="scientificSpecializationID" class="input-text" >
+                                                <option  selected value="">أختر التخصص العلمى  </option>
+                                                <option  ng-repeat="c in scientificSps"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+                                             </select>
+                                            
+                                        </th>                                        
+                                        <th class="col"> 
+                                        
+
+                                            <select ng-change="findData()"  ng-model="searchObj.graduationUniversityID" id="graduationUniversityID" class="input-text" >
+                                                <option  selected value="">أختر الجامعة   </option>
+                                                <option  ng-repeat="c in graduationUniversity"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+                                            </select>
+                                        </th>                                        
+
+                                        <th class="col"> 
+                                            <select ng-change="findData()"  ng-model="searchObj.experienceID" id="experienceID" class="input-text" >
+                                                <option  selected value="">أختر قطاع الخبرة    </option>
+                                                <option  ng-repeat="c in experience"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+                                            </select>
+                                            
+                                        </th>                                        
+                                        <th class="col"> 
+                                            
+                                            <select ng-change="findData()"  ng-model="searchObj.mostExperienceID" id="mostExperienceID" class="input-text" >
+                                                <option  selected value="">أختر  أغلب سنوات الخبرة    </option>
+                                                <option  ng-repeat="c in experience"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+                                            </select>
+                                        
+                                        </th>                                        
+                                        <th class="col">
+                                            <select ng-change="findData()"  ng-model="searchObj.yearsExperienceID" id="yearsExperienceID" class="input-text" >
+                                                <option  selected value="">أختر  سنوات الخبرة    </option>
+                                                <option  ng-repeat="c in yearsExperience"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+                                            </select>
+                                        
+                                        </th>         
+                                        <th class="col">
+                                            <select ng-change="findData()"  ng-model="searchObj.isWorked" id="isWorked" class="input-text" >
+                                                <option  selected value="">رأس العمل  </option>
+                                                <option   value="1">نعم   </option>
+                                                <option   value="2">لا   </option>
+
+                                        </select>
+                                        </th>
+                                        <th class="col"> <input type="text" ng-keydown="findData()" ng-model="searchObj.lastJob" placeholder=" اخر مسمى الوظيفى   " class="input-text"></th>                                        
+                                        <th class="col"> <input type="text" ng-keydown="findData()" ng-model="searchObj.graduationYear" placeholder="سنة التخرج  " class="input-text"></th>                                        
+                                        <th class="col"> <input type="text" ng-keydown="findData()" ng-model="searchObj.graduationPoint" placeholder="جهة التخرج  " class="input-text"></th>                                        
+                              
+                                        <th class="col">
+                                            <select ng-change="findData()"  ng-model="searchObj.socialStatus" id="socialStatus" class="input-text" >
+                                                <option  selected value="">الحالة الاجتماعية   </option>
+                                                <option   value="1">متزوج    </option>
+                                                <option   value="2">أعزب   </option>
+                                                <option   value="3">أرمل   </option>
+
+
+                                        </select>
+                                        <th class="col">
+                                            <select ng-change="findData()"  ng-model="searchObj.specialNeeds" id="specialNeeds" class="input-text" >
+                                                <option  selected value="">احتياجات خاصة    </option>
+                                                <option   value="1">نعم    </option>
+                                                <option   value="2">لا    </option>
+
+                                        </select>
+                                        </th>
+                                        <th class="col">
+                                            <select ng-change="findData()"  ng-model="searchObj.gender" id="gender" class="input-text" >
+                                                <option  selected value="">الجنس     </option>
+                                                <option   value="1">ذكر    </option>
+                                                <option   value="2">أنثى     </option>
+
+                                            </select>
+                                        </th>
+
+                                        <th class="col">
+                                            <select ng-change="findData()"  ng-model="searchObj.scientificDegree" id="scientificDegree" class="input-text" >
+                                                <option  selected value="">الدرجة العلمية     </option>
+                                                <option value="1"> دبلوم    </option>
+                                                <option value="2"> ثانوي     </option>
+                                                <option value="3"> ابتدائي     </option>
+                                                <option value="4"> متوسط     </option>
+                                                <option value="5"> جامعي     </option>
+                                                <option value="6"> ماجستير     </option>
+                                                <option value="7"> دكتوراه     </option>
+                                        </select>
+                                    </th>
+                                        <th class="col">
+                                            <select ng-change="findData()"  ng-model="searchObj.degree" id="degree" class="input-text" >
+                                                <option  selected value="">معدل التخرج      </option>
+                                                <option value="1">مقبول</option>
+                                                <option value="2">جيد</option>
+                                                <option value="3">جيد جدا</option>
+                                                <option value="4">ممتاز</option>
+                                        </select>
+                                        </th> 
+                                        <th class="col"> 
+                                            <select ng-change="findData()"  ng-model="searchObj.specializedCertificatesID" id="specializedCertificatesID" class="input-text" >
+                                                <option  selected value="">أختر الشهادة المتخصصة     </option>
+                                                <option  ng-repeat="c in specializedCertificates"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+                                            </select>
+                                            
+                                        
+                                        
+                                        </th>
+                                        <th class="col"> <input type="text" ng-keydown="findData()" ng-model="searchObj.neighborhood" placeholder="الحى السكنى   " class="input-text"></th>                                        
+                                        <th class="col"> 
+                                            <select ng-change="findData()"  ng-model="searchObj.level" id="level" class="input-text" >
+                                                <option  selected value="">   اللغة  الانجليزية      </option>
+                                                <option value="1">بدون لغة</option>
+                                                <option value="2">اساسيات</option>
+                                                <option value="3">جيد جدا</option>
+                                                <option value="4"> ممتاز </option>
+                                        </select>
+                                            <!-- <input type="text" disabled placeholder="الانجليزية     " class="input-text"> -->
+                                        </th>                                        
+
+                                        
+                                        <th class="col"> <input type="text" ng-keydown="findData()" ng-model="searchObj.description" placeholder="معلومات أخرى    " class="input-text"></th>                                        
+
+                                        
+                                        <th class="col"> اللغات      </th>
+
+                                         <th class="col"> الحالة      </th>
+
+                                         <th class="col"> التعديل      </th>
+
+  
+                                    </tr>
+
+
+                                    <tr  style="background-color: #269CD9; color: #fff; font-weight: bolder;" >
+                                        <th  style="background-color: #269CD9; color: #fff; font-weight: bolder;" class="col">التسلسل</th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col">الاسم الاول  </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col">الاسم الاخير   </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col">رقم الجوال   </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col">البريد    </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col">رقم الهوية </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col">الجنسية  </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col">المدينة   </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col">التخصص العلمى    </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col">الجامعة     </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> قطاع الخبرة     </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col">  تخصص اغلب سنوات الخبرة     </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> عدد سنوات الخبرة     </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> على رأس العمل      </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> أخر مسمى وظيفى       </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> سنة التخرج        </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> جهة التخرج        </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> الحالة الاجتماعية         </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> أحتياجات خاصة         </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> الجنس         </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> الدرجة العلمية         </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> معدل التخرج          </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> شهادات متخصصة           </th>
+
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> الحى السكنى         </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> الانجليزية          </th>
+
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> معلومات أخرى          </th>
+
+
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> اللغات      </th>
+
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> الحالة      </th>
+
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> التعديل      </th>
+
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody class="text-right">
+                                    <tr ng-if="!lang || ( lang == c.english)" ng-class="{'table-danger': c.status == 2 }" dir-paginate="c in allData |filter:searchText  
+                                    |filter:filterIDfirstName
+                                    |filter:filterIDlasttName
+                                    |filter:filterIDphoneNumber
+                                    |filter:filterIDemail
+                                    |filter:filterIDIDNumber
+                                    |filter:filterIDnationalityID
+                                    |filter:filterIDcityID
+                                    |filter:filterIDscientificSpecializationID
+                                    |filter:filterIDgraduationUniversityID
+                                    
+                                    | filter:filterIDexperienceID  
+                                    | filter:filterIDmostExperienceID  
+                                    | filter:filterIDyearsExperienceID  
+                                    |itemsPerPage:8">
+                                        <td>{{c.order ||  c.index}}</td>
+                                        <td>{{c.firstName}}</td>
+                                        <td>{{c.lastName}}</td>
+                                        <td>{{c.phoneNumber}}</td>
+                                        <td>{{c.email}}</td>
+                                        <td>{{c.IDNumber}}</td>
+                                        <td>{{c.nationalityID.titleAr}}</td>
+                                        <td>{{c.cityID.titleAr}}</td>
+                                        <td>{{c.scientificSpecializationID.titleAr}}</td>
+                                        <td>{{c.graduationUniversityID.titleAr}}</td>
+                                        <td>{{c.experienceID.titleAr}}</td>
+                                        <td>{{c.mostExperienceID.titleAr}}</td>
+                                        <td>{{c.yearsExperienceID.titleAr}}</td>
+
+                                        <td>
+                                                <span ng-if="c.isWorked == 1">نعم</span>
+                                                <span ng-if="c.isWorked == 2">لا</span>
+
+
+                                        </td>
+                                        <td>{{c.lastJob}}</td>
+                                        <td>{{c.graduationYear}}</td>
+                                        <td>{{c.graduationPoint}}</td>
+
+                                        <td>
+                                            <span ng-if="c.socialStatus == 1">متزوج</span>
+                                            <span ng-if="c.socialStatus == 2">أعزب </span>
+                                            <span ng-if="c.socialStatus == 3">أرمل </span>
+
+                                        </td>
+
+                                        <td>
+                                            <span ng-if="c.specialNeeds == 1">نعم </span>
+                                            <span ng-if="c.specialNeeds == 2">لا  </span>
+                                        </td>
+
+                                        <td>
+                                            <span ng-if="c.gender == 1">ذكر  </span>
+                                            <span ng-if="c.gender == 2">أنثى   </span>
+                                        </td>
+                                        <td>
+                                            <span ng-if="c.scientificDegree == 1">دبلوم  </span>
+                                            <span ng-if="c.scientificDegree == 2">ثانوي   </span>
+                                            <span ng-if="c.scientificDegree == 3">ابتدائي   </span>
+                                            <span ng-if="c.scientificDegree == 4">متوسط   </span>
+                                            <span ng-if="c.scientificDegree == 5">جامعي   </span>
+                                            <span ng-if="c.scientificDegree == 6">ماجستير   </span>
+                                            <span ng-if="c.scientificDegree == 7">دكتوراه   </span>
+                                        </td>
+                                        <td>
+                                            <span ng-if="c.degree == 1">مقبول  </span>
+                                            <span ng-if="c.degree == 2">جيد   </span>
+                                            <span ng-if="c.degree == 3">جيد جدا   </span>
+                                            <span ng-if="c.degree == 4">ممتاز   </span>
+                                           
+                                        </td>
+
+                                       
+                                       
+                                        <th class="col"> {{c.specializedCertificatesID.titleAr}}         </th>
+
+
+                                         <th class="col"> {{c.neighborhood}}         </th>
+                                         <th class="col"> 
+                                            <span ng-if="c.english == 1">بدون لغة  </span>
+                                            <span ng-if="c.english == 2">اساسيات   </span>
+                                            <span ng-if="c.english == 3">جيد جدا   </span>
+                                            <span ng-if="c.english == 4">ممتاز   </span>
+                                        </th>
+
+                                         <th class="col"> {{c.description}}            </th>
+
+
+                                         
+
+
+                                        <td>
+                                            <a href="/langLevelByData/{{c._id}}">
+                                              <i class="fas fa-edit" style="color:#666363"></i>
+                                            </a>
+                                          </td>
+                                      <td>
+                                        <div class="dropdown action-label">
+                                          <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                              <i ng-if="c.status == 1"  class="fa fa-dot-circle-o text-success"></i>
+                                               <span ng-if="c.status == 1">
+                                               نشظ
+                                              </span> 
+                                              <i ng-if="c.status == 2" class="fa fa-dot-circle-o text-danger"></i>
+                                              <span ng-if="c.status == 2">
+                                                غير نشظ 
+                                              </span>
+                                          </a>
+                                          <div class="dropdown-menu dropdown-menu-right">
+                                              <a class="dropdown-item"  ng-click="changeStatus(c._id , c , 1)"><i class="fa fa-dot-circle-o text-success"></i> نشظ</a>
+                                              <a class="dropdown-item"  ng-click="changeStatus(c._id , c , 2)"><i class="fa fa-dot-circle-o text-danger"></i> غير نشظ</a>
+                                          </div>
+                                      </div>
+                                      </td>
+                                     
+                                      <td>
+                                        <a href="/editCandidate/{{c._id}}">
+                                          <i class="fas fa-edit" style="color:#666363"></i>
+                                        </a>
+                                      </td>
+                                        
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+
+                            
+                        </div>
+                        <div style="width: 100%;" class="row">
+                            <dir-pagination-controls max-size="8"
+                            direction-links="true"
+                            boundary-links="true">
+                            </dir-pagination-controls>
+                       </div>
+                    </div>
+
+
+                  
+                </div>
+            </div>
+        </div>
+    
+    </div>			
+  </div>
+  
+
+  
+  <div ng-if="qalamLang == 'en'" class="page-wrapper">
+    <div class="content container-fluid">
+  
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col">
+                    <h3 class="page-title text-left">Candidates  Table</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Main</a></li>
+                        <li class="breadcrumb-item active"> Candidate  </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card mb-0">
+                    <div class="card-header text-left">
+                        <h4 class="card-title mb-0"></h4>
+                        <p class="card-text">
+                          <a href="/addCandidate" class="btn btn-primary">Add new </a>
+                          <a href="" data-toggle="modal" data-target=".bd-example-modal-lg"  class="btn btn-primary">search  </a>  
+                          <a ng-click="exportExcel()" href="" class="btn btn-primary">Export Excel  </a> 
+                          <!-- <span class="text-right">
+                              {{allData.length}}
+                          </span>     -->
+                        </p>
+                    </div>
+                    <div class="card-body">
+  
+                        <div class="table-responsive">
+                            <table class="datatable table table-bordered table-hover  text-center mb-0 table2excel_with_colors">
+                                <thead>
+                                    <tr >
+                                        <th> <input disabled type="text" ng-model="searchObj.order" placeholder="The Sequence " class="input-text"></th>
+                                        <th> <input type="text" ng-model="searchObj.firstName" placeholder="First Name " class="input-text"></th>
+                                        
+                                            
+                                        <th> <input type="text" ng-model="searchObj.lastName" placeholder="Last Name " class="input-text"></th>                                        
+                                        <th> <input type="text" ng-model="searchObj.phoneNumber" placeholder="Phone Number " class="input-text"></th>                                        
+                                        <th> <input type="text" ng-model="searchObj.email" placeholder="email " class="input-text"></th>                                        
+                                        <th> <input type="text" ng-model="searchObj.IDNumber" placeholder="Identity " class="input-text"></th>                                        
+                                        
+                                        
+                                        <th class="col"> 
+                                            
+                                            <select ng-change="findData()" ng-model="searchObj.nationalityID" id="nationalityID" class="input-text" >
+                                                <option  selected value="">أختر الجنسية </option>
+
+                                                <option  ng-repeat="c in nationality"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+                                            </select>
+                                            
+                                            <!-- <input type="text" ng-model="searchObj.nationalityID.titleAr" placeholder="الجنسية " class="input-text"> -->
+                                        </th>                                        
+                                        
+                                        
+                                        <th class="col"> 
+                                            
+                                            <select ng-change="findData()"  ng-model="searchObj.cityID" id="cityID" class="input-text" >
+                                                    <option  selected value="">Choose City </option>
+                                                    <option  ng-repeat="c in cities"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+                                            </select>
+                                        </th>                                        
+                                        <th class="col">
+                                            <select ng-change="findData()"  ng-model="searchObj.scientificSpecializationID" id="scientificSpecializationID" class="input-text" >
+                                                <option  selected value="">Choose Scientific   </option>
+                                                <option  ng-repeat="c in scientificSps"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+                                             </select>
+                                            
+                                        </th>                                        
+                                        <th class="col"> 
+                                        
+
+                                            <select ng-change="findData()"  ng-model="searchObj.graduationUniversityID" id="graduationUniversityID" class="input-text" >
+                                                <option  selected value="">Choose University   </option>
+                                                <option  ng-repeat="c in graduationUniversity"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+                                            </select>
+                                        </th>                                        
+
+                                        <th class="col"> 
+                                            <select ng-change="findData()"  ng-model="searchObj.experienceID" id="experienceID" class="input-text" >
+                                                <option  selected value="">Choose experience    </option>
+                                                <option  ng-repeat="c in experience"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+                                            </select>
+                                            
+                                        </th>                                        
+                                        <th class="col"> 
+                                            
+                                            <select ng-change="findData()"  ng-model="searchObj.mostExperienceID" id="mostExperienceID" class="input-text" >
+                                                <option  selected value="">Choose Most Experience   </option>
+                                                <option  ng-repeat="c in experience"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+                                            </select>
+                                        
+                                        </th>                                        
+                                        <th class="col">
+                                            <select ng-change="findData()"  ng-model="searchObj.yearsExperienceID" id="yearsExperienceID" class="input-text" >
+                                                <option  selected value="">Choose Experience Years     </option>
+                                                <option  ng-repeat="c in yearsExperience"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+                                            </select>
+                                        
+                                        </th>  
+                                        <th class="col">
+                                            <select ng-change="findData()"  ng-model="searchObj.isWorked" id="isWorked" class="input-text" >
+                                                <option  selected value="">Working Now  </option>
+                                                <option   value="1">Yes   </option>
+                                                <option   value="2">No   </option>
+
+                                        </select>
+                                        </th>
+                                        <th class="col"> <input type="text" ng-keydown="findData()" ng-model="searchObj.lastJob" placeholder="last Job Title " class="input-text"></th>                                        
+                                        <th class="col"> <input type="text" ng-keydown="findData()" ng-model="searchObj.graduationYear" placeholder="Graduation Year  " class="input-text"></th>                                        
+                                        <th class="col"> <input type="text" ng-keydown="findData()" ng-model="searchObj.graduationPoint" placeholder="GraduationPoint   " class="input-text"></th>                                        
+                                            
+                                        
+
+
+                                        <th class="col">
+                                            <select ng-change="findData()"  ng-model="searchObj.socialStatus" id="socialStatus" class="input-text" >
+                                                <option  selected value="">social Status   </option>
+                                                <option   value="1">Married    </option>
+                                                <option   value="2">Single   </option>
+                                                <option   value="3">Widower   </option>
+
+
+                                        </select>
+                                        <th class="col">
+                                            <select ng-change="findData()"  ng-model="searchObj.specialNeeds" id="specialNeeds" class="input-text" >
+                                                <option  selected value="">special Needs    </option>
+                                                <option   value="1">Yes    </option>
+                                                <option   value="2">No    </option>
+
+                                        </select>
+                                        </th>
+                                        <th class="col">
+                                            <select ng-change="findData()"  ng-model="searchObj.gender" id="gender" class="input-text" >
+                                                <option  selected value="">Gender     </option>
+                                                <option   value="1">Male    </option>
+                                                <option   value="2">Female     </option>
+
+                                        </select>
+                                        </th>
+
+                                        <th class="col">
+                                            <select ng-change="findData()"  ng-model="searchObj.scientificDegree" id="scientificDegree" class="input-text" >
+                                                <option  selected value="">Scientific Degree     </option>
+                                                <option value="1"> diploma    </option>
+                                                <option value="2"> secondary     </option>
+                                                <option value="3"> Primary     </option>
+                                                <option value="4"> middle     </option>
+                                                <option value="5"> University     </option>
+                                                <option value="6"> M.A.     </option>
+                                                <option value="7"> Ph.D     </option>
+                                        </select>
+                                    </th>
+                                        <th class="col">
+                                            <select ng-change="findData()"  ng-model="searchObj.degree" id="degree" class="input-text" >
+                                                <option  selected value="">Degree      </option>
+                                                <option value="1">Pass</option>
+                                                <option value="2">Good</option>
+                                                <option value="3">Very Good</option>
+                                                <option value="4">Excellent</option>
+                                        </select>
+                                        </th> 
+                                        <th class="col"> 
+                                            <select ng-change="findData()"  ng-model="searchObj.specializedCertificatesID" id="specializedCertificatesID" class="input-text" >
+                                                <option  selected value="">Specialized Certificates     </option>
+                                                <option  ng-repeat="c in specializedCertificates"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+                                            </select>
+                                            
+                                        
+                                        
+                                        </th>
+                                        <th class="col"> <input type="text" ng-keydown="findData()" ng-model="searchObj.neighborhood" placeholder="neighborhood   " class="input-text"></th>                                        
+                                     
+                                        <th class="col"> 
+                                            <select ng-change="findData()"  ng-model="searchObj.level" id="level" class="input-text" >
+                                                <option  selected value="">   English      </option>
+                                                <option value="1">Without </option>
+                                                <option value="2">Fundamentals</option>
+                                                <option value="3">very good</option>
+                                                <option value="4"> Excellent </option>
+                                             </select>
+                                        
+                                        </th>                                        
+
+                                        <th class="col"> <input type="text" ng-keydown="findData()" ng-model="searchObj.description" placeholder="description    " class="input-text"></th>                                        
+
+
+
+
+
+                                        <th> Languages     </th>
+                                        <th> Status </th>
+                                        <th> Edit </th>
+  
+  
+                                    </tr>
+                                    
+                                    <tr  style="background-color: #269CD9; color: #fff; font-weight: bolder;" >
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;" > The Sequence</th>
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;" > First Name</th>
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;" > Last Name</th>
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;" > Mobile</th>
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;" > Email    </th>
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;" > Identity </th>
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;" > Nationality  </th>
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;" > City   </th>
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;" > Scientific Specialization    </th>
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;" > University     </th>
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;" > Experience     </th>
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;" > Most Experience     </th>
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;" > Experience Years     </th>
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> Is Working       </th>
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> Last Job Title       </th>
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> Graduation Year        </th>
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> Graduation Point        </th>
+
+
+
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> Scial Status         </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> Special Needs         </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> Gender         </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> Scientific Degree         </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> Degree          </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> Specialized Certificates           </th>
+
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> neighborhood         </th>
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> English         </th>
+
+                                         <th style="background-color: #269CD9; color: #fff; font-weight: bolder;"  class="col"> Description          </th>
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;" > Languages     </th>
+
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;" > Status </th>
+                                        <th style="background-color: #269CD9; color: #fff; font-weight: bolder;" > Edit </th>
+  
+  
+                                    </tr>
+                                </thead>
+                                <tbody class="text-left">
+                                    <tr ng-class="{'table-danger': c.status == 2 }" dir-paginate="c in allData 
+                                        |filter:searchText  
+                                        |filter:filterIDfirstName
+                                        |filter:filterIDlasttName
+                                        |filter:filterIDphoneNumber
+                                        |filter:filterIDemail
+                                        |filter:filterIDIDNumber
+                                        |filter:filterIDnationalityID
+                                        |filter:filterIDcityID
+                                        |filter:filterIDscientificSpecializationID
+                                        |filter:filterIDgraduationUniversityID
+                                        
+                                        | filter:filterIDexperienceID  
+                                        | filter:filterIDmostExperienceID  
+                                        | filter:filterIDyearsExperienceID 
+                                        | itemsPerPage:8">
+                                      <td>{{c.order ||  c.index}}</td>
+                                      <td>{{c.firstName}}</td>
+                                      <td>{{c.lastName}}</td>
+                                      <td>{{c.phoneNumber}}</td>
+                                      <td>{{c.email}}</td>
+                                      <td>{{c.IDNumber}}</td>
+                                      <td>{{c.nationalityID.titleEN}}</td>
+                                      <td>{{c.cityID.titleEN}}</td>
+                                      <td>{{c.scientificSpecializationID.titleEN}}</td>
+                                      <td>{{c.graduationUniversityID.titleEN}}</td>
+                                      <td>{{c.experienceID.titleEN}}</td>
+                                      <td>{{c.mostExperienceID.titleEN}}</td>
+                                      <td>{{c.yearsExperienceID.titleEN}}</td>
+
+                                      
+
+                                      <td>
+                                        <span ng-if="c.isWorked == 1">Yes</span>
+                                        <span ng-if="c.isWorked == 2">No</span>
+
+
+                                </td>
+                                <td>{{c.lastJob}}</td>
+                                <td>{{c.graduationYear}}</td>
+                                <td>{{c.graduationPoint}}</td>
+
+
+                                <td>
+                                    <span ng-if="c.socialStatus == 1">Married</span>
+                                    <span ng-if="c.socialStatus == 2">Single </span>
+                                    <span ng-if="c.socialStatus == 3">Widower </span>
+
+                                </td>
+
+                                <td>
+                                    <span ng-if="c.specialNeeds == 1">Yes </span>
+                                    <span ng-if="c.specialNeeds == 2">No </span>
+                                </td>
+
+                                <td>
+                                    <span ng-if="c.gender == 1">Male   </span>
+                                    <span ng-if="c.gender == 2">Female   </span>
+                                </td>
+                                <td>
+
+                                    
+                                    <span ng-if="c.scientificDegree == 1">diploma  </span>
+                                    <span ng-if="c.scientificDegree == 2">secondary   </span>
+                                    <span ng-if="c.scientificDegree == 3">Primary   </span>
+                                    <span ng-if="c.scientificDegree == 4">middle   </span>
+                                    <span ng-if="c.scientificDegree == 5">University   </span>
+                                    <span ng-if="c.scientificDegree == 6">M.A.   </span>
+                                    <span ng-if="c.scientificDegree == 7">Ph.D     </span>
+                                </td>
+                                <td>
+                                   
+                                    <span ng-if="c.degree == 1">Pass  </span>
+                                    <span ng-if="c.degree == 2">Good   </span>
+                                    <span ng-if="c.degree == 3">Very Good   </span>
+                                    <span ng-if="c.degree == 4">Excellent   </span>
+                                   
+                                </td>
+
+                               
+                               
+                                <th class="col"> {{c.specializedCertificatesID.titleEN}}         </th>
+
+
+                                 <th class="col"> {{c.neighborhood}}         </th>
+                                 <th class="col">
+                                    <span ng-if="c.english == 1">Without Lang  </span>
+                                    <span ng-if="c.english == 2">Fundamentals   </span>
+                                    <span ng-if="c.english == 3">very good   </span>
+                                    <span ng-if="c.english == 4">Excellent   </span>
+                                </th>
+
+                                 <th class="col"> {{c.description}}            </th>
+
+                                      <td>
+                                        <a href="/langLevelByData/{{c._id}}">
+                                          <i class="fas fa-edit" style="color:#666363"></i>
+                                        </a>
+                                      </td>
+
+                                      <td>
+                                        <div class="dropdown action-label">
+                                          <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                              <i  ng-if="c.status == 1"  class="fa fa-dot-circle-o text-success"></i>
+                                               <span ng-if="c.status == 1">
+                                                Active
+                                              </span> 
+                                              <i  ng-if="c.status == 2"  class="fa fa-dot-circle-o text-danger"></i>
+                                              <span ng-if="c.status == 2">
+                                                Not Active 
+                                              </span>
+                                          </a>
+                                          <div class="dropdown-menu dropdown-menu-right">
+                                              <a class="dropdown-item"    ng-click="changeStatus(c._id , c , 1)" ><i class="fa fa-dot-circle-o text-success"></i> Active</a>
+                                              <a class="dropdown-item"    ng-click="changeStatus(c._id , c , 2)" ><i class="fa fa-dot-circle-o text-danger"></i> Not Active</a>
+                                          </div>
+                                      </div>
+                                      </td>
+                                      <td>
+                                        <a href="/editCandidate/{{c._id}}">
+                                          <i class="fas fa-edit" style="color:#666363"></i>
+                                        </a>
+                                      </td>
+                                    </tr>
+                                   
+                                </tbody>
+                            </table>
+                        </div>
+
+                        
+                        <div style="width: 100%;" class="row">
+                            <dir-pagination-controls max-size="8"
+                            direction-links="true"
+                            boundary-links="true">
+                            </dir-pagination-controls>
+                       </div>
+
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>			
+  </div>
+
+
+
+
+
+
+  <div ng-if="!qalamLang || qalamLang == 'ar'" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content p-4">
+        <form  ng-submit="findData()" style="direction: rtl;">
+          <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group text-right">
+                    <h4 >التاريخ من    </h4>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="form-group">
+                    <input ng-model="searchObj.dateFrom" id="dateFrom" type="date" class="form-control"   >
+                </div>
+            </div>
+            
+        </div>
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+              <div class="form-group text-right">
+                  <h4 >التاريخ الى    </h4>
+              </div>
+          </div>
+          <div class="col-md-4 col-sm-6">
+              <div class="form-group">
+                  <input ng-model="searchObj.dateTo" id="dateTo" type="date" class="form-control"   >
+              </div>
+          </div>
+          
+        </div>
+          <div class="row">
+              <div class="col-md-3 col-sm-6">
+                  <div class="form-group text-right">
+                      <h4 >الأسـم  الاول   </h4>
+                  </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                  <div class="form-group">
+                      <input ng-model="searchObj.firstName" id="firstName" type="text" class="form-control"   >
+                  </div>
+              </div>
+              
+          </div>
+          <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group text-right">
+                    <h4 >الأسـم  الاخير    </h4>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="form-group">
+                    <input ng-model="searchObj.lasttName" id="lasttName" type="text" class="form-control"   >
+                </div>
+            </div>
+            
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-right">
+                            <h4 > الحالة الاجتماعية               </h4>
+                      
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                            <select ng-model="searchObj.socialStatus" id="socialStatus" class="form-control" >
+                                
+                                <option value="1">متزوج</option>
+                                <option value="2">أعزب</option>
+                                <option value="3">مطلق</option>
+                              
+                                   
+                            </select>
+                    </div>
+            </div>
+        </div>
+
+        
+          <div class="row">
+              <div class="col-md-3 col-sm-6">
+                      <div class="form-group text-right">
+                          <h4 >رقم الجوال    </h4>
+                         
+                      </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                      <div class="form-group">
+                          <input ng-model="searchObj.phoneNumber" id="phoneNumber"  class="form-control"   >
+                      </div>
+              </div>
+                  
+          </div>
+        
+          <div class="row">
+                  <div class="col-md-3 col-sm-6">
+                          <div class="form-group text-right">
+                              <h4 >البريد الالكترونى     </h4>
+                          </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6">
+                          <div class="form-group">
+                              <input ng-model="searchObj.email"  id="email" type="email" class="form-control"   >
+                          </div>
+                  </div>
+                      
+          </div>
+          <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-right">
+                            <h4 >الجنسية             </h4>
+                      
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                            <select ng-model="searchObj.nationalityID" id="nationalityID" class="form-control" >
+                                    <option  ng-repeat="c in nationality"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+        
+                            </select>
+                    </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-right">
+                            <h4 >المدينة            </h4>
+                      
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                            <select ng-model="searchObj.cityID" id="cityID" class="form-control" >
+                                    <option  ng-repeat="c in cities"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+        
+                            </select>
+                    </div>
+            </div>
+        </div>
+        
+          <div class="row">
+                  <div class="col-md-3 col-sm-6">
+                          <div class="form-group text-right">
+                              <h4 >الجنس      </h4>
+                          </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6">
+                          <div class="form-group">
+                                  <select ng-model="searchObj.gender"  id="gender" class="form-control" >
+                                          <option  value="1">ذكر </option>
+                                          <option value="2" >أنثى  </option>
+        
+                                  </select>
+                          </div>
+                  </div>
+                      
+          </div>
+        
+          <div class="row">
+                  <div class="col-md-3 col-sm-6">
+                          <div class="form-group text-right">
+                              <h4 >احتياجات خاصة       </h4>
+                          </div>
+                  </div>
+                  <div class="col-md-4 col-sm-6">
+                          <div class="form-group">
+                                  <select  ng-model="searchObj.specialNeeds" id="specialNeeds" class="form-control" >
+                                          <option  value="1">نعم   </option>
+                                          <option value="2" >لا   </option>
+        
+                                  </select>
+                          </div>
+                  </div>
+                      
+          </div>
+        
+          <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-right">
+                        <h4 >الحالة       </h4>
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                            <select ng-model="searchObj.status"  id="status" class="form-control" >
+                                    <option     value="1">نشط </option>
+                                    <option     value="2" >غير نشط   </option>
+  
+                            </select>
+                    </div>
+            </div>
+                
+         </div>
+
+
+
+        
+         <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-right">
+                            <h4 >الدرجة العلمية             </h4>
+                      
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                            <select ng-model="searchObj.scientificDegree" id="scientificDegree" class="form-control" >
+                                    <option   value="1">    دبلوم </option>
+                                    <option   value="2">    ثانوي </option>
+                                    <option   value="3">    ابتدائي </option>
+                                    <option   value="4">    متوسط </option>
+                                    <option   value="5">    جامعي </option>
+                                    <option   value="6">    ماجستير </option>
+                                    <option   value="7">    دكتوراه </option>
+                            </select>
+                    </div>
+            </div>
+        </div>
+
+        
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-right">
+                            <h4 >التخصص العلمى             </h4>
+                      
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                            <select ng-model="searchObj.scientificSpecializationID" id="scientificSpecializationID" class="form-control" >
+                                    <option  ng-repeat="c in scientificSps"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+        
+                            </select>
+                    </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-right">
+                            <h4 >        الجامعة     </h4>
+                      
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                            <select ng-model="searchObj.graduationUniversityID" id="graduationUniversityID" class="form-control" >
+                                    <option  ng-repeat="c in graduationUniversity"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+        
+                            </select>
+                    </div>
+            </div>
+        </div>
+        
+        
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-right">
+                            <h4 > معدل التخرج               </h4>
+                      
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                            <select ng-model="searchObj.degree" id="degree" class="form-control" >
+                                
+                                <option value="1">مقبول</option>
+                                <option value="2">جيد</option>
+                                <option value="3">جيد جدا</option>
+                                <option value="4">ممتاز</option>
+                                   
+                            </select>
+                    </div>
+            </div>
+        </div>
+
+       
+
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-right">
+                            <h4 >    قطاع     الخـبرة     </h4>
+                      
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                            <select ng-model="searchObj.experienceID" id="experienceID" class="form-control" >
+                                    <option  ng-repeat="c in experience"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+        
+                            </select>
+                    </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-right">
+                            <h4 >        تخصص اغلب سنوات الخبرة     </h4>
+                      
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                            <select ng-model="searchObj.mostExperienceID" id="mostExperienceID" class="form-control" >
+                                    <option  ng-repeat="c in experience"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+        
+                            </select>
+                    </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-right">
+                            <h4 >        عدد سنوات الخبرة     </h4>
+                      
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                            <select ng-model="searchObj.yearsExperienceID" id="yearsExperienceID" class="form-control" >
+                                    <option  ng-repeat="c in experience"  value="{{c._id}}">{{c.titleAr || c.titleEN}}</option>
+        
+                            </select>
+                    </div>
+            </div>
+        </div>
+
+       
+
+
+
+
+      
+   
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-right">
+                        <h4 >معلومات أخرى      </h4>
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                        <input ng-model="searchObj.description"  id="description" type="text" class="form-control"   >
+                    </div>
+            </div>
+                
+        </div>
+
+
+        
+
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-right">
+                            <h4 >        على رأس العمل      </h4>
+                    
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                            <select ng-model="searchObj.isWorked" id="isWorked" class="form-control" >
+                                    <option value="1"> نعم </option>
+                                    <option value="2"> لا  </option>    
+                            </select>
+                    </div>
+            </div>
+        </div>  
+
+
+
+
+         
+
+
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-right">
+                        <h4 >أخر مسمى وظيفى     </h4>
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                        <input ng-model="searchObj.lastJob"  id="lastJob" type="text" class="form-control"   >
+                    </div>
+            </div>
+            
+        </div>
+      
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-right">
+                        <h4 >سنة التخرج     </h4>
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                        <input ng-model="searchObj.graduationYear"  id="graduationYear" type="text" class="form-control"   >
+                    </div>
+            </div>
+            
+        </div>
+    
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-right">
+                        <h4 >جهة التخرج     </h4>
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                        <input ng-model="searchObj.graduationPoint"  id="graduationPoint" type="text" class="form-control"   >
+                    </div>
+            </div>
+            
+        </div>
+    
+      
+
+        
+          <div class="col-lg-12 col-md-12 col-xs-12">
+                  <button type="submit" class="btn-success px-4" style="font-size:2vh; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;display:inline-block;margin-right: 5px; margin-left: 5px; ">بحـث   </button>
+                 
+                  <a  data-dismiss="modal"  class="btn-danger px-4" style="font-size:2vh; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;font-weight:bold;display:inline-block;margin-right: 5px; margin-left: 5px">أغلاق </a>
+              </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div ng-if="qalamLang == 'en'" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content p-4">
+        <form  ng-submit="findData()" style="direction: ltr;">
+            <div class="row">
+              <div class="col-md-3 col-sm-6">
+                  <div class="form-group text-left">
+                      <h4 >Date From    </h4>
+                  </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                  <div class="form-group">
+                      <input ng-model="searchObj.dateFrom" id="dateFrom" type="date" class="form-control"   >
+                  </div>
+              </div>
+              
+          </div>
+          <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="form-group text-left">
+                    <h4 >Date To     </h4>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="form-group">
+                    <input ng-model="searchObj.dateTo" id="dateTo" type="date" class="form-control"   >
+                </div>
+            </div>
+            
+          </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-left">
+                        <h4 >First Name   </h4>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                        <input ng-model="searchObj.firstName" id="firstName" type="text" class="form-control"   >
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row">
+              <div class="col-md-3 col-sm-6">
+                  <div class="form-group text-left">
+                      <h4 >Last Name    </h4>
+                  </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                  <div class="form-group">
+                      <input ng-model="searchObj.lasttName" id="lasttName" type="text" class="form-control"   >
+                  </div>
+              </div>
+              
+          </div>
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                        <div class="form-group text-left">
+                            <h4 >Mobile    </h4>
+                           
+                        </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                        <div class="form-group">
+                            <input ng-model="searchObj.phoneNumber" id="phoneNumber"  class="form-control"   >
+                        </div>
+                </div>
+                    
+            </div>
+          
+            <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                            <div class="form-group text-left">
+                                <h4 >Email     </h4>
+                            </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                            <div class="form-group">
+                                <input ng-model="searchObj.email"  id="email" type="email" class="form-control"   >
+                            </div>
+                    </div>
+                        
+            </div>
+          
+            <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                            <div class="form-group text-left">
+                                <h4 >Gender      </h4>
+                            </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                            <div class="form-group">
+                                    <select ng-model="searchObj.gender"  id="gender" class="form-control" >
+                                            <option  value="1">Male </option>
+                                            <option value="2" >Female  </option>
+          
+                                    </select>
+                            </div>
+                    </div>
+                        
+            </div>
+          
+            <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                            <div class="form-group text-left">
+                                <h4 >special Needs       </h4>
+                            </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                            <div class="form-group">
+                                    <select  ng-model="searchObj.specialNeeds" id="specialNeeds" class="form-control" >
+                                            <option  value="1">Yes   </option>
+                                            <option value="2" > No   </option>
+          
+                                    </select>
+                            </div>
+                    </div>
+                        
+            </div>
+          
+            <div class="row">
+              <div class="col-md-3 col-sm-6">
+                      <div class="form-group text-left">
+                          <h4 >Status       </h4>
+                      </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                      <div class="form-group">
+                              <select ng-model="searchObj.status"  id="status" class="form-control" >
+                                      <option     value="1">Active </option>
+                                      <option     value="2" >Not Active   </option>
+    
+                              </select>
+                      </div>
+              </div>
+                  
+           </div>
+  
+  
+  
+           <div class="row">
+              <div class="col-md-3 col-sm-6">
+                      <div class="form-group text-left">
+                              <h4 >Nationality             </h4>
+                        
+                      </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                      <div class="form-group">
+                              <select ng-model="searchObj.nationalityID" id="nationalityID" class="form-control" >
+                                      <option  ng-repeat="c in nationality"  value="{{c._id}}">{{c.titleEN || c.titleAr}}</option>
+          
+                              </select>
+                      </div>
+              </div>
+          </div>
+  
+  
+          <div class="row">
+              <div class="col-md-3 col-sm-6">
+                      <div class="form-group text-left">
+                              <h4 >City            </h4>
+                        
+                      </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                      <div class="form-group">
+                              <select ng-model="searchObj.cityID" id="cityID" class="form-control" >
+                                      <option  ng-repeat="c in cities"  value="{{c._id}}">{{  c.titleEN ||   c.titleAr}}</option>
+          
+                              </select>
+                      </div>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-3 col-sm-6">
+                      <div class="form-group text-left">
+                              <h4 >Scientific Specialization           </h4>
+                        
+                      </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                      <div class="form-group">
+                              <select ng-model="searchObj.scientificSpecializationID" id="scientificSpecializationID" class="form-control" >
+                                      <option  ng-repeat="c in scientificSps"  value="{{c._id}}">{{  c.titleEN ||  c.titleAr}}</option>
+          
+                              </select>
+                      </div>
+              </div>
+          </div>
+  
+  
+  
+          
+          <div class="row">
+              <div class="col-md-3 col-sm-6">
+                      <div class="form-group text-left">
+                              <h4 >scientific Degree              </h4>
+                        
+                      </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                      <div class="form-group">
+                              <select ng-model="searchObj.scientificDegree" id="scientificDegree" class="form-control" >
+                                      <option   value="1">    diploma </option>
+                                      <option   value="2">    secondary </option>
+                                      <option   value="3">    Primary </option>
+                                      <option   value="4">    middle </option>
+                                      <option   value="5">    University </option>
+                                      <option   value="6">    M.A.  </option>
+                                      <option   value="7">    Ph.D       </option>
+                              </select>
+                      </div>
+              </div>
+          </div>
+  
+
+
+          <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-left">
+                            <h4 > Degree              </h4>
+                      
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                            <select ng-model="searchObj.degree" id="degree" class="form-control" >
+                                <option value="1">pass</option>
+                                <option value="2">good</option>
+                                <option value="3">very good</option>
+                                <option value="4">Excellent</option>
+                                
+                                   
+                            </select>
+                    </div>
+            </div>
+        </div>
+          <div class="row">
+              <div class="col-md-3 col-sm-6">
+                      <div class="form-group text-left">
+                              <h4 >        University     </h4>
+                        
+                      </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                      <div class="form-group">
+                              <select ng-model="searchObj.graduationUniversityID" id="graduationUniversityID" class="form-control" >
+                                      <option  ng-repeat="c in graduationUniversity"  value="{{c._id}}">{{c.titleEN || c.titleAr}}</option>
+          
+                              </select>
+                      </div>
+              </div>
+          </div>
+  
+  
+          <div class="row">
+              <div class="col-md-3 col-sm-6">
+                      <div class="form-group text-left">
+                              <h4 >        experience     </h4>
+                        
+                      </div>
+              </div>
+              <div class="col-md-4 col-sm-6">
+                      <div class="form-group">
+                              <select ng-model="searchObj.experienceID" id="experienceID" class="form-control" >
+                                      <option  ng-repeat="c in experience"  value="{{c._id}}">{{c.titleEN || c.titleAr}}</option>
+                              </select>
+                      </div>
+              </div>
+          </div>
+
+
+
+
+
+
+          
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-left">
+                            <h4 >        Most Experience Years     </h4>
+                      
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                            <select ng-model="searchObj.mostExperienceID" id="mostExperienceID" class="form-control" >
+                                    <option  ng-repeat="c in experience"  value="{{c._id}}">{{c.titleEN || c.titleAr}}</option>
+        
+                            </select>
+                    </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-left">
+                            <h4 >        Experience Years      </h4>
+                      
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                            <select ng-model="searchObj.yearsExperienceID" id="yearsExperienceID" class="form-control" >
+                                    <option  ng-repeat="c in experience"  value="{{c._id}}">{{c.titleEN || c.titleAr}}</option>
+        
+                            </select>
+                    </div>
+            </div>
+        </div>
+
+       
+
+
+
+
+      
+   
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-left">
+                        <h4 >Other Info      </h4>
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                        <input ng-model="searchObj.description"  id="description" type="text" class="form-control"   >
+                    </div>
+            </div>
+                
+        </div>
+
+
+        
+
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-left">
+                            <h4 >        Working Now      </h4>
+                    
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                            <select ng-model="searchObj.isWorked" id="isWorked" class="form-control" >
+                                    <option value="1"> Yes </option>
+                                    <option value="2"> No  </option>    
+                            </select>
+                    </div>
+            </div>
+        </div>  
+
+
+
+
+         
+
+
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-left">
+                        <h4 >Last Job Title     </h4>
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                        <input ng-model="searchObj.lastJob"  id="lastJob" type="text" class="form-control"   >
+                    </div>
+            </div>
+            
+        </div>
+      
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-left">
+                        <h4 >Graduation Year     </h4>
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                        <input ng-model="searchObj.graduationYear"  id="graduationYear" type="text" class="form-control"   >
+                    </div>
+            </div>
+            
+        </div>
+    
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                    <div class="form-group text-left">
+                        <h4 >Graduation Point     </h4>
+                    </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                    <div class="form-group">
+                        <input ng-model="searchObj.graduationPoint"  id="graduationPoint" type="text" class="form-control"   >
+                    </div>
+            </div>
+            
+        </div>
+    
+
+
+
+
+
+
+
+
+
+  
+          
+            <div class="col-lg-12 col-md-12 col-xs-12 text-right">
+                    <button type="submit" class="btn-success px-4" style="font-size:2vh; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;display:inline-block;margin-right: 5px; margin-left: 5px; ">Search    </button>
+                   
+                    <a  data-dismiss="modal"  class="btn-danger px-4" style="font-size:2vh; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;font-weight:bold;display:inline-block;margin-right: 5px; margin-left: 5px">Close </a>
+                </div>
+          </form>
+      </div>
+    </div>
+  </div>
+   
+  
+  
+
+  <div class="row">
+    <div class="col-md-12" id="requestdiv"  hidden>
+            <table id="tblCustomerss" style="width: 100%" class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th> The Sequence</th>
+                        <th> First Name</th>
+                        <th> Last Name</th>
+                        <th> Mobile</th>
+                        <th> Email    </th>
+                        <th> Identity </th>
+                        <th> Nationality  </th>
+                        <th> City   </th>
+                        <th> Scientific Specialization    </th>
+                        <th> University     </th>
+                        <th> Experience     </th>
+                        <th> Most Experience     </th>
+                        <th> Experience Years     </th>
+                        <th> CV     </th>
+                        <th class="col"> Is Working       </th>
+                        <th class="col"> Last Job Title       </th>
+                        <th class="col"> Graduation Year        </th>
+                        <th class="col"> Graduation Point        </th>
+
+
+                        <th class="col"> Scial Status         </th>
+                        <th class="col"> Special Needs         </th>
+                        <th class="col"> Gender         </th>
+                        <th class="col"> Scientific Degree         </th>
+                        <th class="col"> Degree          </th>
+                        <th class="col"> Specialized Certificates           </th>
+
+                        <th class="col"> neighborhood         </th>
+                        <th class="col"> English         </th>
+
+                        <th class="col"> description          </th>
+
+                      
+                
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="c in allData 
+               ">
+                    <td>{{c.order ||  c.index}}</td>
+                    <td>{{c.firstName}}</td>
+                    <td>{{c.lastName}}</td>
+                    <td>{{c.phoneNumber}}</td>
+                    <td>{{c.email}}</td>
+                    <td>{{c.IDNumber}}</td>
+                    <td>{{c.nationalityID.titleAr}}</td>
+                    <td>{{c.cityID.titleEN}}</td>
+                    <td>{{c.scientificSpecializationID.titleEN}}</td>
+                    <td>{{c.graduationUniversityID.titleEN}}</td>
+                    <td>{{c.experienceID.titleEN}}</td>
+                    <td>{{c.mostExperienceID.titleEN}}</td>
+                    <td>{{c.yearsExperienceID.titleEN}}</td>
+                    <td>{{c.cv}}</td>
+                    <td>{{c.isWorkeda}}</td>
+
+                <td>{{c.lastJob}}</td>
+                <td>{{c.graduationYear}}</td>
+                <td>{{c.graduationPoint}}</td>
+
+
+
+                
+                <td>
+
+                    {{c.socialStatusa}}
+                   
+                </td>
+
+                <td>
+                    {{c.specialNeedsa}}
+                   
+                </td>
+
+                <td>
+                    {{c.gendera}}
+                   
+                </td>
+                <td>
+                    {{c.scientificDegreea}}
+                    
+                  
+                </td>
+                <td>
+                    {{c.degreea}}
+                    
+                   
+                </td>
+
+               
+               
+                <th class="col"> {{c.specializedCertificatesID.titleEN}}         </th>
+
+
+                 <th class="col"> {{c.neighborhood}}         </th>
+                 <th class="col"> {{c.english}}         </th>
+
+                 <th class="col"> {{c.description}}            </th>
+
+
+                 
+                   
+
+    
+                </tr>
+            </tbody>
+                </table>
+        </div>
+</div>

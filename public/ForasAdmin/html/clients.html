@@ -1,0 +1,320 @@
+
+<div ng-if="!qalamLang || qalamLang == 'ar'" class="page-wrapper">
+    <div ng-if="!view || view == 1" class="content container-fluid">
+  
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col">
+                    <h3 class="page-title text-right">جدول العملاء       </h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">الرئيسية </a></li>
+                        <li class="breadcrumb-item active">العملاء   </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card mb-0">
+                    <div class="card-header text-right">
+                        <h4 class="card-title mb-0"></h4>
+                        <p class="card-text">
+                          <a href="/addClient" class="btn btn-primary">اضافة جديد  </a>     
+                        </p>
+                    </div>
+                    <div class="card-body">
+  
+                        <div id="requestdiv" class="table-responsive">
+                            <table class="table table-bordered table-hover  text-center mb-0 table2excel_with_colors table2excel_with_colors">
+                                <thead>
+                                    <tr >
+                                        <th>الترتيب  </th>
+                                        <th>الاسم بالعربية   </th>
+                                        <th>الاسم بالانجليزية    </th>
+                                        <th>الصورة     </th>
+                                        <th>الحالة </th>
+                                        <th>التعديل </th>
+  
+                                    </tr>
+                                </thead>
+                                <tbody class="text-right">
+                                    <tr ng-class="{'table-danger': c.status == 2 }" dir-paginate="c in allData |filter:searchText |itemsPerPage:20">
+                                        <td>{{c.order ||  c.index}}</td>
+                                        <td>{{c.nameAR}}</td>
+                                        <td>{{c.nameEN}}</td>
+                                        <td>
+                                            <img src="{{c.img}}" style="width: 50px;height: 50px;" alt="">
+                                        </td>
+                                      <td>
+                                        <div class="dropdown action-label">
+                                          <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                              <i ng-if="c.status == 1"  class="fa fa-dot-circle-o text-success"></i>
+                                               <span ng-if="c.status == 1">
+                                               نشظ
+                                              </span> 
+                                              <i ng-if="c.status == 2" class="fa fa-dot-circle-o text-danger"></i>
+                                              <span ng-if="c.status == 2">
+                                                غير نشظ 
+                                              </span>
+                                          </a>
+                                          <div class="dropdown-menu dropdown-menu-right">
+                                              <a class="dropdown-item"  ng-click="changeStatus(c._id , c , 1)"><i class="fa fa-dot-circle-o text-success"></i> نشظ</a>
+                                              <a class="dropdown-item"  ng-click="changeStatus(c._id , c , 2)"><i class="fa fa-dot-circle-o text-danger"></i> غير نشظ</a>
+                                          </div>
+                                        </div>
+                                      </td>
+                                     
+                                      <td>
+                                        <a ng-click="getCurrentData(c)"  href="">
+                                          <i class="fas fa-edit" style="color:#666363"></i>
+                                        </a>
+                                      </td>
+                                        
+                                    </tr>
+                                   
+                                </tbody>
+                                         </table>
+                      </div>
+<div style="width: 100%;" class="row">
+                            <dir-pagination-controls max-size="8"
+                            direction-links="true"
+                            boundary-links="true">
+                            </dir-pagination-controls>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>	
+    
+    
+
+    <div ng-if="view == 2" class="content container-fluid">
+                        
+            <!-- Page Header -->
+            <div class="page-header">
+                    <div class="row">
+                            <div class="col">
+                                    <h3 class="page-title text-right">نموذج التعديل </h3>
+                                    <ul class="breadcrumb">
+                                            <li class="breadcrumb-item"><a ng-click="getAllData()"  href="">العملاء      </a></li>
+                                            <li class="breadcrumb-item active">تعديل  العميل     </li>
+                                    </ul>
+                            </div>
+                    </div>
+            </div>
+            <!-- /Page Header -->
+            
+            <div class="row">
+                    <div class="col-xl-6 d-flex">
+                            <div class="card flex-fill">
+                                    <div class="card-header text-right">
+                                            <h4 class="card-title mb-0">بيانات العميل  </h4>
+                                    </div>
+                                    <div class="card-body">
+                                            <form  ng-submit="editData()">
+                                                    <div class="form-group row text-right">
+                                                            <label class="col-lg-3 col-form-label">الاسم بالعربية   </label>
+                                                            <div class="col-lg-9">
+                                                                <input id="nameAR" value="{{data.nameAR}}" type="text" class="form-control">
+                                                            </div>
+                                                    </div>
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">الاسم بالانجليزية    </label>
+                                                        <div class="col-lg-9">
+                                                            <input id="nameEN" type="text" value="{{data.nameEN}}" class="form-control">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row text-right">
+                                                        <label class="col-lg-3 col-form-label">الصورة    </label>
+                                                        <div class="col-lg-9">
+                                                            <img src="{{data.img}}"  style="width: 50px; height: 50px;" alt="">
+                                                            <input  type="file"  class="inp" id="personalImage"  />
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <div class="text-left">
+                                                        <button type="submit"  class="btn btn-primary">حـفظ </button>
+                                                        <button ng-click="getAllData()" type="button" class="btn btn-danger">العودة </button>
+
+                                                    </div>
+                                            </form>
+
+                                    </div>
+                            </div>
+                    </div>
+                    
+            </div>
+
+                    
+    </div>	
+  </div>
+  
+
+
+
+   
+  <div ng-if="qalamLang == 'en'" class="page-wrapper">
+    <div ng-if="!view || view == 1" class="content container-fluid">
+  
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col">
+                    <h3 class="page-title text-left">Clients   Table</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Main</a></li>
+                        <li class="breadcrumb-item active"> Clients  </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card mb-0">
+                    <div class="card-header text-left">
+                        <h4 class="card-title mb-0"></h4>
+                        <p class="card-text">
+                          <a href="/addClient" class="btn btn-primary">Add new </a>
+                        </p>
+                    </div>
+                    <div class="card-body">
+  
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover  text-center mb-0 table2excel_with_colors">
+                                <thead>
+                                    <tr >
+                                        <th> order </th>
+                                        <th> name AR</th>
+                                        <th> name EN</th>
+                                        <th> Image</th>
+
+                                        <th> status </th>
+                                        <th> edit </th>
+  
+  
+                                    </tr>
+                                </thead>
+                                <tbody class="text-left">
+                                    <tr ng-class="{'table-danger': c.status == 2 }" dir-paginate="c in allData |filter:searchText |itemsPerPage:20">
+                                      <td>{{c.order ||  c.index}}</td>
+                                      <td>{{c.nameAR}}</td>
+                                      <td>{{c.nameEN}}</td>
+                                      <td><img src="{{c.img}}" style="width: 50px;height: 50px;" alt=""></td>
+                                      <!-- <img src="{{c.img}}" style="width: 50px;height: 50px;" alt=""> -->
+                                      <td>
+                                        <div class="dropdown action-label">
+                                          <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                              <i  ng-if="c.status == 1"  class="fa fa-dot-circle-o text-success"></i>
+                                               <span ng-if="c.status == 1">
+                                                Active
+                                              </span> 
+                                              <i  ng-if="c.status == 2"  class="fa fa-dot-circle-o text-danger"></i>
+                                              <span ng-if="c.status == 2">
+                                                Not Active 
+                                              </span>
+                                          </a>
+                                          <div class="dropdown-menu dropdown-menu-right">
+                                              <a class="dropdown-item"    ng-click="changeStatus(c._id , c , 1)" ><i class="fa fa-dot-circle-o text-success"></i> Active</a>
+                                              <a class="dropdown-item"    ng-click="changeStatus(c._id , c , 2)" ><i class="fa fa-dot-circle-o text-danger"></i> Not Active</a>
+                                          </div>
+                                      </div>
+                                      </td>
+                                      <td>
+                                        <a ng-click="getCurrentData(c)">
+                                          <i class="fas fa-edit" style="color:#666363"></i>
+                                        </a>
+                                      </td>
+                                    </tr>
+                                   
+                                </tbody>
+                                         </table>
+                      </div>
+<div style="width: 100%;" class="row">
+                            <dir-pagination-controls max-size="8"
+                            direction-links="true"
+                            boundary-links="true">
+                            </dir-pagination-controls>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>	
+    
+    
+
+
+
+
+
+
+    <div ng-if="view == 2" class="content container-fluid">
+                        
+        <!-- Page Header -->
+        <div class="page-header">
+                <div class="row">
+                        <div class="col">
+                                <h3 class="page-title text-left">Edit Form </h3>
+                                <ul class="breadcrumb">
+                                        <li class="breadcrumb-item"><a ng-click="getAllData()" href="">Client     </a></li>
+                                        <li class="breadcrumb-item active">Edit client    </li>
+                                </ul>
+                        </div>
+                </div>
+        </div>
+        <!-- /Page Header -->
+        
+        <div class="row">
+                <div class="col-xl-6 d-flex">
+                        <div class="card flex-fill">
+                                <div class="card-header text-left">
+                                        <h4 class="card-title mb-0">client Info </h4>
+                                </div>
+                                <div class="card-body">
+                                    <form  ng-submit="editData()">
+                                        <div class="form-group row text-left">
+                                                <label class="col-lg-3 col-form-label">Arabic name   </label>
+                                                <div class="col-lg-9">
+                                                    <input id="nameAR" value="{{data.nameAR}}" type="text" class="form-control">
+                                                </div>
+                                        </div>
+                                        <div class="form-group row text-left">
+                                            <label class="col-lg-3 col-form-label">English Name    </label>
+                                            <div class="col-lg-9">
+                                                <input id="nameEN" type="text" value="{{data.nameEN}}" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row text-left">
+                                            <label class="col-lg-3 col-form-label">Image    </label>
+                                            <div class="col-lg-9">
+                                                <img src="{{data.img}}"  style="width: 50px; height: 50px;" alt="">
+                                                <input  type="file"  class="inp" id="personalImage"  />
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="text-right">
+                                            <button type="submit"  class="btn btn-primary">Save </button>
+                                            <button ng-click="getAllData()" type="button" class="btn btn-danger">Back </button>
+
+                                        </div>
+                                    </form>
+
+                                </div>
+                        </div>
+                </div>
+                
+        </div>
+
+                
+    </div>	
+
+
+  </div>

@@ -1,0 +1,234 @@
+<div class="col-lg-12 col-md-12 col-xs-12" style="width:100%;">
+    <div class="col-lg-12" style="padding:30px;float:right;">
+        <p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000">
+            تفاصيل السيارة &nbsp;</p>
+        <hr>
+        <h5 style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:right;color:#0171bc;direction: rtl;">
+              اسم المستخدم &nbsp;:&nbsp;<span style="color: #c2a410">{{CarDetails.userID.fullname}}</span></h5>
+    
+        <form>
+            <table style="border:1px;float: right;direction: rtl;font-family:'Changa';" id="UserDetailsTable">
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh;">رقم السيارة :</label>
+                    </th>
+                    <td>
+                        <span><input type="text" style="width:25vw;font-size:2vh" value="{{CarDetails.carNum}}" disabled
+                                required /></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh;">فئة السيارة:</label>
+                    </th>
+                    <td>
+                        <span><input type="text" style="width:25vw;font-size:2vh" value="{{CarDetails.categoryID.titleAr}}"
+                                disabled required /></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh;">الفئة الفرعية:</label>
+                    </th>
+                    <td>
+                        <span><input type="text" style="width:25vw;font-size:2vh" value="{{CarDetails.subCategoryID.titleAr}}"
+                                disabled required /></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh;">سعر العضوية:</label>
+                    </th>
+                    <td>
+                        <span><input type="text" style="width:25vw;font-size:2vh" value="{{CarDetails.membershipPrice}}"
+                                required disabled /></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh;">موديل السيارة:</label>
+                    </th>
+                    <td>
+                        <span><input type="text" style="width:25vw;font-size:2vh" value="{{CarDetails.carModelID.titleAr}}"
+                                required disabled /></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh;">نوع السيارة:</label>
+                    </th>
+                    <td>
+                        <span><input type="text" style="width:25vw;font-size:2vh" value="{{CarDetails.carTypeID.titleAr}}"
+                                required disabled /></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh;">سنه السيارة:</label>
+                    </th>
+                    <td>
+                        <span><input type="text" style="width:25vw;font-size:2vh" value="{{CarDetails.carYearID.titleAr}}"
+                                required disabled /></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh;">نوع الايجار:</label>
+                    </th>
+                    <td>
+                        <span><input type="text" style="width:25vw;font-size:2vh" value="{{CarDetails.rentType}}"
+                                required disabled /></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh;">ثمن الايجار:</label>
+                    </th>
+                    <td>
+                        <span><input type="text" style="width:25vw;font-size:2vh" value="{{CarDetails.rentPrice}}"
+                                required disabled /></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh;">يوجد سائق:</label>
+                    </th>
+                    <td>
+                        <span><input type="text" style="width:25vw;font-size:2vh" value="{{CarDetails.allowDriver}}"
+                                required disabled /></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh;">نوع المحرك:</label>
+                    </th>
+                    <td>
+                        <span><input type="text" style="width:25vw;font-size:2vh" value="{{CarDetails.automatic}}"
+                                required disabled /></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh;">الوصف:</label>
+                    </th>
+                    <td>
+                        <textarea style="width: 25vw;font-size:2vh; height: 15vh;padding:1vh;border-radius: 25px;"
+                        disabled required>{{CarDetails.description}}</textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh;">تاريخ البداية:</label>
+                    </th>
+                    <td>
+                        <span><input type="text" style="width:25vw;font-size:2vh" value="{{CarDetails.startDate}}"
+                                required disabled /></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="date" style="font-size:2vh;">تاريخ النهاية:</label>
+                    </th>
+                    <td>
+                        <span><input type="text" style="width:25vw;font-size:2vh" value="{{CarDetails.endDate}}"
+                                required disabled /></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="date" style="font-size:2vh;">مدة الايجار:</label>
+                    </th>
+                    <td>
+                        <span><input type="text" style="width:25vw;font-size:2vh" value="{{CarDetails.rentLenght}}"
+                                required disabled /></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh">اللوجو:</label>
+                    </th>
+                    <td>
+                        <div class="">
+                            <a href="{{CarDetails.logo}}" target="_blank"><img src="{{CarDetails.logo}}"
+                                    style="width:150px;height:150px;border-radius:50%" /></a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh">صورة 1:</label>
+                    </th>
+                    <td>
+                        <div class="">
+                            <a href="{{CarDetails.img1}}" target="_blank"><img src="{{CarDetails.img1}}"
+                                    style="width:150px;height:150px;border-radius:50%" /></a>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh">صورة 2:</label>
+                    </th>
+                    <td>
+                        <div class="">
+                            <a href="{{CarDetails.img2}}" target="_blank"><img src="{{CarDetails.img2}}"
+                                    style="width:150px;height:150px;border-radius:50%" /></a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh">صورة 3:</label>
+                    </th>
+                    <td>
+                        <div class="">
+                            <a href="{{CarDetails.img3}}" target="_blank"><img src="{{CarDetails.img3}}"
+                                    style="width:150px;height:150px;border-radius:50%" /></a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh">صورة 4:</label>
+                    </th>
+                    <td>
+                        <div class="">
+                            <a href="{{CarDetails.img4}}" target="_blank"><img src="{{CarDetails.img4}}"
+                                    style="width:150px;height:150px;border-radius:50%" /></a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh">صورة 5:</label>
+                    </th>
+                    <td>
+                        <div class="">
+                            <a href="{{CarDetails.img5}}" target="_blank"><img src="{{CarDetails.img5}}"
+                                    style="width:150px;height:150px;border-radius:50%" /></a>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh">صورة 6:</label>
+                    </th>
+                    <td>
+                        <div class="">
+                            <a href="{{CarDetails.img6}}" target="_blank"><img src="{{CarDetails.img6}}"
+                                    style="width:150px;height:150px;border-radius:50%" /></a>
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <a href back-button class="btn-danger"
+                    style="font-size:2vh; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;font-weight:bold;display:inline-block;float:left;">رجـــوع</a>
+            </div>
+        </form>

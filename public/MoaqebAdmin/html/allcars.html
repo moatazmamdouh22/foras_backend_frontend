@@ -1,0 +1,203 @@
+<div class="col-lg-12 col-md-12 col-xs-12" style="padding:20px;">
+    <a href="AddCar/{{carsID}}" style="text-decoration:none;">
+        <p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000">إضافة سيارة جديد&nbsp;<span class="glyphicon glyphicon-plus-sign"
+                style="margin-left: 10px;vertical-align: text-top;"></span></p>
+    </a>
+    <div class="table-responsive pcTblorderPending"
+        style="min-height:50%;margin-left:auto;margin-right:auto;direction:rtl;text-align:right">
+        <table class="table table table-bordered" style="direction:rtl;">
+            <thead style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+                <tr>
+                    <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">موديل السيارة</th>
+                    <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">سنة السيارة</th>
+                    <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">رقم السيارة</th>
+                    <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">فئة السيارة</th>
+                    <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">الحالة</th>
+                    <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">الفئة الفرعية</th>
+                    <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">نوع الايجار</th>
+                    <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">ثمن الايجار</th>
+                    <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">اللوجو</th>
+                    <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">التفاصيل</th>
+                    <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">التعديــل</th>
+                    <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">التقييم</th>
+
+                </tr>
+            </thead>
+            <tbody style="font-family: 'Cairo', sans-serif;background:#f3f3f3;color:#666363;">
+                <tr dir-paginate="c in userActiveCar |filter:searchText |itemsPerPage:20">
+                    <td style="direction:rtl;text-align:center;">{{c.carModelID.titleAr}}</td>
+                    <td style="direction:rtl;text-align:center;">{{c.carYearID.titleAr}}</td>
+                    <td style="direction:rtl;text-align:center;">{{c.carNum}}</td>
+                    <td style="direction:rtl;text-align:center;">{{c.categoryID.titleAr}}</td>
+                    <td style="direction:rtl;text-align:center;">
+                        <span ng-if="c.status == 1">
+                            قيد التنفيذ
+                        </span>
+                        <span ng-if="c.status == 2">
+                            نشط
+                        </span>
+                         <span ng-if="c.status == 3">
+                            مشغول
+                        </span>
+                        <span ng-if="c.status == 4">
+                            غير نشط
+                        </span>
+                        <span ng-if="c.status == 5">
+                            حظر
+                        </span>
+
+                    </td>
+                    <td style="direction:rtl;text-align:center;">{{c.subCategoryID.titleAr}}</td>
+                    <td style="direction:rtl;text-align:center;">{{c.rentType}}</td>
+                    <td style="direction:rtl;text-align:center;">{{c.rentPrice}}</td>
+
+                    <td style="direction:rtl;text-align:center;">
+                        <span ng-if="c.logo != null">
+                            <a href="{{c.logo}}" target="_blank">
+
+                                <img src="{{c.logo}}" style="width:80px ;height:80px;border-radius: 40px;" />
+                            </a>
+
+                        </span>
+                        <span ng-if="c.logo == null">
+                            <a href="../logo.png" target="_blank">
+                                <img src="../logo.png" style="width:80px ;height:80px;border-radius: 40px;" />
+                            </a>
+                        </span>
+
+                    </td>
+                    <td style="direction:rtl;text-align:center;"><a href="CarDetails/{{c._id}}"><span
+                        class="fa fa-info-circle" style="color:#666363"></span></a></td>
+
+                    <td style="direction:rtl;text-align:center;"><a href="EditCars/{{c._id}}"><span
+                                class="fa fa-pencil-square" style="color:#666363"></span></a></td>
+                                <td style="direction:rtl;text-align:center;"><a href="CarReview/{{c._id}}"><span
+                                    class="fa fa-star" style="color:#666363"></span></a></td>
+    
+
+                </tr>
+            </tbody>
+        </table>
+        <dir-pagination-controls max-size="8" direction-links="true" boundary-links="true">
+        </dir-pagination-controls>
+    </div>
+</div>
+<div class="table-responsive mobTblorderPending"
+    style="width:100%; min-height:50%;margin-left:auto;margin-right:auto;overflow:visible;direction:rtl;text-align:right">
+    <h1 style="font-size: 1.5vh;">
+        <dir-pagination-controls max-size="8" direction-links="true" boundary-links="true">
+
+        </dir-pagination-controls>
+    </h1>
+    <table class="table table table-bordered" style="direction:rtl;width:100%;">
+        <thead style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+
+        </thead>
+        <tbody dir-paginate="c in userActiveCar |filter:searchText |itemsPerPage:10"
+            style="font-family: 'Cairo', sans-serif;background:#f3f3f3;color:#666363;font-size: 2vh">
+            <tr>
+                <td style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+                        موديل السيارة
+                </td>
+
+                <td style="direction:rtl;text-align:center;">{{c.carModelID.titleAr}}</td>
+            </tr>
+            <tr>
+                <td style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+                        سنة السيارة 
+                </td>
+                <td style="direction:rtl;text-align:center;">{{c.carYearID.titleAr}}</td>
+            </tr>
+            <tr>
+                <td style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+                        رقم السيارة
+                </td>
+                <td style="direction:rtl;text-align:center;">{{c.carNum}}</td>
+            </tr>
+            <tr>
+                    <td style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+                            فئة السيارة
+                    </td>
+                    <td style="direction:rtl;text-align:center;">{{c.categoryID.titleAr}}</td>
+                </tr>
+                <tr>
+                        <td style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+                                الحالة
+                        </td>
+                        <td style="direction:rtl;text-align:center;">
+                                <span ng-if="c.status == 0">
+                                    حظر
+                                </span>
+                                <span ng-if="c.status == 1">
+                                    نشط
+                                </span>
+                            </td>
+                            </tr>
+                    <tr>
+                            <td style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+                                الفئة الفرعية
+                            </td>
+                            <td style="direction:rtl;text-align:center;">{{c.subCategoryID.titleAr}}</td>
+                        </tr>
+                        <tr>
+                                <td style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+                                        نوع الايجار
+                                </td>
+                                <td style="direction:rtl;text-align:center;">{{c.rentType}}</td>
+                            </tr>
+                                        
+
+
+            <tr>
+                <td style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+                        ثمن الايجار
+                </td>
+                <td style="direction:rtl;text-align:center;">{{c.rentPrice}}</td>
+            </tr>
+            <tr>
+                <td style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+                    اللوجو
+                </td>
+                <td style="direction:rtl;text-align:center;">
+                    <span ng-if="c.imgPath != null">
+                        <a href="{{c.imgPath}}" target="_blank">
+
+                            <img src="{{c.imgPath}}" style="width:80px ;height:80px;border-radius: 40px;" />
+                        </a>
+
+                    </span>
+                    <span ng-if="c.imgPath == null">
+                        <a href="../logo.png" target="_blank">
+                            <img src="../logo.png" style="width:80px ;height:80px;border-radius: 40px;" />
+                        </a>
+                    </span>
+
+                </td>
+            </tr>
+            <tr>
+                    <td style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+                        التفاصيل
+                    </td>
+                    <td style="direction:rtl;text-align:center;"><a href="CarDetails/{{c._id}}"><span
+                                class="fa fa-info-circle" style="color:#666363"></span></a></td>
+                </tr>
+    
+            <tr>
+                <td style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+                    التعديــل
+                </td>
+                <td style="direction:rtl;text-align:center;"><a href="EditCars/{{c._id}}"><span
+                            class="fa fa-pencil-square" style="color:#666363"></span></a></td>
+            </tr>
+            <tr>
+                    <td style="background:#6c6c6c;font-family: 'Cairo', sans-serif;color:#373636;">
+                            التقييم
+                    </td>
+                    <td style="direction:rtl;text-align:center;"><a href="CarReview/{{c._id}}"><span class="fa fa-star"
+                                style="color:#666363"></span></a></td>
+                </tr>
+
+        </tbody>
+    </table>
+</div>
+</div>

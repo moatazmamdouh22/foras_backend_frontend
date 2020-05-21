@@ -1,0 +1,76 @@
+<div class="col-lg-12 col-md-12 col-xs-12" style="width:100%;">
+    <div class="col-lg-12" style="padding:30px;float:right;">
+        <a href="" style="text-decoration:none;">
+            <p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000">
+                أضافة فئة&nbsp;<span class="glyphicon glyphicon-plus-sign"
+                    style="margin-left: 10px;vertical-align: text-top;"></span>
+            </p>
+        </a>
+        <hr>
+        <form ng-submit="editcatfun()">
+            <table style="border:1px;float: right;direction: rtl;font-family:'Changa';" id="UserDetailsTable">
+                <tr class="info">
+                    <th>
+                        <label for="input">العنوان بالعربيه: </label>
+                    </th>
+                    <td>
+                        <span><input type="text" value="{{CategoryData.titleAr}}" id="titleAr" required /></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="input">العنوان بالانجليزيه :</label>
+                    </th>
+                    <td>
+                        <span><input type="text" id="titleEN" value="{{CategoryData.titleEN}}" required /></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th style="text-align:center;line-height:50px;font-family: 'Cairo', sans-serif;">
+                        <label for="input">الصورة:</label> </th>
+
+                    <td style="direction:rtl;text-align:center;">
+                        <span ng-if="Imagepath4 != null">
+                            <a href="{{Imagepath4}}" target="_blank"><img src="{{Imagepath4}}"
+                                    style="width:150px;height:150px;" class="img-circle" /></a>
+                        </span>
+                        <span ng-if="Imagepath4 == null">
+                            <a href="../quickadd.png" target="_blank">
+                                <img src="../quickadd.png" style="width:80px ;height:80px;border-radius: 40px;"
+                                    class="img-circle" />
+                            </a>
+                        </span>
+                        <label class="file" title=""><input type="file"
+                                onchange="this.parentNode.setAttribute('title', this.value.replace(/^.*[\\/]/, ''))"
+                                id="img" /></label>
+                        <button type="button" ng-click="imgPathFun()" class="btn-primary"
+                            style=" background-color:#c2a410;width: 90px; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Baloo Bhaijaan';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;border-radius:25px;display:inline-block;margin-right: 5px;">تعديل</button>
+                    </td>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:3vh;">الحالة:</label>
+                    </th>
+                    <td>
+                        <span>
+                            <select id="status" required style="font-size:2vh">
+                                <option ng-selected="CategoryData.status == 1" value="1"> نشط</option>
+                                <option ng-selected="CategoryData.status == 2" value="2"> حظر</option>
+                            </select>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <button type="submit" class="btn-success"
+                    style="font-size: 2vh; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;display:inline-block;float:left;margin-right: 5px;">حفظ</button>
+                <a href back-button class="btn-danger"
+                    style="font-size: 2vh; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;font-weight:bold;display:inline-block;float:left;">رجـــوع</a>
+            </div>
+        </form>
+
+    </div>
+</div>

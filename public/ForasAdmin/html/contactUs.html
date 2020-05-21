@@ -1,0 +1,138 @@
+
+<div ng-if="!qalamLang || qalamLang == 'ar'" class="page-wrapper">
+  <div class="content container-fluid">
+
+      <!-- Page Header -->
+      <div class="page-header">
+          <div class="row">
+              <div class="col">
+                  <h3 class="page-title text-right">جدول التواصل    </h3>
+                  <ul class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="index.html">الرئيسية </a></li>
+                      <li class="breadcrumb-item active">التواصل   </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <!-- /Page Header -->
+      
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="card mb-0">
+                  <div class="card-header text-right">
+                      <h4 class="card-title mb-0"></h4>
+                      <p class="card-text">
+                        <!-- <a href="/addCity" class="btn btn-primary">اضافة جديد  </a>                      -->
+                      </p>
+                  </div>
+                  <div class="card-body">
+
+                      <div class="table-responsive">
+                          <table class="table table-bordered table-hover  text-center mb-0 table2excel_with_colors">
+                              <thead>
+                                  <tr >
+                                      <th>الأسم كامل </th>
+                                      <th>الهاتف  </th>
+                                      <th>الايميل   </th>
+                                      <th>الرسالة    </th>
+
+                               
+
+                                  </tr>
+                              </thead>
+                              <tbody class="text-right">
+                                  <tr ng-class="{'table-danger': c.status == 2 }" dir-paginate="c in allData |filter:searchText |itemsPerPage:20">
+                                    <td>{{c.fullname}}</td>
+                                    <td>{{c.mobile}}</td>
+                                    <td>{{c.email}}</td>
+
+                                    <td>{{c.notes}}</td>
+
+                               
+                                      
+                                  </tr>
+                                 
+                              </tbody>
+                                       </table>
+                      </div>
+<div style="width: 100%;" class="row">
+                            <dir-pagination-controls max-size="8"
+                            direction-links="true"
+                            boundary-links="true">
+                            </dir-pagination-controls>
+                       </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+  </div>			
+</div>
+
+
+
+
+
+<div ng-if="qalamLang == 'en'" class="page-wrapper">
+  <div class="content container-fluid">
+
+      <!-- Page Header -->
+      <div class="page-header">
+          <div class="row">
+              <div class="col">
+                  <h3 class="page-title text-left">Contact us  Table</h3>
+                  <ul class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="index.html">Main</a></li>
+                      <li class="breadcrumb-item active"> Contact us  </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+      <!-- /Page Header -->
+      
+      <div class="row">
+          <div class="col-sm-12">
+              <div class="card mb-0">
+                  <div class="card-header text-left">
+                      <h4 class="card-title mb-0"></h4>
+                      <p class="card-text">
+                        <!-- <a href="/addCity" class="btn btn-primary">Add new </a> -->
+                      </p>
+                  </div>
+                  <div class="card-body">
+
+                      <div class="table-responsive">
+                          <table class="table table-bordered table-hover  text-center mb-0 table2excel_with_colors">
+                              <thead>
+                                  <tr >
+                                      <th>Full Name </th>
+                                      <th>Mobile</th>
+                                      <th>email</th>
+                                      <th>message </th>
+
+                                  </tr>
+                              </thead>
+                              <tbody class="text-left">
+                                  <tr ng-class="{'table-danger': c.status == 2 }" dir-paginate="c in allData |filter:searchText |itemsPerPage:20">
+                                    <td>{{c.fullname}}</td>
+                                    <td>{{c.mobile}}</td>
+                                    <td>{{c.email}}</td>
+                                    <td>{{c.notes}}</td>
+                                  </tr>
+                                 
+                              </tbody>
+                                       </table>
+                      </div>
+<div style="width: 100%;" class="row">
+                            <dir-pagination-controls max-size="8"
+                            direction-links="true"
+                            boundary-links="true">
+                            </dir-pagination-controls>
+                       </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  
+  </div>			
+</div>

@@ -1,0 +1,181 @@
+
+<div ng-if="!qalamLang || qalamLang == 'ar'" class="page-wrapper">
+    <div class="content container-fluid">
+  
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col">
+                    <h3 class="page-title text-right">جدول التخصص العلمى  </h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">الرئيسية </a></li>
+                        <li class="breadcrumb-item active">التخصص العلمى </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card mb-0">
+                    <div class="card-header text-right">
+                        <h4 class="card-title mb-0"></h4>
+                        <p class="card-text">
+                          <a href="/addScientificSp" class="btn btn-primary">اضافة جديد  </a>                     
+                        </p>
+                    </div>
+                    <div class="card-body">
+  
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover  text-center mb-0 table2excel_with_colors">
+                                <thead>
+                                    <tr >
+                                        <th>الأسم بالعربية</th>
+                                        <th>الاسم بالانجليزية </th>
+                                        <td>ID</td>
+                                        <th>الحالة </th>
+                                        <th>التعديل </th>
+  
+                                    </tr>
+                                </thead>
+                                <tbody class="text-right">
+                                    <tr ng-class="{'table-danger': c.status == 2 }" dir-paginate="c in nationality |filter:searchText |itemsPerPage:20">
+                                      <td>{{c.titleAr}}</td>
+                                      <td>{{c.titleEN}}</td>
+                                      <td>{{c._id}}</td>
+                                      <td>
+                                        <div class="dropdown action-label">
+                                          <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                              <i ng-if="c.status == 1"  class="fa fa-dot-circle-o text-success"></i>
+                                               <span ng-if="c.status == 1">
+                                               نشظ
+                                              </span> 
+                                              <i ng-if="c.status == 2" class="fa fa-dot-circle-o text-danger"></i>
+                                              <span ng-if="c.status == 2">
+                                                غير نشظ 
+                                              </span>
+                                          </a>
+                                          <div class="dropdown-menu dropdown-menu-right">
+                                              <a class="dropdown-item"  ng-click="changeStatus(c._id , c , 1)"><i class="fa fa-dot-circle-o text-success"></i> نشظ</a>
+                                              <a class="dropdown-item"  ng-click="changeStatus(c._id , c , 2)"><i class="fa fa-dot-circle-o text-danger"></i> غير نشظ</a>
+                                          </div>
+                                      </div>
+                                      </td>
+                                     
+                                      <td>
+                                        <a href="/editScientificSp/{{c._id}}">
+                                          <i class="fas fa-edit" style="color:#666363"></i>
+                                        </a>
+                                      </td>
+                                        
+                                    </tr>
+                                   
+                                </tbody>
+                                         </table>
+                      </div>
+<div style="width: 100%;" class="row">
+                            <dir-pagination-controls max-size="8"
+                            direction-links="true"
+                            boundary-links="true">
+                            </dir-pagination-controls>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>			
+  </div>
+  
+  
+  
+  
+  
+  <div ng-if="qalamLang == 'en'" class="page-wrapper">
+    <div class="content container-fluid">
+  
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row">
+                <div class="col">
+                    <h3 class="page-title text-left">Scientific Table</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Main</a></li>
+                        <li class="breadcrumb-item active">add Scientific </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+        
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card mb-0">
+                    <div class="card-header text-left">
+                        <h4 class="card-title mb-0"></h4>
+                        <p class="card-text">
+                          <a href="/addScientificSp" class="btn btn-primary">Add new </a>
+                        </p>
+                    </div>
+                    <div class="card-body">
+  
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-hover  text-center mb-0 table2excel_with_colors">
+                                <thead>
+                                    <tr >
+                                        <th>Title AR </th>
+                                        <th>Title EN</th>
+                                        <td>ID</td>
+                                        <th>Status</th>
+                                        <th>Edit</th>
+  
+                                    </tr>
+                                </thead>
+                                <tbody class="text-left">
+                                    <tr ng-class="{'table-danger': c.status == 2 }" dir-paginate="c in nationality |filter:searchText |itemsPerPage:20">
+                                      <td>{{c.titleAr}}</td>
+                                      <td>{{c.titleEN}}</td>
+                                      <td>{{c._id}}</td>
+                                      <td>
+                                        <div class="dropdown action-label">
+                                          <a class="btn btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                              <i  ng-if="c.status == 1"  class="fa fa-dot-circle-o text-success"></i>
+                                               <span ng-if="c.status == 1">
+                                                Active
+                                              </span> 
+                                              <i  ng-if="c.status == 2"  class="fa fa-dot-circle-o text-danger"></i>
+                                              <span ng-if="c.status == 2">
+                                                Not Active 
+                                              </span>
+                                          </a>
+                                          <div class="dropdown-menu dropdown-menu-right">
+                                              <a class="dropdown-item"    ng-click="changeStatus(c._id , c , 1)" ><i class="fa fa-dot-circle-o text-success"></i> Active</a>
+                                              <a class="dropdown-item"    ng-click="changeStatus(c._id , c , 2)" ><i class="fa fa-dot-circle-o text-danger"></i> Not Active</a>
+                                          </div>
+                                      </div>
+                                      </td>
+                                      <td>
+                                        <a href="/editScientificSp/{{c._id}}">
+                                          <i class="fas fa-edit" style="color:#666363"></i>
+                                        </a>
+                                      </td>
+                                    </tr>
+                                   
+                                </tbody>
+                                         </table>
+                      </div>
+<div style="width: 100%;" class="row">
+                            <dir-pagination-controls max-size="8"
+                            direction-links="true"
+                            boundary-links="true">
+                            </dir-pagination-controls>
+                       </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    </div>			
+  </div>
+  

@@ -1,0 +1,61 @@
+<div class="col-lg-12 col-md-12 col-xs-12" style="width:100%;">
+    <div class="col-lg-12" style="padding:30px;float:right;">
+        <p style="font-family: 'Baloo Bhaijaan';font-size:24px;font-weight:bold;text-align:center;color:#000">إضافة
+            موظف جديد</p>
+        <hr>
+        <form ng-submit="addemployees()">
+            <table style="border:1px;float: right;direction: rtl;font-family:'Changa';" id="UserDetailsTable">
+                <tr class="info">
+                    <th>
+                        <label for="input" style="font-size:2vh;">الأسم بالكامل:</label>
+                    </th>
+                    <td>
+                        <span><input type="text" id="fullname" style="font-size:2vh" required /></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh;">رقم الجوال :</label>
+                    </th>
+                    <td>
+                        <span><input type="text" style="font-size:2vh" id="mobile" required /></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh;">البريد الاليكترونى:</label>
+                    </th>
+                    <td>
+                        <span><input type="email" style="font-size:2vh" id="email" required /></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh;">الرقم السرى:</label>
+                    </th>
+                    <td>
+                        <span><input type="password" style="font-size:2vh" id="password" required /></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        <label for="input" style="font-size:2vh;">نوع الموظف:</label>
+                    </th>
+                    <td>
+                        <span>
+                            <select style="font-size:2vh" id="employeeTypeID" required>
+                                <option ng-repeat="A in employeeType" value="{{A._id}}">
+                                    {{A.titleAr}}
+                                </option>
+                            </select>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+            <div class="col-lg-12 col-md-12 col-xs-12">
+                <button type="submit" class="btn-success"
+                    style="font-size:2vh; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;display:inline-block;float:left;margin-right: 5px;">حفظ</button>
+                <a href back-button class="btn-danger"
+                    style="font-size:2vh; text-align:center; border: 1px solid rgba(0, 0, 0, 0.5);font-family: 'Cairo';margin-bottom: 8px;padding: 8px 4px;  z-index: 3;opacity:0.6;border-radius:5px;font-weight:bold;display:inline-block;float:left;">رجـــوع</a>
+            </div>
+        </form>

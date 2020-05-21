@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html  ng-app="qalamAdmin">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title> Recruitment </title>
+
+        <!-- Bootstrap CSS -->
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="http://64.227.35.49/Foras/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://64.227.35.49/Foras/css/bootstrap-grid.min.css">
+        <link rel="stylesheet" href="http://64.227.35.49/Foras/css/bootstrap-reboot.min.css">
+
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh6PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+
+        <!-- wow.css -->
+        <link rel="stylesheet" href="http://64.227.35.49/Foras/css/animate.css">
+
+        <!-- Main CSS -->
+        <link rel="stylesheet" href="http://64.227.35.49/Foras/css/style.css">
+        <style>
+            .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+                border: 0;
+                color: #606161;
+                background-color: #F5FBFE  !important;
+                border-left: 5px solid #269CD9;
+            }
+            a {
+                color: #606161;
+            }
+            @import url('https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&display=swap');
+            body {
+                font-family: 'Dosis', 'sans-serif' !important;
+            }
+            h1, h2, h3, h4, h5, h6, p, a, span {
+                font-weight: 800;
+                font-family: 'Dosis' !important;
+                /* font-family: 'http://64.227.35.49/Foras/fonts/ArbFONTS-22016-adobearabic.ttf'; */
+            }
+        </style>
+
+
+<style>
+    /*the container must be positioned relative:*/
+    .custom-select {
+      position: relative;
+      font-family: Arial;
+      padding : 0;
+    }
+    
+    .custom-select select {
+      display: none; /*hide original SELECT element:*/
+    }
+    
+    .select-selected {
+      background-color: #fff;
+    }
+    
+    /*style the arrow inside the select element:*/
+    .select-selected:after {
+      position: absolute;
+      content: "";
+      top: 14px;
+      right: 10px;
+      width: 0;
+      height: 0;
+      border: 6px solid transparent;
+      border-color: #fff transparent transparent transparent;
+    }
+    
+    /*point the arrow upwards when the select box is open (active):*/
+    .select-selected.select-arrow-active:after {
+      border-color: transparent transparent #fff transparent;
+      top: 7px;
+    }
+    
+    /*style the items (options), including the selected item:*/
+    .select-items div,.select-selected {
+      color: #000;
+      padding: 8px 16px;
+      border: 1px solid transparent;
+      border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+      cursor: pointer;
+      user-select: none;
+    }
+    
+    /*style items (options):*/
+    .select-items {
+      position: absolute;
+      background-color: #fff;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 99;
+    
+    }
+    
+    /*hide the items when the select box is closed:*/
+    .select-hide {
+      display: none;
+    }
+    
+    .select-items div:hover, .same-as-selected {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    #socialStatus option:first-child {
+        color: #ddd !important;
+    }
+    </style>
+
+        <script src="http://64.227.35.49/Foras/js/angular.min.js"></script>
+        <script src="http://64.227.35.49/Foras/js/dirPagination.js"></script>
+        <script src="http://64.227.35.49/Foras/js/angular-cookies.min.js"></script>
+        <script src="http://64.227.35.49/Foras/js/angular-route.min.js"></script>
+      
+      
+        <!-- <script src="http://64.227.35.49/Foras/js/qalamAdmin.js"></script> -->
+        <script src="http://64.227.35.49/Foras/js/login.js"></script>
+
+    </head>
+    <body  ng-controller="ForasCtrl">
+        <!-- NavBar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <img src="http://64.227.35.49/Foras/image/Logo.png" alt="Logo">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"> <h4 style="font-weight: 400;"> Home </h4> <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"> <h4 style="font-weight: 400;"> About Us </h4> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"> <h4 style="font-weight: 400;"> For Individuals </h4> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"> <h4 style="font-weight: 400;"> For Companies </h4> </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="Recruitment.html"> <h4 style="font-size: 22px; font-weight: 900;"> Recruitment </h4> </a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="index.html"> <h4 style="font-weight: 400;"> Our Clients </h4> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html"> <h4 style="font-weight: 400;"> Contact Us </h4> </a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    <div class="ling">
+                        <a href="RecruitmentAR.html"> AR </a>
+                    </div>
+                </span>
+            </div>
+        </nav>
+        <!-- /NavBar -->
+
+        <!-- Home -->
+        <div class="container-fluid" style=" margin-top: 10px;">
+            <div class="row">
+                <div class="col-md-2" style="box-shadow: 1px 1px 6px -2px rgba(0,0,0,0.75); border-radius: 5px; padding-right: 0;">
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a ng-class="{'active': !tab ||  tab == 1  }"  ng-click="tab = 1"  class="nav-link "><h5 style="font-weight: 500;">General Data</h5></a>
+                        <a ng-class="{'active': tab == 2 }"     ng-click="tab = 2"   class="nav-link" ><h5 style="font-weight: 500;">Education</h5></a>
+                        <a ng-class="{'active': tab == 3 }"     ng-click="tab = 3"   class="nav-link"><h5 style="font-weight: 500;">Experiences</h5></a>
+                        <a ng-class="{'active': tab == 4 }"     ng-click="tab = 4"   class="nav-link"><h5 style="font-weight: 500;">Language</h5></a>
+                        <a ng-class="{'active': tab == 5 }"     ng-click="tab = 5"   class="nav-link"><h5 style="font-weight: 500;">Other Information</h5></a>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="row bac">
+                        <div class="col-12">
+                            <div class="tab-content" id="v-pills-tabContent">
+                                <div ng-class="{'active': !tab ||  tab == 1  , 'show': !tab ||  tab == 1  }"  class="tab-pane fade  star" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                    <div class="Recruitment-form">
+                                        <form>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-5">
+                                                    <label for="firstName"><p> <i class="fas fa-star"></i> First Name</p></label>
+                                                    <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                                                </div>
+                                                <div class="col-md-1" style="max-width: 30px;"></div>
+                                                <div class="form-group col-md-5">
+                                                    <label for="lastName"><p> <i class="fas fa-star"></i> Last Name</p></label>
+                                                    <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                                                </div>
+                                                <div class="form-group col-md-5">
+                                                    <label for="birthday"><p>Birthday</p></label>
+                                                    <input type="date" class="form-control" id="birthday">
+                                                </div>
+                                                <div class="col-md-1" style="max-width: 30px;"></div>
+                                                <div class="form-group col-md-5">
+                                                    <!-- <label for="socialStatus"><p>Social Status</p></label>
+                                                    <div class="custom-select">
+                                                        
+                                                        <select required id="socialStatus" >
+                                                            <option style="color: #ddd !important;" disabled selected> Choose Social Status </option>
+                                                            <option value="1"> Married   </option>
+                                                            <option value="2"> Single    </option>
+                                                            <option value="3"> Divorced   </option>
+                                                        </select>
+                                                    </div>
+                                                     -->
+
+
+                                                    <label for="socialStatus"><p>Social Status</p></label>
+                                                    <select required id="socialStatus"  class="form-control" >
+                                                        <option style="color: #ddd !important;" disabled selected> Choose Social Status </option>
+                                                        <option value="1"> Married   </option>
+                                                        <option value="2"> Single    </option>
+                                                        <option value="3"> Widower   </option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-5">
+                                                    <label for="phoneNumber"><p> <i class="fas fa-star"></i> Phone Number</p></label>
+                                                    <input type="number" class="form-control" id="phoneNumber" placeholder="Phone Number">
+                                                </div>
+                                                <div class="col-md-1" style="max-width: 30px;"></div>
+                                                <div class="form-group col-md-5">
+                                                    <label for="email"><p> <i class="fas fa-star"></i> E-mail</p></label>
+                                                    <input type="email" class="form-control" id="email" placeholder="Email">
+                                                </div>
+                                                <div class="form-group col-md-5">
+                                                    <label for="nationalityID"><p>Nationality</p></label>
+                                                    <select id="nationalityID" class="form-control">
+                                                        <option value="" disabled selected>
+                                                            Choose Nationality 
+                                                        </option>
+                                                        <option ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in nationality">
+                                                            {{c.titleEN}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-1" style="max-width: 30px;"></div>
+                                                <div class="form-group col-md-5">
+                                                    <label for="IDNumber"><p> <i class="fas fa-star"></i> ID Number</p></label>
+                                                    <input type="number" class="form-control" id="IDNumber" placeholder="ID Number">
+                                                </div>
+                                                <div class="form-group col-md-5">
+                                                    <label for="cityID"><p>City Of Residence</p></label>
+                                                    <select id="cityID" class="form-control">
+                                                        <option disabled value="" selected>Choose city </option>
+                                                        <option ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in cities">
+                                                            {{c.titleEN}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-1" style="max-width: 30px;"></div>
+                                                <div class="form-group col-md-5">
+                                                    <label for="neighborhood"><p>Neighborhood (Without a Word Neighborhood)</p></label>
+                                                    <input type="text" class="form-control" id="neighborhood" placeholder="Type Residential Neighborhood ">
+                                                </div>
+                                                <div class="form-group col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <p>Gender</p>
+                                                        </div>
+                                                        <div class="col-8">
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" ng-model="gender"  type="radio" name="genderOptions" id="gender1" value="1">
+                                                                <label class="form-check-label"  for="inlineRadio1" style="margin-right: 5px;">Male  </label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" ng-model="gender"  type="radio" name="genderOptions" id="gender2" value="2">
+                                                                <label class="form-check-label" for="inlineRadio2" style="margin-right: 5px;">Female</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1" style="max-width: 30px;"></div>
+                                                <div class="form-group col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <p>Special Needs</p>
+                                                        </div>
+                                                        <div class="col-8">
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" ng-model="specialNeeds"  type="radio" name="specialNeedsOptions" id="specialNeeds1" value="1">
+                                                                <label class="form-check-label" for="specialNeeds1" style="margin-right: 5px;">Yes</label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" ng-model="specialNeeds"  type="radio" name="specialNeedsOptions" id="specialNeeds2" value="2">
+                                                                <label class="form-check-label" for="specialNeeds2" style="margin-right: 5px;">No</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>                                
+                                        </form>    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6 error">
+                                            <p ng-if="current_error_ar && current_error_en.length > 0"><i class="fas fa-exclamation-triangle"></i>{{current_error_en}} </p>
+                                        </div>
+                                        <div class="col-md-6 next">
+                                            <a ng-click="tab = 2" href="" ">Next <i class="fas fa-chevron-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-class="{'active': tab == 2 ,  'show': tab == 2  }" class="tab-pane fade star" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                    <div class="Recruitment-form">
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <p> <i class="fas fa-star"></i> Degree </p>
+                                                </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-10 bot">
+                                                    <button ng-if="scientificDegreeSelected !=1"  ng-click="changeScientificDegree(1)"  type="button" class="btn btn-primary">Diploma</button>
+                                                    <button ng-if="scientificDegreeSelected ==1" style="border: 2px solid #269CD9 !important; background-color: #f5fbfe  !important ;"  type="button" class="btn btn-primary">Diploma</button>
+                                                </div>
+                                            
+                                                <div class="col-md-2 col-sm-3 col-xs-10 bot">
+                                                    <button  ng-if="scientificDegreeSelected !=2"  ng-click="changeScientificDegree(2)"  type="button" class="btn btn-primary">Secondary</button>
+                                                    <button ng-if="scientificDegreeSelected ==2"   style="border: 2px solid #269CD9 !important; background-color: #f5fbfe  !important ;"  type="button" class="btn btn-primary">Secondary</button>
+
+                                                </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-10 bot">
+                                                    <button  ng-if="scientificDegreeSelected !=3"  ng-click="changeScientificDegree(3)"   type="button" class="btn btn-primary">Primary</button>
+                                                    <button  ng-if="scientificDegreeSelected ==3"  style="border: 2px solid #269CD9 !important; background-color: #f5fbfe  !important ;"  type="button" class="btn btn-primary">Primary</button>
+
+                                                </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-10 bot">
+                                                    <button ng-if="scientificDegreeSelected != 4"  ng-click="changeScientificDegree(4)"   type="button" class="btn btn-primary">Middle</button>
+                                                    <button ng-if="scientificDegreeSelected == 4" style="border: 2px solid #269CD9 !important; background-color: #f5fbfe  !important ;"  type="button" class="btn btn-primary">Middle</button>
+
+                                                </div>
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-2 col-sm-3 col-xs-10 bot">
+                                                    <button  ng-if="scientificDegreeSelected !=5" ng-click="changeScientificDegree(5)"   type="button" class="btn btn-primary">University</button>
+                                                    <button  ng-if="scientificDegreeSelected == 5" style="border: 2px solid #269CD9 !important; background-color: #f5fbfe  !important ;"  type="button" class="btn btn-primary">University</button>
+
+                                                </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-10 bot">
+                                                    <button  ng-if="scientificDegreeSelected !=6" ng-click="changeScientificDegree(6)"   type="button" class="btn btn-primary">M.A.</button>
+                                                    <button  ng-if="scientificDegreeSelected ==6" style="border: 2px solid #269CD9 !important; background-color: #f5fbfe  !important ;"  type="button" class="btn btn-primary">M.A.</button>
+
+                                                </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-10 bot">
+                                                    <button  ng-if="scientificDegreeSelected != 7" ng-click="changeScientificDegree(7)"   type="button" class="btn btn-primary">Ph.D.</button>
+                                                    <button  ng-if="scientificDegreeSelected == 7" style="border: 2px solid #269CD9 !important; background-color: #f5fbfe  !important ;"  type="button" class="btn btn-primary">Ph.D.</button>
+
+                                                </div>
+                    
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="scientificSpecializationID"><p><i class="fas fa-star"></i>Scientific Specialization</p></label>
+                                                    <select ng-model="scientificSpecializationID" ng-change="change1(scientificSpecializationID)" id="scientificSpecializationID" class="form-control">
+                                                        <option value="" disabled selected>
+                                                            Scientific Specialization
+                                                        </option>
+                                                        <option  ng-selected="scientificSpecializationID == c._id" ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in scientificSps">
+                                                            {{c.titleEN}}
+                                                        </option>
+                                                        <option  value="1"  >
+                                                            Other
+                                                        </option>
+                                                    </select>
+                                                    <!-- <a ng-click="scientificSpecializationIDOther = true" href="">Add other  Scientific Specialization </a>
+                                                    <div ng-if="scientificSpecializationIDOther == true"> 
+                                                        <form  class="form-inline mt-1">
+                                                            <div class="form-group mb-2">
+                                                                <input required type="text" class="form-control" id="scientificSpecializationIDNew" placeholder="Add   Scientific  " >
+
+                                                            </div>
+                                                          
+                                                            <button ng-click="addData1()" type="button" class="btn btn-primary mb-2">Add  </button>
+                                                          </form>
+                                                    </div> -->
+                                                </div>
+                                                <div class="form-group text-left col-md-4">
+                                                    <form  ng-if="scientificSpecializationIDOther == true"  class="form-inline mt-4">
+                                                        <div class="form-group mt-2">
+                                                            <input required type="text" class="form-control" id="scientificSpecializationIDNew" placeholder="Add   Scientific  " >
+
+                                                        </div>
+                                                      
+                                                        <button ng-click="addData1()" type="button" class="btn btn-primary mt-2 ml-1 ">Add  </button>
+                                                      </form>
+                                                </div>
+                                                <div class="col-md-4"></div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="graduationUniversityID"><p>  University</p></label>
+                                                    <select ng-model="graduationUniversityID" ng-change="change2(graduationUniversityID)" id="graduationUniversityID" class="form-control">
+                                                        <option value="" disabled selected>
+                                                            Graduation University 
+                                                        </option>
+                                                        <option ng-selected="graduationUniversityID == c._id"  ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in graduationUniversity">
+                                                            {{c.titleEN}}
+                                                        </option>
+                                                        <option  value="1"  >
+                                                            Other
+                                                        </option>
+                                                    </select>
+                                                    <!-- <a ng-click="graduationUniversityIDOther = true" href="">Add Other University  </a>
+                                                    <div ng-if="graduationUniversityIDOther == true"> 
+                                                        <form  class="form-inline mt-1">
+                                                            <div class="form-group mb-2 mx-1">
+                                                                <input required type="text" class="form-control" id="graduationUniversityIDNew" placeholder="Add University  " >
+
+                                                            </div>
+                                                          
+                                                            <button ng-click="addData2()" type="button" class="btn btn-primary mb-2">Add  </button>
+                                                          </form>
+                                                    </div> -->
+                                                </div>
+                                                <div class="form-group text-left col-md-4">
+                                                    <form ng-if="graduationUniversityIDOther == true"  class="form-inline mt-4">
+                                                        <div class="form-group mt-2">
+                                                            <input required type="text" class="form-control" id="graduationUniversityIDNew" placeholder="Add University  " >
+
+                                                        </div>
+                                                      
+                                                        <button ng-click="addData2()" type="button" class="btn btn-primary mt-2 ml-1 ">Add  </button>
+                                                      </form>
+                                                </div>
+                                                <div class="col-md-4"></div>
+                                                <div class="form-group col-md-4">
+                                                    <label for="degree"><p>Appreciation</p></label>
+                                                    <select id="degree" class="form-control">
+                                                        <option value="1">Pass</option>
+                                                        <option value="2">Good</option>
+                                                        <option value="3">Very Good</option>
+                                                        <option value="4">Excellent</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-8"></div>
+                                                <!-- <div class="form-group col-md-4">
+                                                    <label for="specializedCertificates"><p>Specialized Certificates</p></label>
+                                                    <select id="specializedCertificates" class="form-control">
+                                                        <option value="1" selected> Yes</option>
+                                                        <option value="2"> No </option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-8"></div> -->
+
+                                                <div class="form-group text-left col-md-4">
+                                                    <label for="specializedCertificatesID"><p><i class="fas fa-star"></i>Specialized Certificates</p></label>
+                                                    <select  ng-model="specializedCertificatesID" ng-change="change3(specializedCertificatesID)" id="specializedCertificatesID" class="form-control">
+                                                        <option value="" disabled selected>
+                                                            choose Specialized Certificate
+                                                        </option>
+                                                        <option  ng-selected="specializedCertificatesID == c._id"  value="{{c._id}}" ng-repeat="c in specializedCertificates">
+                                                            {{c.titleEN}}
+                                                        </option>
+                                                        <option   value="1"  >
+                                                            Other
+                                                        </option>
+                                                    </select>
+                                                   
+                                                 
+                                                </div>
+                                                <div class="form-group text-left col-md-4">
+                                                    <form  ng-if="specializedCertificatesIDOther == true"  class="form-inline mt-4">
+                                                        <div class="form-group mt-2">
+                                                            <input required type="text" class="form-control" id="specializedCertificatesIDNew" placeholder="Add Certificate   " >
+
+                                                        </div>
+                                                      
+                                                        <button ng-click="addData5()" type="button" class="btn btn-primary mt-2 mr-1 ">Add  </button>
+                                                      </form>
+                                                </div>
+
+                                            </div>                                
+                                        </div>    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6 error">
+                                            <p ng-if="current_error_ar && current_error_en.length > 0"><i class="fas fa-exclamation-triangle"></i>{{current_error_en}} </p>
+                                        </div>
+                                        <div class="col-md-6 next">
+                                            <a ng-click="tab = 3"  href="" >Next <i class="fas fa-chevron-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-class="{'active': tab == 3 ,  'show': tab == 3  }" class="tab-pane fade star" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                    <div class="Recruitment-form">
+                                        <div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-4">
+                                                    <label for="experienceID"><p><i class="fas fa-star"></i>Experience Sector</p></label>
+                                                    <select ng-model="experienceID" ng-change="change4(experienceID)" id="experienceID" class="form-control">
+                                                        <option value="" disabled selected>
+                                                            Choose Experience
+                                                        </option>
+                                                        <option ng-selected="experienceID == c._id" ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in experience">
+                                                            {{c.titleEN}}
+                                                        </option>
+                                                        <option value="1" >
+                                                            Other
+                                                        </option>
+                                                    </select>
+                                                    <!-- <a ng-click="experienceIDOther = true" href="">Add Experience   </a>
+                                                  
+                                                    <div ng-if="experienceIDOther == true"> 
+                                                        <form  class="form-inline mt-1">
+                                                            <div class="form-group mb-2 ">
+                                                                <input required type="text" class="form-control" id="experienceIDNew" placeholder="Add Experience   " >
+
+                                                            </div>
+                                                            <button ng-click="addData3()" type="button" class="btn btn-primary mb-2">Add  </button>
+
+                                                          </form>
+                                                    </div> -->
+                                                </div>
+                                                <div class="form-group text-left col-md-4">
+                                                    <form ng-if="experienceIDOther == true"  class="form-inline mt-4">
+                                                        <div class="form-group mt-2">
+                                                            <input required type="text" class="form-control" id="experienceIDNew" placeholder="Add Experience   " >
+
+                                                        </div>
+                                                      
+                                                        <button ng-click="addData3()" type="button" class="btn btn-primary mt-2 ml-1 ">Add  </button>
+                                                      </form>
+                                                </div>
+                                                <div class="col-md-4"></div>
+
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="mostExperienceID"><p><i class="fas fa-star"></i>Devoted Most Years Of Experience</p></label>
+                                                    <select ng-model="mostExperienceID" ng-change="change5(mostExperienceID)" id="mostExperienceID" class="form-control">
+                                                        <option value="" disabled selected>
+                                                            Choose Experience
+                                                        </option>
+                                                        <option ng-selected="mostExperienceID == c._id" ng-if="c.exist == true" value="{{c._id}}"  ng-repeat="c in experience">
+                                                            {{c.titleEN}}
+                                                        </option>
+                                                        <option value="1" >
+                                                            Other
+                                                        </option>
+                                                    </select>
+                                                    <!-- <a ng-click="mostExperienceIDOther = true" href="">Add Other Experience   </a>
+                                                   
+                                                    <div ng-if="mostExperienceIDOther == true"> 
+                                                        <form  class="form-inline mt-1">
+                                                            <div class="form-group mb-2 mx-1">
+                                                                <input required type="text" class="form-control" id="mostExperienceIDNew" placeholder="Add Experience   " >
+
+                                                            </div>
+                                                          
+                                                            <button ng-click="addData4()" type="button" class="btn btn-primary mb-2">Add  </button>
+                                                          </form>
+                                                    </div> -->
+                                                    
+                                                </div>
+                                                <div class="form-group text-left col-md-4">
+                                                    <form ng-if="mostExperienceIDOther == true"  class="form-inline mt-4">
+                                                        <div class="form-group mt-2">
+                                                            <input required type="text" class="form-control" id="mostExperienceIDNew" placeholder="Add Experience   " >
+
+                                                        </div>
+                                                      
+                                                        <button ng-click="addData4()" type="button" class="btn btn-primary mt-2 ml-1 ">Add  </button>
+                                                      </form>
+                                                </div>
+                                                <div class="col-md-4"></div>
+
+                                                <div class="form-group col-md-4">
+                                                    <label for="yearsExperienceID"><p><i class="fas fa-star"></i>Years Of Experience</p></label>
+                                                    <select id="yearsExperienceID" class="form-control">
+                                                        <option value="" disabled selected>
+                                                            Choose years 
+                                                        </option>
+                                                        <option ng-if="c.exist == true" value="{{c._id}}"  ng-repeat="c in yearsExperience">
+                                                            {{c.titleEN}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-8"></div>
+
+                                            </div>
+                                        </div>    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6 error">
+                                            <p ng-if="current_error_ar && current_error_en.length > 0"><i class="fas fa-exclamation-triangle"></i>{{current_error_en}} </p>
+                                        </div>
+                                        <div class="col-md-6 next">
+                                            <a ng-click="tab = 4"  href="" >Next <i class="fas fa-chevron-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-class="{'active': tab == 4 ,  'show': tab == 4  }" class="tab-pane fade star" id="v-pills-lang" role="tabpanel" aria-labelledby="v-pills-lang-tab">
+                                    <div class="Recruitment-form">
+                                        <div class="col-12">
+                                            <div ng-if="c.show == true" ng-repeat="c in userLangs" class="row">
+                                                <div class="text-left col-md-3" style="max-width: fit-content;">
+                                                    <p style="line-height: 4.8;">{{c.titleEN}}</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="row">
+                                                                <div class="col-md-3 col-sm-4 col-xs-12 bot">
+                                                                    <button ng-if="c.selected != 4" ng-click="changeLangDegree(c , 4)"  type="button" class="btn btn-primary">
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <br>
+                                                                        Excellent
+                                                                    </button>
+                                                                    <button ng-if="c.selected == 4" style="border: 2px solid #269CD9 !important; background-color: #f5fbfe  !important ;"   type="button" class="btn btn-primary">
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <br>
+                                                                        Excellent
+                                                                    </button>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-4 col-xs-12 bot">
+                                                                    <button ng-if="c.selected != 3" ng-click="changeLangDegree(c , 3)" type="button" class="btn btn-primary">
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <br>
+                                                                        Very Good
+                                                                    </button>
+                                                                    <button ng-if="c.selected == 3" style="border: 2px solid #269CD9 !important; background-color: #f5fbfe  !important ;"   type="button" class="btn btn-primary">
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <br>
+                                                                        Very Good
+                                                                    </button>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-4 col-xs-12 bot">
+                                                                    <button ng-if="c.selected != 2" ng-click="changeLangDegree(c , 2)" type="button" class="btn btn-primary">
+                                                                        <i class="fas fa-star"></i>
+                                                                        <br>
+                                                                        Fundamentals
+                                                                    </button>
+                                                                    <button ng-if="c.selected == 2" style="border: 2px solid #269CD9 !important; background-color: #f5fbfe  !important ;"   type="button" class="btn btn-primary">
+                                                                        <i class="fas fa-star"></i>
+                                                                        <br>
+                                                                        Fundamentals
+                                                                    </button>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-4 col-xs-12 bot">
+                                                                    <button ng-if="c.selected != 1" ng-click="changeLangDegree(c , 1)" type="button" class="btn btn-primary">
+                                                                        <br>
+                                                                        Without Lang 
+                                                                    </button>
+                                                                    <button ng-if="c.selected == 1"  style="border: 2px solid #269CD9 !important; background-color: #f5fbfe  !important ;"  type="button" class="btn btn-primary">
+                                                                        <br>
+                                                                        Without Lang 
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>        
+                                                    </div>
+                                                </div>        
+                                            </div>
+                                        </div>
+                                        <p ng-click="showLangSelect = 1" class="text-left"><a href=""  class="lin-ar"><i class="fas fa-plus-circle" style="color: #223A76; font-size: 18px; vertical-align: 0%;"></i></a>Add Language</p>
+                                        <div  ng-if="showLangSelect == 1" class="form-row">
+                                            <div class="form-group text-left col-md-5 px-3">
+                                                <label for="langID"><p>Language </p></label>
+                                                <select ng-change="addLangDegree(langID)" ng-model="langID"  id="langID" class="form-control">
+                                                    <option value="" disabled selected>
+                                                        Choose Language 
+                                                    </option>
+                                                    <option ng-if="c.exist == true && c.show == false" value="{{c}}" ng-repeat="c in userLangs">
+                                                        {{c.titleEN}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>  
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6 error">
+                                            <p ng-if="current_error_ar && current_error_en.length > 0"><i class="fas fa-exclamation-triangle"></i>{{current_error_en}} </p>
+                                        </div>
+                                        <div class="col-md-6 next">
+                                            <a ng-click="tab = 5"  href="" >Next <i class="fas fa-chevron-right"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-class="{'active': tab == 5 ,  'show': tab == 5  }"  class="tab-pane fade star" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                    <div class="Recruitment-form">
+                                        <form>                             
+                                            <div class="form-group text-left col-md-4">
+                                                <label for="otherInformation"><p>Your CV </p></label>
+
+                                                <label class="form-control" for="personalImage"><p style="position: relative;">
+                                                    <img src="http://64.227.35.49/Foras/image/upload.png"  style="position: absolute; right: 0; height: 27px; width: 30px;"> 
+
+                                                    Upload Your Cv</p></label>
+                                                <!-- <label for="cv"><p>My CV</p></label> -->
+                                                <!-- <input id="cv" type="file" class="inp"> -->
+                                                <input  type="file"  hidden class="inp" id="personalImage"  />
+                                            </div>
+                                            <div class="col-8"></div>
+                                            <div class="form-group text-left col-md-4">
+                                                <label for="otherInformation"><p>Other Information</p></label>
+                                                <select id="otherInformation" class="form-control">
+                                                    <option value="1" selected> yes</option>
+                                                    <option value="2"> No </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <textarea class="form-control" id="description"  rows="3" placeholder="Write Here"></textarea>
+                                            </div>
+
+                                            <div class="form-group text-left col-md-4">
+                                                <label for="isWorked"><p> Working Now</p></label>
+                                                <select id="isWorked" class="form-control">
+                                                    <option value="1" selected> yes</option>
+                                                    <option value="2"> No </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-8">
+                                            </div>
+
+                                            <div class="form-group text-left col-md-4">
+                                                <label for="lastJob"><p>
+                                                    Last Job Title
+                                                </p>
+                                                </label>
+                                                <input type="text" class="form-control" id="lastJob" placeholder="Job Title">
+
+                                            </div>
+                                            <div class="col-md-8">
+                                            </div>
+
+                                            <div class="form-group text-left col-md-4">
+                                                <label for="lastJob"><p>
+                                                    Graduation Year
+                                                </p>
+                                                </label>
+                                                <input type="text" class="form-control" id="graduationYear" placeholder="Graduation Year">
+
+                                            </div>
+                                            <div class="col-md-8">
+                                            </div>
+
+                                            <div class="form-group text-left col-md-4">
+                                                <label for="lastJob"><p>
+                                                    Graduation Point
+                                                </p>
+                                                </label>
+                                                <input type="text" class="form-control" id="graduationPoint" placeholder="Graduation Point">
+
+                                            </div>
+                                            <div class="col-md-8">
+                                            </div>
+                                        </form>    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6 error">
+                                            <p ng-if="current_error_ar && current_error_en.length > 0"><i class="fas fa-exclamation-triangle"></i>{{current_error_en}} </p>
+                                        </div>
+                                        <div class="col-md-6 next">
+                                            <a ng-click="postCV()"  href="">Send</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Home -->
+
+
+        
+        <!-- Bootstrap Core JS -->
+        <script src="http://64.227.35.49/Foras/js/bootstrap.min.js"></script>
+        <script src="http://64.227.35.49/Foras/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+        <!-- wow.js -->
+        <script src="http://64.227.35.49/Foras/js/tests.js"></script>
+        <script src="http://64.227.35.49/Foras/js/wow.min.js"></script>
+        <script src="http://64.227.35.49/Foras/js/wow.min.js"></script>
+        
+        <script>
+            new WOW().init();
+        </script>
+        <script type="text/javascript">
+            $('.counter-number').countTo();
+        </script>
+        <script>
+            function isScrolledIntoView(el) {
+                var elemTop = el.getBoundingClientRect().top;
+                var elemBottom = el.getBoundingClientRect().bottom;
+                var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+                return isVisible;
+            }
+            function isScrolledIntoView(el) {
+                var elemTop = el.getBoundingClientRect().top;
+                var elemBottom = el.getBoundingClientRect().bottom;
+                var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+                return isVisible;
+            }
+            $(window).on('scroll', function() {
+                if (isScrolledIntoView(document.getElementById('counters'))) {
+                    $('.ace-counter-number').countTo();
+                    $(window).off('scroll');
+                }
+            });
+        </script>
+
+    </body>
+</html>
+
+
+<script>
+    var x, i, j, selElmnt, a, b, c;
+    /*look for any elements with the class "custom-select":*/
+    x = document.getElementsByClassName("custom-select");
+    for (i = 0; i < x.length; i++) {
+      selElmnt = x[i].getElementsByTagName("select")[0];
+      /*for each element, create a new DIV that will act as the selected item:*/
+      a = document.createElement("DIV");
+      a.setAttribute("class", "select-selected");
+      a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+      x[i].appendChild(a);
+      /*for each element, create a new DIV that will contain the option list:*/
+      b = document.createElement("DIV");
+      b.setAttribute("class", "select-items select-hide");
+      for (j = 1; j < selElmnt.length; j++) {
+        /*for each option in the original select element,
+        create a new DIV that will act as an option item:*/
+        c = document.createElement("DIV");
+        c.innerHTML = selElmnt.options[j].innerHTML;
+        c.addEventListener("click", function(e) {
+            /*when an item is clicked, update the original select box,
+            and the selected item:*/
+            var y, i, k, s, h;
+            s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+            h = this.parentNode.previousSibling;
+            for (i = 0; i < s.length; i++) {
+              if (s.options[i].innerHTML == this.innerHTML) {
+                s.selectedIndex = i;
+                h.innerHTML = this.innerHTML;
+                y = this.parentNode.getElementsByClassName("same-as-selected");
+                for (k = 0; k < y.length; k++) {
+                  y[k].removeAttribute("class");
+                }
+                this.setAttribute("class", "same-as-selected");
+                break;
+              }
+            }
+            h.click();
+        });
+        b.appendChild(c);
+      }
+      x[i].appendChild(b);
+      a.addEventListener("click", function(e) {
+          /*when the select box is clicked, close any other select boxes,
+          and open/close the current select box:*/
+          e.stopPropagation();
+          closeAllSelect(this);
+          this.nextSibling.classList.toggle("select-hide");
+          this.classList.toggle("select-arrow-active");
+        });
+    }
+    function closeAllSelect(elmnt) {
+      /*a function that will close all select boxes in the document,
+      except the current select box:*/
+      var x, y, i, arrNo = [];
+      x = document.getElementsByClassName("select-items");
+      y = document.getElementsByClassName("select-selected");
+      for (i = 0; i < y.length; i++) {
+        if (elmnt == y[i]) {
+          arrNo.push(i)
+        } else {
+          y[i].classList.remove("select-arrow-active");
+        }
+      }
+      for (i = 0; i < x.length; i++) {
+        if (arrNo.indexOf(i)) {
+          x[i].classList.add("select-hide");
+        }
+      }
+    }
+    /*if the user clicks anywhere outside the select box,
+    then close all select boxes:*/
+    document.addEventListener("click", closeAllSelect);
+    </script>

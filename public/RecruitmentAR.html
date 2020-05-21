@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html ng-app="qalamAdmin">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title> Recruitment AR </title>
+
+        <!-- Bootstrap CSS -->
+        <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="http://64.227.35.49/Foras/css/bootstrap.min.css">
+        <link rel="stylesheet" href="http://64.227.35.49/Foras/css/bootstrap-grid.min.css">
+        <link rel="stylesheet" href="http://64.227.35.49/Foras/css/bootstrap-reboot.min.css">
+
+        <!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh6PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Cairo&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+
+        <!-- wow.css -->
+        <link rel="stylesheet" href="http://64.227.35.49/Foras/css/animate.css">
+
+        <!-- Main CSS -->
+        <link rel="stylesheet" href="http://64.227.35.49/Foras/css/style.css">
+        <style>
+            .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+                border: 0;
+                color: #606161;
+                background-color: #F5FBFE;
+                border-right: 5px solid #269CD9;
+            }
+            a {
+                color: #606161;
+            }
+        </style>
+
+        
+<style>
+    /*the container must be positioned relative:*/
+    .custom-select {
+      position: relative;
+      font-family: Arial;
+      padding : 0;
+    }
+    
+    .custom-select select {
+      display: none; /*hide original SELECT element:*/
+    }
+    
+    .select-selected {
+      background-color: #fff;
+    }
+    
+    /*style the arrow inside the select element:*/
+    .select-selected:after {
+      position: absolute;
+      content: "";
+      top: 14px;
+      right: 10px;
+      width: 0;
+      height: 0;
+      border: 6px solid transparent;
+      border-color: #fff transparent transparent transparent;
+    }
+    
+    /*point the arrow upwards when the select box is open (active):*/
+    .select-selected.select-arrow-active:after {
+      border-color: transparent transparent #fff transparent;
+      top: 7px;
+    }
+    
+    /*style the items (options), including the selected item:*/
+    .select-items div,.select-selected {
+      color: #000;
+      padding: 8px 16px;
+      border: 1px solid transparent;
+      border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+      cursor: pointer;
+      user-select: none;
+    }
+    
+    /*style items (options):*/
+    .select-items {
+      position: absolute;
+      background-color: #fff;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 99;
+    
+    }
+    
+    /*hide the items when the select box is closed:*/
+    .select-hide {
+      display: none;
+    }
+    
+    .select-items div:hover, .same-as-selected {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    #socialStatus option:first-child {
+        color: #ddd !important;
+    }
+    </style>
+
+        
+
+        <script src="http://64.227.35.49/Foras/js/angular.min.js"></script>
+        <script src="http://64.227.35.49/Foras/js/dirPagination.js"></script>
+        <script src="http://64.227.35.49/Foras/js/angular-cookies.min.js"></script>
+        <script src="http://64.227.35.49/Foras/js/angular-route.min.js"></script>
+      
+      
+        <!-- <script src="http://64.227.35.49/Foras/js/qalamAdmin.js"></script> -->
+        <script src="http://64.227.35.49/Foras/js/login.js"></script>
+
+    </head>
+    <body  ng-controller="ForasCtrl" style="direction: rtl;">
+        <!-- NavBar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="direction: ltr;">
+            <img src="http://64.227.35.49/Foras/image/Logo.png" alt="Logo">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="indexAR.html"> <h4> تواصل معنا </h4> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="indexAR.html"> <h4> عملائنا </h4> </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="RecruitmentAR.html"> <h4 style="font-size: 22px; font-weight: 600;"> التوظيف </h4> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="indexAR.html"> <h4> خدماتنا للشركات </h4> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="indexAR.html"> <h4> خدماتنا للأفراد </h4> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="indexAR.html"> <h4> من نحن </h4> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="indexAR.html"> <h4> الرئيسية </h4> <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                    <div class="ling">
+                        <a href="Recruitment.html"> EN </a>
+                    </div>
+                </span>
+            </div>
+        </nav>
+        <!-- /NavBar -->
+
+        <!-- Home -->
+        <div class="container-fluid" style=" margin-top: 10px;">
+            <div class="row">
+                <div class="col-md-2" style="box-shadow: 1px 1px 6px -2px rgba(0,0,0,0.75); border-radius: 5px; padding-left: 0;">
+                    <div class="nav flex-column nav-pills text-right" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a ng-class="{'active': !tab ||  tab == 1  }"  ng-click="tab = 1"  class="nav-link "><h5 style="font-weight: 500;">بيانات عامة</h5></a>
+                        <a ng-class="{'active': tab == 2 }"     ng-click="tab = 2"   class="nav-link" ><h5 style="font-weight: 500;">التعليم</h5></a>
+                        <a ng-class="{'active': tab == 3 }"     ng-click="tab = 3"   class="nav-link"><h5 style="font-weight: 500;">الخبرات</h5></a>
+                        <a ng-class="{'active': tab == 4 }"     ng-click="tab = 4"   class="nav-link" ><h5 style="font-weight: 500;">اللغة</h5></a>
+                        <a ng-class="{'active': tab == 5 }"     ng-click="tab = 5"   class="nav-link" ><h5 style="font-weight: 500;">معلومات أخرى</h5></a>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <div class="row bac">
+                        <div class="col-12">
+                            <div class="tab-content" id="v-pills-tabContent">
+                                <div ng-class="{'active': !tab ||  tab == 1  , 'show': !tab ||  tab == 1  }"  class="tab-pane fade  star-ar" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                    <div class="Recruitment-form">
+                                        <form>
+                                            <div class="form-row">
+                                                <div class="form-group text-right col-md-5">
+                                                    <label for="firstName"><p><i class="fas fa-star"></i>الاسم الاول</p></label>
+                                                    <input type="text" class="form-control" id="firstName" placeholder="الاسم الاول" >
+                                                </div>
+                                                <div class="col-md-1" style="max-width: 30px;"></div>
+                                                <div class="form-group text-right col-md-5">
+                                                    <label for="lastName"><p><i class="fas fa-star"></i>اسم العائلة</p></label>
+                                                    <input type="text" class="form-control" id="lastName" placeholder="اسم العائلة" >
+                                                </div>
+                                                <div class="form-group text-right col-md-5">
+                                                    <label for="birthday"><p>تاريخ الميلاد </p></label>
+                                                    <input type="date" class="form-control" id="birthday">
+                                                </div>
+                                                <div class="col-md-1" style="max-width: 30px;"></div>
+                                                <div class="form-group text-right col-md-5">
+
+
+                                                    <label for="socialStatus"><p>الحالة الاجتماعية</p></label>
+                                                    <select required id="socialStatus" class="form-control">
+                                                        <option disabled selected> أختر الحالة الاجتماعية </option>
+                                                        <option value="1"> متزوج </option>
+                                                        <option value="2"> أعزب </option>
+                                                        <option value="3"> مطلق </option>
+                                                    </select>
+                                                    <!-- <label for="socialStatus"><p>الحالة الاجتماعية</p></label>
+                                                    <div class="custom-select">
+                                                        <select required id="socialStatus" class="form-control">
+                                                            <option disabled selected> أختر الحالة الاجتماعية </option>
+                                                            <option value="1"> متزوج </option>
+                                                            <option value="2"> أعزب </option>
+                                                            <option value="3"> مطلق </option>
+                                                        </select>
+                                                    </div> -->
+                                                   
+                                                </div>
+                                                <div class="form-group text-right col-md-5">
+                                                    <label for="phoneNumber"><p><i class="fas fa-star"></i>رقم الجوال</p></label>
+                                                    <input type="number" class="form-control" id="phoneNumber" placeholder="رقم الجوال">
+                                                </div>
+                                                <div class="col-md-1" style="max-width: 30px;"></div>
+                                                <div class="form-group text-right col-md-5">
+                                                    <label for="email"><p><i class="fas fa-star"></i>البريد الالكتروني</p></label>
+                                                    <input type="email" class="form-control" id="email" placeholder="البريد الالكتروني">
+                                                </div>
+                                                <div class="form-group text-right col-md-5">
+                                                    <label for="nationalityID"><p>الجنسية</p></label>
+                                                    <select id="nationalityID" class="form-control">
+                                                        <option value="" disabled selected>
+                                                            أختر الجنسية 
+                                                        </option>
+                                                        <option ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in nationality">
+                                                            {{c.titleAr}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-1" style="max-width: 30px;"></div>
+                                                <div class="form-group text-right col-md-5">
+                                                    <label for="IDNumber"><p><i class="fas fa-star"></i>رقم الهوية</p></label>
+                                                    <input type="number" class="form-control" id="IDNumber" placeholder="رقم الهوية">
+                                                </div>
+                                                <div class="form-group text-right col-md-5">
+                                                    <label for="cityID"><p>مدينة السكن</p></label>
+                                                    <select id="cityID" class="form-control">
+                                                        <option disabled value="" selected>أختر المدينة </option>
+                                                        <option ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in cities">
+                                                            {{c.titleAr}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-1" style="max-width: 30px;"></div>
+                                                <div class="form-group text-right col-md-5">
+                                                    <label for="neighborhood"><p>  الحى السكنى   (بدون كلمة حى )</p></label>
+                                                    <input type="text" class="form-control" id="neighborhood" placeholder="اكتب الحي السكني   ">
+                                                </div>
+                                                <div class="form-group text-right col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-4">
+                                                            <p>الجنس</p>
+                                                        </div>
+                                                        <div class="col-8">
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" ng-model="gender"  type="radio" name="genderOptions" id="gender1" value="1">
+                                                                <label class="form-check-label"  for="inlineRadio1" style="margin-right: 5px;">ذكر </label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" ng-model="gender"  type="radio" name="genderOptions" id="gender2" value="2">
+                                                                <label class="form-check-label" for="inlineRadio2" style="margin-right: 5px;">أنثى</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-1" style="max-width: 30px;"></div>
+                                                <div class="form-group text-right col-md-5">
+                                                    <div class="row">
+                                                        <div class="col-5">
+                                                            <p>احتياجات خاصة</p>
+                                                        </div>
+                                                        <div class="col-7">
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" ng-model="specialNeeds"  type="radio" name="specialNeedsOptions" id="specialNeeds1" value="1">
+                                                                <label class="form-check-label" for="specialNeeds1" style="margin-right: 5px;">نعم</label>
+                                                            </div>
+                                                            <div class="form-check form-check-inline">
+                                                                <input class="form-check-input" ng-model="specialNeeds"  type="radio" name="specialNeedsOptions" id="specialNeeds2" value="2">
+                                                                <label class="form-check-label" for="specialNeeds2" style="margin-right: 5px;">لا</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>                                
+                                        </form>    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6 error-ar">
+                                            <p ng-if="current_error_ar && current_error_ar.length > 0"><i class="fas fa-exclamation-triangle"></i>{{current_error_ar}} </p>
+                                            <!-- <p><i class="fas fa-exclamation-triangle"></i>يوجد خطأ في البريد الإلكتروني </p> -->
+                                        </div>
+                                        <div class="col-md-6 next-ar">
+                                            <a ng-click="tab = 2" >التالى<i class="fas fa-chevron-left"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-class="{'active': tab == 2 ,  'show': tab == 2  }" class="tab-pane fade star-ar" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                    <div class="Recruitment-form">
+                                        <div class="col-12">
+                                            <div class="row">
+                                                <div class="col-12 text-right">
+                                                    <p> <i class="fas fa-star"></i> الدرجة العلمية </p>
+                                                </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-10 bot">
+                                                    <button ng-if="scientificDegreeSelected != 1" ng-click="changeScientificDegree(1)"  type="button" class="btn btn-primary">دبلوم</button>
+                                                    <button ng-if="scientificDegreeSelected == 1"  style="border: 2px solid #269CD9 !important;  background-color: #f5fbfe  !important;"   type="button" class="btn btn-primary">دبلوم</button>
+
+                                                </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-10 bot">
+                                                    <button ng-if="scientificDegreeSelected != 2" ng-click="changeScientificDegree(2)"  type="button" class="btn btn-primary">ثانوي</button>
+                                                    <button ng-if="scientificDegreeSelected == 2"  style="border: 2px solid #269CD9 !important;  background-color: #f5fbfe  !important;"   type="button" class="btn btn-primary">ثانوي</button>
+
+                                                </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-10 bot">
+                                                    <button ng-if="scientificDegreeSelected != 3" ng-click="changeScientificDegree(3)"   type="button" class="btn btn-primary">ابتدائي</button>
+                                                    <button ng-if="scientificDegreeSelected == 3"   style="border: 2px solid #269CD9 !important;  background-color: #f5fbfe  !important;"    type="button" class="btn btn-primary">ابتدائي</button>
+
+                                                </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-10 bot">
+                                                    <button ng-if="scientificDegreeSelected != 4" ng-click="changeScientificDegree(4)"  type="button" class="btn btn-primary">متوسط</button>
+                                                    <button ng-if="scientificDegreeSelected == 4"   style="border: 2px solid #269CD9 !important;  background-color: #f5fbfe  !important;"   type="button" class="btn btn-primary">متوسط</button>
+
+                                                </div>
+                                                <div class="col-md-4"></div>
+                                                <div class="col-md-2 col-sm-3 col-xs-10 bot">
+                                                    <button ng-if="scientificDegreeSelected != 5" ng-click="changeScientificDegree(5)"   type="button" class="btn btn-primary">جامعي</button>
+                                                    <button ng-if="scientificDegreeSelected == 5"   style="border: 2px solid #269CD9 !important;  background-color: #f5fbfe  !important;"    type="button" class="btn btn-primary">جامعي</button>
+
+                                                </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-10 bot">
+                                                    <button ng-if="scientificDegreeSelected != 6" ng-click="changeScientificDegree(6)"   type="button" class="btn btn-primary">ماجستير</button>
+                                                    <button ng-if="scientificDegreeSelected == 6"   style="border: 2px solid #269CD9 !important;  background-color: #f5fbfe  !important;"    type="button" class="btn btn-primary">ماجستير</button>
+
+                                                </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-10 bot">
+                                                    <button ng-if="scientificDegreeSelected != 7" ng-click="changeScientificDegree(7)"  type="button" class="btn btn-primary">دكتوراه</button>
+                                                    <button ng-if="scientificDegreeSelected == 7"  style="border: 2px solid #269CD9 !important;  background-color: #f5fbfe  !important;"   type="button" class="btn btn-primary">دكتوراه</button>
+
+                                                </div>
+                    
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-row">
+                                                <div class="form-group text-right col-md-4">
+                                                    <label for="scientificSpecializationID"><p><i class="fas fa-star"></i>التخصص العلمي</p></label>
+                                                    <select ng-model="scientificSpecializationID" ng-change="change1(scientificSpecializationID)" id="scientificSpecializationID" class="form-control">
+                                                        <option value="" disabled selected>
+                                                            أختر التخصص العلمي
+                                                        </option>
+                                                        <option ng-selected="scientificSpecializationID == c._id" ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in scientificSps">
+                                                            {{c.titleAr}}
+                                                        </option>
+                                                        <option value="1" >
+                                                            أخرى 
+                                                        </option>
+                                                    </select>
+                                                    <!-- <a ng-click="scientificSpecializationIDOther = true" href="">أضف تخصص أخر </a>
+                                                    <div ng-if="scientificSpecializationIDOther == true"> 
+                                                        <form  class="form-inline mt-1">
+                                                            <div class="form-group mb-2">
+                                                                <input required type="text" class="form-control" id="scientificSpecializationIDNew" placeholder="اضف تخصص " >
+
+                                                            </div>
+                                                          
+                                                            <button ng-click="addData1()" type="button" class="btn btn-primary mb-2">أضف  </button>
+                                                          </form>
+                                                    </div> -->
+
+                                                </div>
+                                                
+                                                <div class="form-group text-right col-md-4">
+                                                    <form  ng-if="scientificSpecializationIDOther == true" class="form-inline mt-4">
+                                                        <div class="form-group mt-2">
+                                                            <input required type="text" class="form-control" id="scientificSpecializationIDNew" placeholder="اضف تخصص " >
+
+                                                        </div>
+                                                      
+                                                        <button ng-click="addData1()" type="button" class="btn btn-primary mt-2 mr-1 ">أضف  </button>
+                                                      </form>
+                                                </div>
+                                                <div class="col-md-4">
+
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <div class="form-group text-right col-md-4">
+                                                    <label for="graduationUniversityID"><p> الجامعة</p></label>
+                                                    <select ng-model="graduationUniversityID" ng-change="change2(graduationUniversityID)" id="graduationUniversityID" class="form-control">
+                                                        <option value="" disabled selected>
+                                                            أختر الجامعة 
+                                                        </option>
+                                                        <option ng-selected="graduationUniversityID == c._id"   ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in graduationUniversity">
+                                                            {{c.titleAr}}
+                                                        </option>
+                                                        <option value="1" >
+                                                            أخرى 
+                                                        </option>
+                                                        
+                                                    </select>
+
+                                                    <!-- <a ng-click="graduationUniversityIDOther = true" href="">أضف جامعة  أخرى  </a>
+                                                    <div ng-if="graduationUniversityIDOther == true"> 
+                                                        <form  class="form-inline mt-1">
+                                                            <div class="form-group mb-2 mx-1">
+                                                                <input required type="text" class="form-control" id="graduationUniversityIDNew" placeholder="اضف جامعة  " >
+
+                                                            </div>
+                                                          
+                                                            <button ng-click="addData2()" type="button" class="btn btn-primary mb-2">أضف  </button>
+                                                          </form>
+                                                    </div> -->
+                                                </div>
+                                                <div class="form-group text-right col-md-4">
+                                                    <form  ng-if="graduationUniversityIDOther == true"  class="form-inline mt-4">
+                                                        <div class="form-group mt-2">
+                                                            <input required type="text" class="form-control" id="graduationUniversityIDNew" placeholder="اضف جامعة  " >
+
+                                                        </div>
+                                                      
+                                                        <button ng-click="addData2()" type="button" class="btn btn-primary mt-2 mr-1">أضف  </button>
+                                                      </form>
+                                                </div>
+
+
+                                                <div class="col-4"></div>
+                                                <div class="form-group text-right col-md-4">
+                                                    <label for="degree"><p>الدرجة العلمية</p></label>
+                                                    <select id="degree" class="form-control">
+                                                        <option disabled selected> أختر الدرجة العلمية </option>
+                                                        <option value="1">مقبول</option>
+                                                        <option value="2">جيد</option>
+                                                        <option value="3">جيد جدا</option>
+                                                        <option value="4">ممتاز</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-8"></div>
+                                                <!-- <div class="form-group text-right col-md-4">
+                                                    <label for="specializedCertificates"><p>شهادات متخصصة</p></label>
+                                                    <select id="specializedCertificates" class="form-control">
+                                                        <option value="1" selected> نعم</option>
+                                                        <option value="2"> لا </option>
+                                                    </select>
+                                                </div> -->
+
+
+                                                <div class="form-group text-right col-md-4">
+                                                    <label for="specializedCertificatesID"><p><i class="fas fa-star"></i>شهادات متخصصة</p></label>
+                                                    <select ng-model="specializedCertificatesID" ng-change="change3(specializedCertificatesID)" id="specializedCertificatesID" class="form-control">
+                                                        <option value="" disabled selected>
+                                                            أختر شهادة متخصصة
+                                                        </option>
+                                                        <option  ng-selected="specializedCertificatesID == c._id"  value="{{c._id}}" ng-repeat="c in specializedCertificates">
+                                                            {{c.titleAr}}
+                                                        </option>
+                                                        <option value="1" >
+                                                            أخرى 
+                                                        </option>
+                                                    </select>
+                                                   
+                                                 
+                                                </div>
+                                                <div class="form-group text-right col-md-4">
+                                                    <form  ng-if="specializedCertificatesIDOther == true"   class="form-inline mt-4">
+                                                        <div class="form-group mt-2">
+                                                            <input required type="text" class="form-control" id="specializedCertificatesIDNew" placeholder="اضف شهادة   " >
+
+                                                        </div>
+                                                      
+                                                        <button ng-click="addData5()" type="button" class="btn btn-primary mt-2 mr-1 ">أضف  </button>
+                                                      </form>
+                                                </div>
+                                            </div>
+                                        </div>    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6 error-ar">
+                                            <p ng-if="current_error_ar && current_error_ar.length > 0"><i class="fas fa-exclamation-triangle"></i>{{current_error_ar}} </p>
+                                            <!-- <p><i class="fas fa-exclamation-triangle"></i>يوجد خطأ في البريد الإلكتروني </p> -->
+                                        </div>
+                                        <div class="col-md-6 next-ar">
+                                            <a  ng-click="tab = 3" >التالى <i class="fas fa-chevron-left"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-class="{'active': tab == 3 ,  'show': tab == 3  }" class="tab-pane fade star-ar" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                    <div class="Recruitment-form">
+                                        <div>
+                                            <div class="form-row">
+                                                <div class="form-group text-right col-md-4">
+                                                    <label for="experienceID"><p><i class="fas fa-star"></i>قطاع الخبرة</p></label>
+                                                    <select ng-model="experienceID" ng-change="change4(experienceID)" id="experienceID" class="form-control">
+                                                        <option value="" disabled selected>
+                                                            أختر قطاع الخبرة
+                                                        </option>
+                                                        <option  ng-selected="experienceID == c._id" ng-if="c.exist == true" value="{{c._id}}" ng-repeat="c in experience">
+                                                            {{c.titleAr}}
+                                                        </option>
+                                                        <option value="1" >
+                                                            أخرى 
+                                                        </option>
+                                                    </select>
+                                                   
+                                                    <!-- <a ng-click="experienceIDOther = true" href="">أضف قطاع  أخر   </a>
+                                                  
+                                                    <div ng-if="experienceIDOther == true"> 
+                                                        <form  class="form-inline mt-1">
+                                                            <div class="form-group mb-2 ">
+                                                                <input required type="text" class="form-control" id="experienceIDNew" placeholder="اضف قطاع   " >
+
+                                                            </div>
+                                                            <button ng-click="addData3()" type="button" class="btn btn-primary mb-2">أضف  </button>
+
+                                                          </form>
+                                                    </div> -->
+                                                </div>
+                                                <div class="form-group text-right col-md-4">
+                                                    <form ng-if="experienceIDOther == true" class="form-inline mt-4">
+                                                        <div class="form-group mt-2">
+                                                            <input required type="text" class="form-control" id="experienceIDNew" placeholder="اضف قطاع   " >
+
+                                                        </div>
+                                                      
+                                                        <button ng-click="addData3()" type="button" class="btn btn-primary mt-2 mr-1 ">أضف  </button>
+                                                      </form>
+                                                </div>
+                                                <div class="col-4"></div>
+                                                <div class="form-group text-right col-md-4">
+                                                    <label for="mostExperienceID"><p><i class="fas fa-star"></i>تخصص اغلب سنوات الخبرة</p></label>
+                                                    <select  ng-model="mostExperienceID" ng-change="change5(mostExperienceID)"  id="mostExperienceID" class="form-control">
+                                                        <option value="" disabled selected>
+                                                            أختر تخصص
+                                                        </option>
+                                                        <option ng-selected="mostExperienceID == c._id" ng-if="c.exist == true" value="{{c._id}}"  ng-repeat="c in experience">
+                                                            {{c.titleAr}}
+                                                        </option>
+                                                        <option value="1" >
+                                                            أخرى 
+                                                        </option>
+                                                    </select>
+                                                   
+                                                    <!-- <a ng-click="mostExperienceIDOther = true" href="">أضف قطاع  أخر   </a>
+                                                   
+                                                    <div ng-if="mostExperienceIDOther == true"> 
+                                                        <form  class="form-inline mt-1">
+                                                            <div class="form-group mb-2 mx-1">
+                                                                <input required type="text" class="form-control" id="mostExperienceIDNew" placeholder="اضف قطاع   " >
+
+                                                            </div>
+                                                          
+                                                            <button ng-click="addData4()" type="button" class="btn btn-primary mb-2">أضف  </button>
+                                                          </form>
+                                                    </div> -->
+                                                </div>
+                                                <div class="form-group text-right col-md-4">
+                                                    <form ng-if="mostExperienceIDOther == true"  class="form-inline mt-4">
+                                                        <div class="form-group mt-2">
+                                                            <input required type="text" class="form-control" id="mostExperienceIDNew" placeholder="اضف تخصص   " >
+
+                                                        </div>
+                                                      
+                                                        <button ng-click="addData4()" type="button" class="btn btn-primary mt-2 mr-1 ">أضف  </button>
+                                                      </form>
+                                                </div>
+                                                <div class="col-4"></div>
+                                                <div class="form-group text-right col-md-4">
+                                                    <label for="yearsExperienceID"><p><i class="fas fa-star"></i>عدد سنوات الخبرة</p></label>
+                                                    <select id="yearsExperienceID" class="form-control">
+                                                        <option value="" disabled selected>
+                                                            أختر العدد
+                                                        </option>
+                                                        <option ng-if="c.exist == true" value="{{c._id}}"  ng-repeat="c in yearsExperience">
+                                                            {{c.titleAr}}
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                            </div>                                
+                                        </div>    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6 error-ar">
+                                            <p ng-if="current_error_ar && current_error_ar.length > 0"><i class="fas fa-exclamation-triangle"></i>{{current_error_ar}} </p>
+        
+                                            <!-- <p><i class="fas fa-exclamation-triangle"></i>يوجد خطأ في البريد الإلكتروني </p> -->
+                                        </div>
+                                        <div class="col-md-6 next-ar">
+                                            <a  ng-click="tab = 4" >التالى <i class="fas fa-chevron-left"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div ng-class="{'active': tab == 4 ,  'show': tab == 4  }" class="tab-pane fade star-ar" id="v-pills-lang" role="tabpanel" aria-labelledby="v-pills-lang-tab">
+                                    <div class="Recruitment-form">
+                                        <div class="col-12">
+                                            <div ng-if="c.show == true" ng-repeat="c in userLangs" class="row">
+                                                <div class="text-right col-md-3" style="max-width: fit-content;">
+                                                    <p style="line-height: 4.8;">{{c.titleAr}}</p>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <div class="row">
+                                                                <div class="col-md-3 col-sm-4 col-xs-12 bot">
+                                                                    <button  ng-if="c.selected != 4"   ng-click="changeLangDegree(c , 4 )"  type="button" class="btn btn-primary">
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <br>
+                                                                        ممتاز
+                                                                    </button>
+                                                                    <button  ng-if="c.selected == 4"   style="border: 2px solid #269CD9 !important;  background-color: #f5fbfe  !important;"  type="button" class="btn btn-primary">
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <br>
+                                                                        ممتاز
+                                                                    </button>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-4 col-xs-12 bot">
+                                                                    <button ng-if="c.selected != 3" ng-click="changeLangDegree(c , 3)" type="button" class="btn btn-primary">
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <br>
+                                                                        جيد جدا
+                                                                    </button>
+                                                                    <button  ng-if="c.selected == 3"  style="border: 2px solid #269CD9 !important;  background-color: #f5fbfe  !important;"   type="button" class="btn btn-primary">
+                                                                        <i class="fas fa-star"></i>
+                                                                        <i class="fas fa-star"></i>
+                                                                        <br>
+                                                                        جيد جدا
+                                                                    </button>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-4 col-xs-12 bot">
+                                                                    <button ng-if="c.selected != 2" ng-click="changeLangDegree(c , 2)" type="button" class="btn btn-primary">
+                                                                        <i class="fas fa-star"></i>
+                                                                        <br>
+                                                                        اساسيات
+                                                                    </button>
+                                                                    <button  ng-if="c.selected == 2"  style="border: 2px solid #269CD9 !important;  background-color: #f5fbfe  !important;"   type="button" class="btn btn-primary">
+                                                                        <i class="fas fa-star"></i>
+                                                                        <br>
+                                                                        اساسيات
+                                                                    </button>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-4 col-xs-12 bot">
+                                                                    <button ng-if="c.selected != 1" ng-click="changeLangDegree(c , 1)" type="button" class="btn btn-primary">
+                                                                        <br>
+                                                                        بدون لغة 
+                                                                    </button>
+                                                                    <button  ng-if="c.selected == 1"  style="border: 2px solid #269CD9 !important;  background-color: #f5fbfe  !important;"   type="button" class="btn btn-primary">
+                                                                        <br>
+                                                                        بدون لغة 
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>        
+                                                    </div>
+                                                </div>        
+                                            </div>
+                                        </div>
+                                        <p  ng-click="showLangSelect = 1" class="text-right"><a href="" class="lin-ar"><i class="fas fa-plus-circle" style="color: #223A76; font-size: 18px; vertical-align: 0%;"></i></a>إضافة لغة</p>
+                                        <div  ng-if="showLangSelect == 1" class="form-row">
+                                            <div class="form-group text-right col-md-5 p-3">
+                                                <label for="langID"><p>اللغة </p></label>
+                                                <select ng-change="addLangDegree(langID)" ng-model="langID"  id="langID" class="form-control">
+                                                    <option value="" disabled selected>
+                                                        أختر اللغة 
+                                                    </option>
+                                                    <option ng-if="c.exist == true && c.show == false" value="{{c}}" ng-repeat="c in userLangs">
+                                                        {{c.titleAr}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6 error-ar">
+                                            <p ng-if="current_error_ar && current_error_ar.length > 0"><i class="fas fa-exclamation-triangle"></i>{{current_error_ar}} </p>
+                                        </div>
+                                        <div class="col-md-6 next-ar">
+                                            <a  ng-click="tab = 5" >التالى <i class="fas fa-chevron-left"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="clear: both !important;"></div>
+
+                                <div ng-class="{'active': tab == 5 ,  'show': tab == 5  }" class="tab-pane fade star-ar" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                    <div class="Recruitment-form">
+                                        <div class="">
+                                            <div style="clear: both !important;"></div>
+                                           
+                                            <div class="form-group text-right col-md-4" style="margin-bottom: 0;">
+                                                <!-- <label for="files" class="btn">Select Image</label> -->
+                                                <label for="otherInformation"><p>السيرة الذاتية </p></label>
+
+                                                <label class="form-control" for="personalImage"> 
+                                                    <p style="position: relative;">
+                                                    <img src="http://64.227.35.49/Foras/image/upload.png"  style="position: absolute; left: 0; height: 27px; width: 30px;"> 
+                                                      
+                                                    حمل السيرة الذاتية 
+                                                    </p></label>
+                                                
+                                                <!-- <a href="">{{}}</a> -->
+                                                <input  type="file" hidden  class="inp" id="personalImage"  />
+                                            </div>
+                                            <div class="col-md-4">
+                                                <!-- <label style="visibility: hidden;" for="otherInformation"><p>السيرة الذاتية </p></label>
+
+                                                <label style="color: #000;"> </label> -->
+                                            </div>
+                                            <div class="col-md-4"></div>
+                                            <div style="clear: both !important;"></div>
+                                            <div class="form-group text-right col-md-4">
+                                                <label for="otherInformation"><p>معلومات أخرى</p></label>
+                                                <select id="otherInformation" class="form-control">
+                                                    <option value="1" selected> نعم</option>
+                                                    <option value="2"> لا </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-7">
+                                                <textarea class="form-control" id="description" rows="3" placeholder="أكتب هنا"></textarea>
+                                            </div>
+                                            <div class="form-group text-right col-md-4">
+                                                <label for="isWorked"><p> على رأس العمل </p></label>
+                                                <select id="isWorked" class="form-control">
+                                                    <option value="1" selected> نعم </option>
+                                                    <option value="2"> لا </option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-8">
+                                            </div>
+
+                                            <div class="form-group text-right col-md-4">
+                                                <label for="lastJob"><p>
+                                                    أخر مسمى وظيفى 
+                                                </p>
+                                                </label>
+                                                <input type="text" class="form-control" id="lastJob" placeholder="أخر مسمى وظيفى">
+
+                                            </div>
+                                            <div class="col-md-8">
+                                            </div>
+
+                                            <div class="form-group text-right col-md-4">
+                                                <label for="graduationYear"><p>
+                                                    سنة التخرج 
+                                                </p>
+                                                </label>
+                                                <input type="text" class="form-control" id="graduationYear" placeholder="سنة التخرج">
+
+                                            </div>
+                                            <div class="col-md-8">
+                                            </div>
+
+                                            <div class="form-group text-right col-md-4">
+                                                <label for="graduationPoint"><p>
+                                                    جهة التخرج
+                                                </p>
+                                                </label>
+                                                <input type="text" class="form-control" id="graduationPoint" placeholder="جهة التخرج">
+
+                                            </div>
+                                            <div class="col-md-8">
+                                            </div>
+                                        </div>    
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <hr>
+                                        </div>
+                                        <div class="col-md-6 error-ar">
+                                            <p ng-if="current_error_ar && current_error_ar.length > 0"><i class="fas fa-exclamation-triangle"></i>{{current_error_ar}} </p>
+                                        </div>
+                                        <div class="col-md-6 next-ar">
+                                            <a ng-click="postCV()" href="" data-toggle="pill">أرسال</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Home -->
+
+
+        
+        <!-- Bootstrap Core JS -->
+        <script src="http://64.227.35.49/Foras/js/bootstrap.min.js"></script>
+        <script src="http://64.227.35.49/Foras/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+        <!-- wow.js -->
+        <script src="http://64.227.35.49/Foras/js/tests.js"></script>
+        <script src="http://64.227.35.49/Foras/js/wow.min.js"></script>
+        <script src="http://64.227.35.49/Foras/js/wow.min.js"></script>
+        
+        <script>
+            new WOW().init();
+        </script>
+        <script type="text/javascript">
+            $('.counter-number').countTo();
+        </script>
+        <script>
+            function isScrolledIntoView(el) {
+                var elemTop = el.getBoundingClientRect().top;
+                var elemBottom = el.getBoundingClientRect().bottom;
+                var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+                return isVisible;
+            }
+            function isScrolledIntoView(el) {
+                var elemTop = el.getBoundingClientRect().top;
+                var elemBottom = el.getBoundingClientRect().bottom;
+                var isVisible = (elemTop >= 0) && (elemBottom <= window.innerHeight);
+                return isVisible;
+            }
+            $(window).on('scroll', function() {
+                if (isScrolledIntoView(document.getElementById('counters'))) {
+                    $('.ace-counter-number').countTo();
+                    $(window).off('scroll');
+                }
+            });
+        </script>
+
+    </body>
+</html>
+
+
+
+<script>
+    var x, i, j, selElmnt, a, b, c;
+    /*look for any elements with the class "custom-select":*/
+    x = document.getElementsByClassName("custom-select");
+    for (i = 0; i < x.length; i++) {
+      selElmnt = x[i].getElementsByTagName("select")[0];
+      /*for each element, create a new DIV that will act as the selected item:*/
+      a = document.createElement("DIV");
+      a.setAttribute("class", "select-selected");
+      a.innerHTML = selElmnt.options[selElmnt.selectedIndex].innerHTML;
+      x[i].appendChild(a);
+      /*for each element, create a new DIV that will contain the option list:*/
+      b = document.createElement("DIV");
+      b.setAttribute("class", "select-items select-hide");
+      for (j = 1; j < selElmnt.length; j++) {
+        /*for each option in the original select element,
+        create a new DIV that will act as an option item:*/
+        c = document.createElement("DIV");
+        c.innerHTML = selElmnt.options[j].innerHTML;
+        c.addEventListener("click", function(e) {
+            /*when an item is clicked, update the original select box,
+            and the selected item:*/
+            var y, i, k, s, h;
+            s = this.parentNode.parentNode.getElementsByTagName("select")[0];
+            h = this.parentNode.previousSibling;
+            for (i = 0; i < s.length; i++) {
+              if (s.options[i].innerHTML == this.innerHTML) {
+                s.selectedIndex = i;
+                h.innerHTML = this.innerHTML;
+                y = this.parentNode.getElementsByClassName("same-as-selected");
+                for (k = 0; k < y.length; k++) {
+                  y[k].removeAttribute("class");
+                }
+                this.setAttribute("class", "same-as-selected");
+                break;
+              }
+            }
+            h.click();
+        });
+        b.appendChild(c);
+      }
+      x[i].appendChild(b);
+      a.addEventListener("click", function(e) {
+          /*when the select box is clicked, close any other select boxes,
+          and open/close the current select box:*/
+          e.stopPropagation();
+          closeAllSelect(this);
+          this.nextSibling.classList.toggle("select-hide");
+          this.classList.toggle("select-arrow-active");
+        });
+    }
+    function closeAllSelect(elmnt) {
+      /*a function that will close all select boxes in the document,
+      except the current select box:*/
+      var x, y, i, arrNo = [];
+      x = document.getElementsByClassName("select-items");
+      y = document.getElementsByClassName("select-selected");
+      for (i = 0; i < y.length; i++) {
+        if (elmnt == y[i]) {
+          arrNo.push(i)
+        } else {
+          y[i].classList.remove("select-arrow-active");
+        }
+      }
+      for (i = 0; i < x.length; i++) {
+        if (arrNo.indexOf(i)) {
+          x[i].classList.add("select-hide");
+        }
+      }
+    }
+    /*if the user clicks anywhere outside the select box,
+    then close all select boxes:*/
+    document.addEventListener("click", closeAllSelect);
+    </script>
